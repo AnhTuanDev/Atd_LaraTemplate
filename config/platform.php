@@ -129,7 +129,7 @@ return [
 
     'template' => [
         'header' => null,
-        'footer' => 'admin.partials.footer',
+        'footer' => null,
     ],
 
     /*
