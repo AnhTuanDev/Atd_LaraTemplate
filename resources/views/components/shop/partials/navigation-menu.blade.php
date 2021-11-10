@@ -12,7 +12,7 @@
                      xl:px-none
                      ">
             <div class="flex flex-row items-center justify-between lg:justify-start">
-                <a href="/" class="
+                <a href="{{ route('home') }}" class="
                          text-4xl
                          font-bold
                          tracking-tighter

@@ -1011,15 +1011,6 @@ video {
 }.placeholder-gray-300::placeholder{
 	--tw-placeholder-opacity: 1;
 	color: rgba(143, 144, 166, var(--tw-placeholder-opacity));
-}.placeholder-primary-main::-moz-placeholder{
-	--tw-placeholder-opacity: 1;
-	color: rgba(237, 231, 246, var(--tw-placeholder-opacity));
-}.placeholder-primary-main:-ms-input-placeholder{
-	--tw-placeholder-opacity: 1;
-	color: rgba(237, 231, 246, var(--tw-placeholder-opacity));
-}.placeholder-primary-main::placeholder{
-	--tw-placeholder-opacity: 1;
-	color: rgba(237, 231, 246, var(--tw-placeholder-opacity));
 }.placeholder-primary-dark::-moz-placeholder{
 	--tw-placeholder-opacity: 1;
 	color: rgba(187, 179, 193, var(--tw-placeholder-opacity));
