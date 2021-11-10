@@ -12,6 +12,20 @@ module.exports = {
 
     theme: {
         colors: {
+            primary: {
+                main: '#ede7f6',
+                light: '#ffffff',
+                dark: '#bbb3c1',
+                text: '#000000',
+            },
+
+            secondary: {
+                main: '#311b92',
+                light: '#6746c3',
+                dark: '#000063',
+                text: '#ffffff',
+            },
+
             blue: {
                 100: '#728cff',
                 200: '#4d6bff',
@@ -49,6 +63,11 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Source Sans Pro', 'sans-serif', 'Nunito', ...defaultTheme.fontFamily.sans],
+            },
+            spacing: {
+                '112': '28rem',
+                '128': '32rem',
+                '144': '36rem',
             },
         },
     },
