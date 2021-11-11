@@ -26,32 +26,29 @@
                          lg:pr-8
                          "> Trillfa </a>
                 <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline" @click="open = !open">
-                    <svg fill="currentColor" viewBox="0 0 20 20" class="w-8 h-8">
-                        <path x-show="!open" fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
-                        <path x-show="open" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" style="display: none;"></path>
-                    </svg>
+                    <x-icons.menu-alt-3 />
                 </button>
             </div>
+            @php 
+                $topMenu = [ ['label' => 'Trang chủ', 'url' => '/'], ['label' => 'Shop', 'url' => '/shop'], ['label' => 'Tin tức', 'url' => '/blog'] ];
+            @endphp
             <nav :class="{'flex': open, 'hidden': !open}" 
                 class="flex-col items-center flex-grow pb-4 md:pb-0 md:flex md:justify-end md:flex-row lg:pl-2 hidden">
+
+                @foreach($topMenu as  $menu)
                 <a class="
                           px-4
                           py-2
                           mt-2
-                          text-sm text-primary-text
+                          text-sm 
+                          text-primary-text
+                          capitalize
                           md:mt-0
                           hover:text-secondary-main
                           focus:outline-none focus:shadow-outline
-                          " href="#">About</a>
-                <a class="
-                          px-4
-                          py-2
-                          mt-2
-                          text-sm text-primary-text
-                          md:mt-0
-                          hover:text-secondary-main
-                          focus:outline-none focus:shadow-outline
-                          " href="#">Contact</a>
+                          " href="{{ $menu['url'] }}">{{ $menu['label'] }}</a>
+                @endforeach
+
                 <div @click.away="open = false" class="relative" x-data="{ open: false }">
                     <button @click="open = !open" class="
                                     flex flex-row
@@ -60,38 +57,52 @@
                                     px-4
                                     py-2
                                     mt-2
-                                    text-sm text-left text-primary-text
+                                    text-sm 
+                                    text-left 
+                                    text-primary-text
                                     md:w-auto md:inline md:mt-0
                                     hover:text-secondary-main
                                     focus:outline-none focus:shadow-outline
                                     ">
-                        <span>Dropdown List</span>
-                        <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform rotate-0 md:-mt-1">
-                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                        </svg>
+                        <span>Thông Tin</span>
+                        <x-icons.chevron-down-rotation />
                     </button>
-                    <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="
-                                 absolute
-                                 right-0
-                                 z-30
-                                 w-full
-                                 mt-2
-                                 origin-top-right
-                                 rounded-md
-                                 shadow-lg
-                                 md:w-48
-                                 " style="display: none">
+                    <!-- dropdown menu -->
+                    <div x-show="open" 
+                         x-transition:enter="transition ease-out duration-100"
+                         x-transition:enter-start="transform opacity-0 scale-95" 
+                         x-transition:enter-end="transform opacity-100 scale-100"
+                         x-transition:leave="transition ease-in duration-75" 
+                         x-transition:leave-start="transform opacity-100 scale-100" 
+                         x-transition:leave-end="transform opacity-0 scale-95" 
+                         class="absolute
+                                right-0
+                                z-30
+                                w-full
+                                mt-2
+                                origin-top-right
+                                rounded-md
+                                shadow-lg
+                                md:w-48
+                                " 
+                         style="display: none">
+                        @php 
+                            $gioiThieu = [ ['label' => 'Giới Thiệu', 'url' => '/about'], ['label' => 'Liên Hệ', 'url' => '/contact'] ];
+                        @endphp
                         <div class="px-2 py-2 bg-white rounded-md shadow">
+                            @foreach($gioiThieu as $menu)
                             <a class="
                                       block
                                       px-4
                                       py-2
                                       mt-2
+                                      capitalize
                                       text-sm text-primary-text
                                       md:mt-0
                                       hover:text-secondary-main
                                       focus:outline-none focus:shadow-outline
-                                      " href="#">Link #1</a>
+                                      " href="{{ $menu['url'] }}">{{ $menu['label'] }}</a>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -169,20 +180,21 @@
                 'Áo Khoác',
                 'Váy',
                 'Đầm',
-                'Áo Dài Cách Tân'
+                'Áo Dài Cách Tân',
+                'Đồ bay',
+                'Áo đôi',
             ];
         @endphp
     
-        <div class="max-w-7xl mx-auto p-5 md-px-6 xl-px-none overflow-y-auto whitespace-nowrap scroll-hidden border-b">
-            <ul class="inline-flex items-center list-none justify-center">
+        <div class="max-w-7xl mx-auto p-5 md-px-6 xl-px-none overflow-y-auto whitespace-nowrap scroll-hidden border-b border-primary-dark">
+            <ul class="inline-flex items-center list-none justify-center space-x-6">
                 @foreach($mainMenu as $menu)
                 <li> <a href="#" class="
-                             px-4
                              py-1
                              mr-1
                              text-base
                              font-semibold
-                             uppercase
+                             capitalize
                              text-primary-text
                              transition
                              duration-500

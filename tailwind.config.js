@@ -13,16 +13,16 @@ module.exports = {
     theme: {
         colors: {
             primary: {
-                main: '#ede7f6',
+                main: '#f3e5f5',
                 light: '#ffffff',
-                dark: '#bbb3c1',
+                dark: '#c0b3c2',
                 text: '#000000',
             },
 
             secondary: {
-                main: '#311b92',
-                light: '#6746c3',
-                dark: '#000063',
+                main: '#7b1fa2',
+                light: '#ae52d4',
+                dark: '#4a0072',
                 text: '#ffffff',
             },
 

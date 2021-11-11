@@ -1,18 +1,10 @@
+@props([ 'title' => 'latest'])
 <section>
-    <div class="
-                relative
-                items-center
-                w-full
-                px-5
-                py-12
-                mx-auto
-                md:px-6
-                xl:px-none
-                max-w-7xl
-                ">
-        <div class="pb-5 border-b border-black">
-            <h3 class="text-lg font-medium leading-6 text-neutral-600"> Latest Entries </h3>
-        </div>
+    <div class=" relative items-center w-full px-5 py-6 md:py-10 mx-auto md:px-6 xl:px-none max-w-7xl">
+        <x-shop.partials.latest-header 
+            class="border-primary-dark"
+            :title="$title" 
+            titleClass="capitalize text-secondary-dark" />
         <div class="relative">
             <div class="grid max-w-lg gap-12 mx-auto mt-12 lg:grid-cols-3 lg:max-w-none">
                 <div class="flex flex-col mb-12 overflow-hidden cursor-pointer">

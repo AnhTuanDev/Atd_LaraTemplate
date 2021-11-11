@@ -1,7 +1,13 @@
+@props([ 'title' => 'latest'])
 <section>
-    <div class="max-w-6xl px-4 py-12 mx-auto">
-        <div class="grid grid-cols-1 gap-12 lg:gap-24 lg:grid-cols-2">
-            <div class="pt-24">
+    <div class="max-w-7xl px-4 pt-8 md:py-12 mx-auto">
+        <x-shop.partials.latest-header 
+            class="border-primary-dark"
+            :title="$title" 
+            titleClass="capitalize text-secondary-dark" />
+
+        <div class="grid grid-cols-1 md:gap-6 lg:gap-10 lg:gap-24 lg:grid-cols-2">
+            <div class="bt-8 md:pt-12 xl:pt-24">
                 <div class="space-y-8 lg:divide-y lg:divide-gray-100">
                     <div class="pt-8 sm:flex lg:items-start group">
                         <div class="flex-shrink-0 mb-4 sm:mb-0 sm:mr-4">
