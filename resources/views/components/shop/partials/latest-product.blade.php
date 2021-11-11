@@ -6,94 +6,86 @@
             :title="$title" 
             titleClass="capitalize text-secondary-dark" />
         <div class="relative">
-            <div class="grid max-w-lg gap-12 mx-auto mt-12 lg:grid-cols-3 lg:max-w-none">
-                <div class="flex flex-col mb-12 overflow-hidden cursor-pointer">
+            <div class="grid max-w-lg gap-4 md:gap-8 mx-auto mt-8 md:mt-12 lg:grid-cols-3 xl:grid-cols-4 lg:max-w-none">
+                @php 
+                    $products = collect([
+                        [
+                            'name' => 'Đầm Dây kéo Khối Màu Giải trí',
+                            'cover_image' => 'https://img.ltwebstatic.com/images3_pi/2021/07/15/1626318759c9b3369189f0cf8a885d4a20db448cdf.jpg',
+                        ],
+                        [
+                            'name' => 'Đầm Chia Nút phía trước răng cưa Thanh lịch',
+                            'cover_image' => 'https://img.ltwebstatic.com/images3_pi/2021/10/09/163374545203eed6584ae8537c621681fd541bc06d_thumbnail_600x.jpg',
+                        ],
+                        [
+                            'name' => 'Đầm Chia Dây kéo Khối Màu răng cưa Thanh lịch',
+                            'cover_image' => 'https://img.ltwebstatic.com/images3_pi/2021/09/06/1630899426ff51bfdd0dfec6450f4e528c2e68fae4_thumbnail_600x.jpg',
+                        ],
+                        [
+                            'name' => 'Đầm răng cưa Thanh lịch',
+                            'cover_image' => 'https://img.ltwebstatic.com/images3_pi/2020/11/19/1605752642b1c102e7d0342fa2bf0f88906fa87d98_thumbnail_600x.jpg',
+                        ],
+                        [
+                            'name' => 'Đầm Dây kéo Khối Màu Giải trí',
+                            'cover_image' => 'https://img.ltwebstatic.com/images3_pi/2021/07/15/1626318759c9b3369189f0cf8a885d4a20db448cdf.jpg',
+                        ],
+                        [
+                            'name' => 'Đầm Chia Nút phía trước răng cưa Thanh lịch',
+                            'cover_image' => 'https://img.ltwebstatic.com/images3_pi/2021/10/09/163374545203eed6584ae8537c621681fd541bc06d_thumbnail_600x.jpg',
+                        ],
+                        [
+                            'name' => 'Đầm Chia Dây kéo Khối Màu răng cưa Thanh lịch',
+                            'cover_image' => 'https://img.ltwebstatic.com/images3_pi/2021/09/06/1630899426ff51bfdd0dfec6450f4e528c2e68fae4_thumbnail_600x.jpg',
+                        ],
+                        [
+                            'name' => 'Đầm răng cưa Thanh lịch',
+                            'cover_image' => 'https://img.ltwebstatic.com/images3_pi/2020/11/19/1605752642b1c102e7d0342fa2bf0f88906fa87d98_thumbnail_600x.jpg',
+                        ],
+                    ]);
+                @endphp
+
+                @foreach($products as $product)
+                <div class="flex flex-col mb-5 md:mb-8 overflow-hidden cursor-pointer p-2">
+
                     <a href="/blog-post">
-                        <div class="flex-shrink-0">
-                            <img class="object-cover w-full h-48 rounded-lg" src="https://images.unsplash.com/photo-1510166089176-b57564a542b1?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=2024&amp;q=80" alt="">
+                        <div class="flex-shrink-0 rounded-lg p-1 shadow-md">
+                            <img class="object-cover w-full h-96 rounded-lg" 
+                                 src="{{ $product['cover_image'] }}" alt="">
                         </div>
                     </a>
+
                     <div class="flex flex-col justify-between flex-1">
                         <a href="/blog-post"> </a>
                         <div class="flex-1">
                             <a href="/blog-post">
-                                <div class="flex pt-6 space-x-1 text-sm text-gray-300">
-                                    <time datetime="2020-03-10"> Mar 10, 2020 </time>
-                                    <span aria-hidden="true"> · </span>
-                                    <span> 4 min read </span>
+                                <div class="flex pt-6 text-sm font-medium text-secondary-main">
+                                    <span>Category </span>
                                 </div>
-                            </a><a href="#" class="block mt-2 space-y-6">
-                                <h3 class="
-                                           text-2xl
-                                           font-semibold
-                                           leading-none
-                                           tracking-tighter
-                                           text-neutral-600
-                                           "> Typography on app. </h3>
-                                <!--------->
-                                <p class="text-lg font-normal text-gray-300"> Filling text so you can see how it looks like with text. Did I said text? </p>
                             </a>
+                            <a href="#" class="block mt-2 space-y-6">
+                                <h3 class="
+                                   text-2xl
+                                   font-semibold
+                                   leading-none
+                                   tracking-tighter
+                                   text-secondary-dark
+                                   ">
+                                    {{ $product['name'] }}
+                                </h3>
+                                <!--------->
+                            </a>
+
                         </div>
+
+                        <div class="inline-flex items-center justify-between rounded-full shadow mt-4 p-1">
+                            <bottom class="rounded-full bg-primary-main text-primary-text px-4 md:px-6 py-1 text-sm font-bold">250.000 đ</bottom>
+                            <bottom class="rounded-full px-4 md:px-6 py-1 line-through text-sm text-primary-dark">450.000 đ</bottom>
+                        </div>
+
                     </div>
                 </div>
-                <div class="flex flex-col mb-12 overflow-hidden cursor-pointer">
-                    <a href="/blog-post">
-                        <div class="flex-shrink-0">
-                            <img class="object-cover w-full h-48 rounded-lg" src="https://images.unsplash.com/photo-1516245556508-7d60d4ff0f39?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDN8fHxlbnwwfHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=900&amp;q=60" alt="">
-                        </div>
-                    </a>
-                    <div class="flex flex-col justify-between flex-1">
-                        <a href="/blog-post"> </a>
-                        <div class="flex-1">
-                            <a href="/blog-post">
-                                <div class="flex pt-6 space-x-1 text-sm text-gray-300">
-                                    <time datetime="2020-03-10"> Mar 10, 2020 </time>
-                                    <span aria-hidden="true"> · </span>
-                                    <span> 4 min read </span>
-                                </div>
-                            </a><a href="#" class="block mt-2 space-y-6">
-                                <h3 class="
-                                           text-2xl
-                                           font-semibold
-                                           leading-none
-                                           tracking-tighter
-                                           text-neutral-600
-                                           "> Typography on app. </h3>
-                                <!--------->
-                                <p class="text-lg font-normal text-gray-300"> Filling text so you can see how it looks like with text. Did I said text? </p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex flex-col mb-12 overflow-hidden cursor-pointer">
-                    <a href="/blog-post">
-                        <div class="flex-shrink-0">
-                            <img class="object-cover w-full h-48 rounded-lg" src="https://images.unsplash.com/photo-1561654791-00316c79efa8?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE5fHx8ZW58MHx8fHw%3D&amp;auto=format&amp;fit=crop&amp;w=900&amp;q=60" alt="">
-                        </div>
-                    </a>
-                    <div class="flex flex-col justify-between flex-1">
-                        <a href="/blog-post"> </a>
-                        <div class="flex-1">
-                            <a href="/blog-post">
-                                <div class="flex pt-6 space-x-1 text-sm text-gray-300">
-                                    <time datetime="2020-03-10"> Mar 10, 2020 </time>
-                                    <span aria-hidden="true"> · </span>
-                                    <span> 4 min read </span>
-                                </div>
-                            </a><a href="#" class="block mt-2 space-y-6">
-                                <h3 class="
-                                           text-2xl
-                                           font-semibold
-                                           leading-none
-                                           tracking-tighter
-                                           text-neutral-600
-                                           "> Typography on app. </h3>
-                                <!--------->
-                                <p class="text-lg font-normal text-gray-300"> Filling text so you can see how it looks like with text. Did I said text? </p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+
             </div>
         </div>
     </div>
