@@ -24,4 +24,7 @@
         </div>
     </div>
 
+    <!-- Clients -->
+    <x-shop.partials.clients />
+
 </x-shop.layouts.app>
