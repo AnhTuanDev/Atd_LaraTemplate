@@ -1,6 +1,6 @@
 @props([ 'title' => 'latest'])
 <section>
-    <div class=" relative items-center w-full px-5 py-6 md:py-10 mx-auto md:px-6 xl:px-none max-w-7xl">
+    <div class="items-center w-full px-5 py-6 md:py-10 mx-auto md:px-6 xl:px-none max-w-7xl">
         <x-shop.partials.latest-header 
             class="border-primary-dark"
             :title="$title" 

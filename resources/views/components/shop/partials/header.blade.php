@@ -1,4 +1,4 @@
-<section class="bg-primary-main">
+<section class="relative bg-primary-main">
     <div class="px-4 py-12 mx-auto max-w-7xl sm:px-6 md:px-6 xl-px-none lg:py-24">
 
         <div class="block md:flex items-center">

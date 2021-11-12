@@ -21,7 +21,7 @@
 
     <body class="font-sans antialiased text-base">
 
-        <div class="min-h-screen bg-primary-light">
+        <div class="relative min-h-screen bg-primary-light">
             
             <!-- Navbar menu -->
 

@@ -1,6 +1,6 @@
 @props([ 'title' => 'latest'])
 <section>
-    <div class="max-w-7xl px-4 pt-8 md:py-12 mx-auto">
+    <div {{ $attributes->merge(['class' => 'max-w-7xl px-4 pt-8 md:py-12 mx-auto']) }}>
 
         <x-shop.partials.latest-header 
             class="border-primary-dark"
