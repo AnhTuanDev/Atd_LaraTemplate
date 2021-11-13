@@ -26,7 +26,7 @@
                                    "> Thông Tin </h3>
                         <ul role="list" class="mt-4 space-y-4">
                             <li>
-                                <a href="#" class="text-base font-normal text-primary-text hover:text-gray-900"> Giới Thiệu </a>
+                                <a href="{{ route('about') }}" class="text-base font-normal text-primary-text hover:text-gray-900"> Giới Thiệu </a>
                             </li>
                             <li>
                                 <a href="#" class="text-base font-normal text-primary-text hover:text-gray-900"> Thông Tin Giao Hàng </a>
@@ -45,7 +45,7 @@
                                    "> Hỗ trợ khách hàng </h3>
                         <ul role="list" class="mt-4 space-y-4">
                             <li>
-                                <a href="#" class="text-base font-normal text-primary-text hover:text-gray-900"> Liên Hệ </a>
+                                <a href="{{ route('contact') }}" class="text-base font-normal text-primary-text hover:text-gray-900"> Liên Hệ </a>
                             </li>
                             <li>
                                 <a href="#" class="text-base font-normal text-primary-text hover:text-gray-900"> Đổi Trả </a>

@@ -32,7 +32,7 @@ return [
     |
     */
 
-    'prefix' => env('DASHBOARD_PREFIX', '/atd'),
+    'prefix' => env('DASHBOARD_PREFIX', '/admin'),
 
     /*
     |--------------------------------------------------------------------------
