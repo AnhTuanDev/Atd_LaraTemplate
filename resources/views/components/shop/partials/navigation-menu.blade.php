@@ -173,23 +173,10 @@
     </div>
     
     <div class="bg-primary-main">
-        @php  
-            $mainMenu = [
-                'Áo',
-                'Quần',
-                'Áo Khoác',
-                'Váy',
-                'Đầm',
-                'Áo Dài Cách Tân',
-                'Đồ bay',
-                'Áo đôi',
-            ];
-        @endphp
-    
         <div class="max-w-7xl mx-auto p-5 md-px-6 xl-px-none overflow-y-auto whitespace-nowrap scroll-hidden border-b border-primary-dark">
             <ul class="inline-flex items-center list-none justify-center space-x-6">
                 @foreach($mainMenu as $menu)
-                <li> <a href="#" class="
+                <li> <a href="{{ route( 'category.index', $menu ) }}" class="
                              py-1
                              mr-1
                              text-base
@@ -204,7 +191,7 @@
                              focus:shadow-outline focus:outline-none focus:ring-2
                              ring-offset-current ring-offset-2
                              hover:text-secondary-main
-                             ">{{ $menu }}</a>
+                             ">{{ $menu->name }}</a>
                 </li>
                 @endforeach
             </ul>

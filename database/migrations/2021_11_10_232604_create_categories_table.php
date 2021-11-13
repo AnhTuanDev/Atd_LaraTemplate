@@ -29,8 +29,8 @@ class CreateCategoriesTable extends Migration
                   ->constrained('categories')
                   ->onDelete('SET NULL')
                   ->onUpdate('cascade');
-            $table->timestamps();
             $table->string('image')->nullable();
+            $table->timestamps();
         });
     }
 

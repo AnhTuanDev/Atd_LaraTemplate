@@ -9,6 +9,7 @@ use App\Orchid\Screens\Examples\ExampleFieldsScreen;
 use App\Orchid\Screens\Examples\ExampleLayoutsScreen;
 use App\Orchid\Screens\Examples\ExampleScreen;
 use App\Orchid\Screens\Examples\ExampleTextEditorsScreen;
+
 use App\Orchid\Screens\PlatformScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
@@ -18,16 +19,10 @@ use App\Orchid\Screens\User\UserProfileScreen;
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 
-/*
-|--------------------------------------------------------------------------
-| Dashboard Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the need "dashboard" middleware group. Now create something great!
-|
-*/
+
+use App\Orchid\Screens\Shop\Product\ProductScreen;
+use App\Orchid\Screens\Shop\Product\ProductListScreen;
+
 
 // Main
 Route::screen('/main', PlatformScreen::class)
@@ -95,6 +90,25 @@ Route::screen('roles', RoleListScreen::class)
             ->parent('platform.index')
             ->push(__('Roles'), route('platform.systems.roles'));
     });
+
+
+// Produc...
+Route::screen('product', ProductScreen::class)
+    ->name('admin.product.edit')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.index')
+            ->push('Sản Phẩm');
+    });
+
+Route::screen('products', ProductListScreen::class)
+    ->name('admin.product.list')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.index')
+            ->push('Danh Sách Sản Phẩm');
+    });
+
 
 // Example...
 Route::screen('example', ExampleScreen::class)

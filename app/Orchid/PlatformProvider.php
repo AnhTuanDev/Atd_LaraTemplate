@@ -12,22 +12,42 @@ use Orchid\Support\Color;
 
 class PlatformProvider extends OrchidServiceProvider
 {
-    /**
-     * @param Dashboard $dashboard
-     */
     public function boot(Dashboard $dashboard): void
     {
         parent::boot($dashboard);
 
         // ...
     }
-
-    /**
-     * @return Menu[]
-     */
     public function registerMainMenu(): array
     {
         return [
+
+            Menu::make('Users')
+                ->icon('lock')
+                ->list([
+                    Menu::make(__('Users'))
+                        ->icon('user')
+                        ->route('platform.systems.users')
+                        ->permission('platform.systems.users'),
+                        //->title(__('Access rights')),
+
+                    Menu::make(__('Roles'))
+                        ->icon('lock')
+                        ->route('platform.systems.roles')
+                        ->permission('platform.systems.roles'),
+                ]),
+
+            //Product
+            Menu::make('Quản Lý Sản Phẩm')
+                ->icon('modules')
+                ->list([
+                    Menu::make('Sản Phẩm')
+                        ->icon('module')
+                        ->route('admin.product.list'),
+                ]),
+                
+
+            //Examples
             Menu::make('Example screen')
                 ->icon('monitor')
                 ->route('platform.example')
@@ -83,22 +103,9 @@ class PlatformProvider extends OrchidServiceProvider
                     return Dashboard::version();
                 }, Color::DARK()),
 
-            Menu::make(__('Users'))
-                ->icon('user')
-                ->route('platform.systems.users')
-                ->permission('platform.systems.users')
-                ->title(__('Access rights')),
-
-            Menu::make(__('Roles'))
-                ->icon('lock')
-                ->route('platform.systems.roles')
-                ->permission('platform.systems.roles'),
         ];
     }
 
-    /**
-     * @return Menu[]
-     */
     public function registerProfileMenu(): array
     {
         return [
@@ -108,9 +115,6 @@ class PlatformProvider extends OrchidServiceProvider
         ];
     }
 
-    /**
-     * @return ItemPermission[]
-     */
     public function registerPermissions(): array
     {
         return [

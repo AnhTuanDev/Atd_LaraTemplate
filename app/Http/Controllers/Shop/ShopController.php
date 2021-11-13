@@ -12,4 +12,8 @@ class ShopController extends Controller
         return view('shop.index');
     }
 
+    public function category() {
+        return "category";
+    }
+
 }
