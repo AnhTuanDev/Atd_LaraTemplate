@@ -27,4 +27,40 @@ class Product extends Model
     protected $allowedFilters = [
         'name', 'slug', 'description', 'status',
     ];
+
+    protected $casts = [
+        //
+    ];
+
+    //Carbon set vn locale.
+    public function getViTime($time = '')
+    {
+        Carbon::setLocale('vi');
+    }
+
+    
+    //Relationship
+    public function categories()
+    {
+        return $this->belongsTo(Topic::class, 'category_id');
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'products_tags');
+    }
+
+    public function cover()
+    {
+        return $this->hasOne(Attachment::class, 'id', 'cover_image')->withDefault();
+    }
+
+    public function photos()
+    {
+        return $this->hasMany(Attachment::class, 'id', 'photos')->withDefault();
+    }
+
+
 }
+
+
