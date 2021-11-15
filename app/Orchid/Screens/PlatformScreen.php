@@ -22,9 +22,9 @@ class PlatformScreen extends Screen
     public function commandBar(): array
     {
         return [
-            Link::make('Cửa Hàng')
+            Link::make('Xem Cửa Hàng')
                 ->href('https://trillfa.com')
-                ->icon('globe-alt'),
+                ->icon('rocket'),
         ];
     }
 

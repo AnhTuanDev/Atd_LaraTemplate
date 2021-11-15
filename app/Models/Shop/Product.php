@@ -15,21 +15,23 @@ class Product extends Model
     use AsSource, HasFactory, Filterable, Attachable;
 
     protected $fillable = [
-        'name', 'slug', 'category_id', 'tag_id', 'description', 
+        'id', 'name', 'slug', 'category_id', 'tag_id', 'description', 
         'meta_description', 'meta_keywords', 'sku', 'price', 'quantity',
         'stock', 'status', 'discount', 'cover_image', 'photos', 'featured'
     ];
 
     protected $allowedSorts = [
-        'name', 'slug', 'id'
+        'name', 'slug', 'id', 'price',
     ];
 
     protected $allowedFilters = [
-        'name', 'slug', 'description', 'status',
+        'name', 'slug', 'description', 'status', 'price',
     ];
 
     protected $casts = [
-        //
+        'photos' => 'array',
+        'price' => 'string',
+        'discount' => 'string',
     ];
 
     //Carbon set vn locale.
@@ -42,7 +44,7 @@ class Product extends Model
     //Relationship
     public function categories()
     {
-        return $this->belongsTo(Topic::class, 'category_id');
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
     public function tags()
@@ -55,9 +57,9 @@ class Product extends Model
         return $this->hasOne(Attachment::class, 'id', 'cover_image')->withDefault();
     }
 
-    public function photos()
+    public function images()
     {
-        return $this->hasMany(Attachment::class, 'id', 'photos')->withDefault();
+        return $this->hasOne(Attachment::class, 'id', 'photos')->withDefault();
     }
 
 

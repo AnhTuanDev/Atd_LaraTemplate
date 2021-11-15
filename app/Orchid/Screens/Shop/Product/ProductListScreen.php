@@ -17,7 +17,8 @@ use Orchid\Screen\Layouts\Table;
 use Orchid\Support\Facades\Layout;
 
 use App\Models\Shop\Product;
-//use App\Orchid\Layouts\Post\PostListLayout;
+use App\Orchid\Layouts\Shop\Product\ProductListLayout;
+use App\Orchid\Layouts\Shop\Product\ProductDeleteModalLayout;
 
 class ProductListScreen extends Screen
 {
@@ -25,7 +26,11 @@ class ProductListScreen extends Screen
 
     public function query(): array
     {
-        return [];
+        return [
+            'products' => Product::filters()
+                ->whereStatus(1)
+                ->defaultSort('id', 'desc')->paginate(10),
+        ];
     }
 
     public function commandBar(): array
@@ -39,6 +44,25 @@ class ProductListScreen extends Screen
 
     public function layout(): array
     {
-        return [];
+        return [
+
+            ProductListLayout::class,
+
+            Layout::modal('deleteModal', [
+                ProductDeleteModalLayout::class,
+            ])->async('asyncGetDeletePost') 
+              ->applyButton('Xóa') 
+              ->title('Xác nhận xóa'),
+
+        ];
+    }//End layout
+
+    public function delete(Product $product)
+    {
+        $product->delete();
+
+        Toast::info('Xóa thành công: ' . $product['name']);
+
+        return redirect()->route('admin.product.list');
     }
 }

@@ -5,27 +5,23 @@ namespace App\Orchid\Layouts\Shop\Product;
 use Orchid\Screen\Field;
 use Orchid\Screen\Layouts\Rows;
 use Orchid\Screen\Fields\Input;
-//use Orchid\Screen\Fields\Quill;
 use Orchid\Screen\Fields\SimpleMDE;
 
-class ProducContentLayout extends Rows
+class ProducEditContentLayout extends Rows
 {
-    //protected $title;
 
     protected function fields(): array
     {
         return [
 
-            Input::make('product.name')
-                //->required()
+            Input::make('name')
                 ->class('w-100 border rounded py-2 px-3')
                 ->maxlength(160)
                 ->title('Tên Sản Phẩm')
                 ->placeholder('Nhập tên sản phẩm'),
 
             SimpleMDE::make('product.description')
-                //->required()
-                ->height('180px')
+                ->rows(100)
                 ->maxlength(255)
                 ->title('Mô Tả Sản Phẩm')
                 ->toolbar(['text', 'color', 'quote', 'header', 'list', 'format'])

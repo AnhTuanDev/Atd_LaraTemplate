@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Orchid;
 
-use Orchid\Platform\Dashboard;
-use Orchid\Platform\ItemPermission;
 use Orchid\Platform\OrchidServiceProvider;
+use Orchid\Platform\ItemPermission;
 use Orchid\Screen\Actions\Menu;
+use Orchid\Platform\Dashboard;
 use Orchid\Support\Color;
 
 class PlatformProvider extends OrchidServiceProvider
@@ -41,12 +41,12 @@ class PlatformProvider extends OrchidServiceProvider
             Menu::make('Quản Lý Sản Phẩm')
                 ->icon('modules')
                 ->list([
-                    Menu::make('Sản Phẩm')
+                    Menu::make('Danh Sách Sản Phẩm')
                         ->icon('module')
                         ->route('admin.product.list'),
                 ]),
                 
-
+            /*
             //Examples
             Menu::make('Example screen')
                 ->icon('monitor')
@@ -102,6 +102,7 @@ class PlatformProvider extends OrchidServiceProvider
                 ->badge(function () {
                     return Dashboard::version();
                 }, Color::DARK()),
+            */
 
         ];
     }

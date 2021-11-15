@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 
 
-use App\Orchid\Screens\Shop\Product\ProductScreen;
+use App\Orchid\Screens\Shop\Product\ProductEditScreen;
 use App\Orchid\Screens\Shop\Product\ProductListScreen;
 
 
@@ -93,7 +93,7 @@ Route::screen('roles', RoleListScreen::class)
 
 
 // Produc...
-Route::screen('product', ProductScreen::class)
+Route::screen('product/{product?}', ProductEditScreen::class)
     ->name('admin.product.edit')
     ->breadcrumbs(function (Trail $trail) {
         return $trail
