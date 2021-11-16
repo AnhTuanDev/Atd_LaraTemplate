@@ -8,24 +8,17 @@ use Orchid\Attachment\Models\Attachment;
 use Orchid\Attachment\Attachable;
 use Orchid\Filters\Filterable;
 use Orchid\Screen\AsSource;
-use Carbon\Carbon;
 
 class Category extends Model
 {
     use AsSource, HasFactory, Filterable, Attachable;
-    //
-    //Carbon set vn locale.
-    public function getViTime($time = '')
-    {
-        Carbon::setLocale('vi');
-    }
 
     protected $fillable = [ 'name', 'slug', 'order', 'location', 'parent_id', 'img' ];
 
     public $timestamps = false;
 
     protected $allowedSorts = [
-        'id', 'name', 'slug', 'id', 'price',
+        'id', 'name', 'slug', 'price',
     ];
 
     protected $allowedFilters = [

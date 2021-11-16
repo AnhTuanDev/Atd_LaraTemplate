@@ -51,6 +51,11 @@ class PlatformProvider extends OrchidServiceProvider
                         ->icon('menu')
                         ->route('admin.category.list'),
 
+                    //Tag
+                    Menu::make('Danh Sách Thẻ Tag')
+                        ->icon('tag')
+                        ->route('admin.tag.list'),
+
                 ]),
 
             /*

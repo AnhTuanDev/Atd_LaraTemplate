@@ -8,9 +8,9 @@ use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-use App\Models\Shop\Category;
+use App\Models\Shop\Tag;
 
-class StoreCategoryRequest extends FormRequest
+class StoreTagRequest extends FormRequest
 {
 
     public function authorize()
@@ -33,17 +33,12 @@ class StoreCategoryRequest extends FormRequest
 
         $name = $this->get('name');
         
-        $id = Category::where('name', $name)->first()->id ?? null;
+        $id = Tag::where('name', $name)->first()->id ?? null;
 
         return [
 
-            'name'                        => ['required', Rule::unique('categories', 'name')->ignore($id)], 
-
-            'slug'                        => [Rule::unique('categories', 'name')->ignore($id)], 
-
-            'category.parent_id'          => ['nullable'], 
-
-            'category.order'              => ['required'], 
+            'name' => ['required', Rule::unique('tags', 'name')->ignore($id)], 
+            'slug' => [Rule::unique('tags', 'name')->ignore($id)], 
 
         ];
     }
@@ -51,13 +46,13 @@ class StoreCategoryRequest extends FormRequest
     public function messages()
     {
         return [
+
             'name.required' => 'Trường Tên sản phẩm: Đang trống.', 
 
             'name.unique'   => 'Tên sản phẩm: Đã tồn tại', 
 
             'slug.unique'   => 'Tên sản phẩm: Đã tồn tại', 
 
-            //'category.parent_id.required' => 'Chửa chọn danh mục', 
         ];
     }
 }

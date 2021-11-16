@@ -21,8 +21,30 @@ use Tabuna\Breadcrumbs\Trail;
 
 use App\Orchid\Screens\Shop\Product\ProductEditScreen;
 use App\Orchid\Screens\Shop\Product\ProductListScreen;
+
 use App\Orchid\Screens\Shop\Category\CategoryEditScreen;
 use App\Orchid\Screens\Shop\Category\CategoryListScreen;
+
+use App\Orchid\Screens\Shop\Tag\TagEditScreen;
+use App\Orchid\Screens\Shop\Tag\TagListScreen;
+
+
+//Tag...
+Route::screen('tag/{tag?}', TagEditScreen::class)
+    ->name('admin.tag.edit')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('admin.tag.list')
+            ->push('Thẻ Tag');
+    });
+
+Route::screen('danh-sach-tag', TagListScreen::class)
+    ->name('admin.tag.list')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.index')
+            ->push('Danh Sách Thẻ Tag');
+    });
 
 //Category...
 Route::screen('danh-muc/{category?}', CategoryEditScreen::class)

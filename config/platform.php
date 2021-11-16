@@ -128,8 +128,8 @@ return [
     */
 
     'template' => [
-        'header' => null,
-        'footer' => null,
+        'header' => 'orchid.partials.header',
+        'footer' => 'orchid.partials.footer',
     ],
 
     /*
