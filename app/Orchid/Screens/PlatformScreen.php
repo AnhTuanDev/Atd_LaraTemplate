@@ -12,11 +12,11 @@ class PlatformScreen extends Screen
 {
     public $name = 'Trillfa Dashboard';
 
-    public $description = 'Bảng Quản Trị Trillfa';
-
     public function query(): array
     {
-        return [];
+        return [
+            'test' => 'test query',
+        ];
     }
 
     public function commandBar(): array
@@ -31,7 +31,8 @@ class PlatformScreen extends Screen
     public function layout(): array
     {
         return [
-            Layout::view('platform::partials.welcome'),
+            //Layout::view('platform::partials.welcome'),
+            Layout::view('orchid.partials.welcome'),
         ];
     }
 }
