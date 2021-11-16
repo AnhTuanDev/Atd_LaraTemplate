@@ -12,7 +12,7 @@ use Orchid\Screen\Actions\Link;
 use Illuminate\Support\Str;
 use Orchid\Screen\TD;
 
-//use App\Orchid\Atd\Screen\Fields\AtdTag;//Atd custom tag
+use App\Orchid\Atd\Screen\Fields\AtdTag;//Atd custom tag
 
 use App\Models\Shop\Product;
 
