@@ -24,18 +24,19 @@ class ProductEditOptionLayout extends Rows
                 ->novalue(0)
                 ->yesvalue(1)
                 ->sendTrueOrFalse()
+                ->help('Bán sản phẩm')
                 ->title('Trạng Thái Sản Phẩm'),
             
             Switcher::make('product.featured')
                 ->novalue(0)
                 ->yesvalue(1)
                 ->sendTrueOrFalse()
+                ->help('Đặt làm sản phẩm nổi bật')
                 ->title('Sản phẩm nổi bật'),
 
             Select::make('product.category_id')
-                ->empty()
                 ->fromModel(Category::class, 'name')
-                ->placeholder('Chọn chủ danh mục')
+                ->empty('Chọn danh mục')
                 ->title('Danh Mục'),
 
             Select::make('tags.')
@@ -43,8 +44,7 @@ class ProductEditOptionLayout extends Rows
                 ->maximumSelectionLength(5)
                 ->multiple()
                 ->fromModel(Tag::class, 'name')
-                ->placeholder('Chọn tag')
-                ->empty()
+                ->empty('Chọn tag')
                 ->title('Tags'),
 
         ];

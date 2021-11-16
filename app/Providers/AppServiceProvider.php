@@ -5,6 +5,9 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 
+use App\Observers\Shop\ProductObsever; 
+
+use App\Models\Shop\Product;
 use App\Models\Shop\Category;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,8 +24,13 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
-       $topMenu = Category::where('location', 'navbar')->orderBy('order', 'asc')->get(); 
+        //View share.
+        $topMenu = Category::where('location', 'navbar')->orderBy('order', 'asc')->get(); 
 
         View::share('mainMenu', $topMenu);
+
+        //Admin deleting image.
+        Product::observe(ProductObsever::class);
+
     }
 }

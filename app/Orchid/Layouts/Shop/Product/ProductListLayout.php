@@ -12,7 +12,7 @@ use Orchid\Screen\Actions\Link;
 use Illuminate\Support\Str;
 use Orchid\Screen\TD;
 
-use App\Orchid\Atd\Screen\Fields\AtdTag;//Atd custom tag
+//use App\Orchid\Atd\Screen\Fields\AtdTag;//Atd custom tag
 
 use App\Models\Shop\Product;
 
@@ -24,9 +24,9 @@ class ProductListLayout extends Table
     protected function columns(): array
     {
         return [
-            TD::make('Id')
+            TD::make('id', 'Hình Ảnh')
                 ->sort()
-                ->width('180')
+                ->width('96')
                 ->render(function(Product $product) {
                     $url = $product->cover ? $product->cover->url() : '/';
                     $id = $product->id ?: null;
@@ -35,7 +35,7 @@ class ProductListLayout extends Table
                         <span class='small text-muted mt-2 mb-0'># $id</span>
                     ";
                 }),
-            TD::make('Tên Sản Phẩm')
+            TD::make('name', 'Tên Sản Phẩm')
                 ->sort()
                 ->width('280')
                 ->filter(TD::FILTER_TEXT)
@@ -45,11 +45,13 @@ class ProductListLayout extends Table
                             ->route('admin.product.edit', $product->id);
                 }),
 
+            /*
             TD::make('Mô tả Sản Phẩm')
                 ->width('300px')
                 ->render(function(Product $product) {
                     return Str::words($product->description, 30, ' ...');
                 }),
+            */
 
             TD::make('Danh Mục')
                 ->width('200px')
@@ -60,6 +62,7 @@ class ProductListLayout extends Table
                             ->route('admin.product.list')
                             ->class('btn') : '';
                 }),
+
             TD::make('Tag')
                 ->width('250px')
                 ->render(function(Product $product) {
@@ -74,7 +77,7 @@ class ProductListLayout extends Table
                 ->width('100px')
                 ->render(function(Product $product) {
                     return DropDown::make()
-                            ->class('btn btn-light btn-large fs-3')
+                            ->class('btn btn-light btn-large fs-4')
                             ->icon('settings')
                             ->list([
 

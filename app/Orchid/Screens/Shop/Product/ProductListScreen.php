@@ -27,9 +27,7 @@ class ProductListScreen extends Screen
     public function query(): array
     {
         return [
-            'products' => Product::filters()
-                ->whereStatus(1)
-                ->defaultSort('id', 'desc')->paginate(10),
+            'products' => Product::filters()->defaultSort('id', 'desc')->paginate(10),
         ];
     }
 
@@ -65,4 +63,5 @@ class ProductListScreen extends Screen
 
         return redirect()->route('admin.product.list');
     }
+
 }

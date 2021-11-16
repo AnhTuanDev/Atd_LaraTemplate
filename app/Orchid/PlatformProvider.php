@@ -41,11 +41,18 @@ class PlatformProvider extends OrchidServiceProvider
             Menu::make('Quản Lý Sản Phẩm')
                 ->icon('modules')
                 ->list([
+                    //Product
                     Menu::make('Danh Sách Sản Phẩm')
                         ->icon('module')
                         ->route('admin.product.list'),
+
+                    //Category
+                    Menu::make('Danh Sách Danh Mục')
+                        ->icon('menu')
+                        ->route('admin.category.list'),
+
                 ]),
-                
+
             /*
             //Examples
             Menu::make('Example screen')

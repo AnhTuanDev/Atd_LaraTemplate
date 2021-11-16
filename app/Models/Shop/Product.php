@@ -3,8 +3,8 @@
 namespace App\Models\Shop;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Orchid\Attachment\Models\Attachment;
+use Illuminate\Database\Eloquent\Model;
 use Orchid\Attachment\Attachable;
 use Orchid\Filters\Filterable;
 use Orchid\Screen\AsSource;
@@ -12,6 +12,7 @@ use Carbon\Carbon;
 
 class Product extends Model
 {
+
     use AsSource, HasFactory, Filterable, Attachable;
 
     protected $fillable = [
@@ -39,7 +40,6 @@ class Product extends Model
     {
         Carbon::setLocale('vi');
     }
-
     
     //Relationship
     public function categories()
@@ -61,7 +61,6 @@ class Product extends Model
     {
         return $this->hasOne(Attachment::class, 'id', 'photos')->withDefault();
     }
-
 
 }
 

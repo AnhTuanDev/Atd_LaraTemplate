@@ -13,8 +13,8 @@ use App\Orchid\Layouts\Shop\Product\ProductDeleteModalLayout;
 use App\Http\Requests\Shop\StoreProductRequest;
 
 use App\Orchid\Atd\Support\Facades\AtdLayout;
-use Orchid\Screen\Actions\ModalToggle;
 //use Orchid\Support\Facades\Layout;
+use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Support\Facades\Toast;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\Link;
@@ -25,10 +25,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 use App\Models\Shop\Product;
-use App\Models\Shop\Tag;
 use App\Models\Shop\Category;
+use App\Models\Shop\Tag;
 
-use Orchid\Attachment\File;
+//use Orchid\Attachment\File;
 use Orchid\Screen\Screen;
 use Orchid\Screen\Action;
 use Orchid\Support\Color;
@@ -144,6 +144,11 @@ class ProductEditScreen extends Screen
         //ddd($productData);
         
         $product->fill($productData)->save();
+
+        //Attach vao table database attachment de dong bo voi post
+        $product->attachment()->syncWithoutDetaching(
+            $request->input('product.cover_image', [])
+        );
 
         //Attach vao table database attachment de dong bo voi post
         $product->attachment()->syncWithoutDetaching(

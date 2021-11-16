@@ -19,10 +19,45 @@ use App\Orchid\Screens\User\UserProfileScreen;
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 
-
 use App\Orchid\Screens\Shop\Product\ProductEditScreen;
 use App\Orchid\Screens\Shop\Product\ProductListScreen;
+use App\Orchid\Screens\Shop\Category\CategoryEditScreen;
+use App\Orchid\Screens\Shop\Category\CategoryListScreen;
 
+//Category...
+Route::screen('danh-muc/{category?}', CategoryEditScreen::class)
+    ->name('admin.category.edit')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('admin.category.list')
+            ->push('Danh Mục');
+    });
+
+Route::screen('danh-sach-danh-muc', CategoryListScreen::class)
+    ->name('admin.category.list')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.index')
+            ->push('Danh Sách Danh Mục');
+    });
+
+
+// Produc...
+Route::screen('san-pham/{product?}', ProductEditScreen::class)
+    ->name('admin.product.edit')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('admin.product.list')
+            ->push('Sản Phẩm');
+    });
+
+Route::screen('danh-sach-san-pham', ProductListScreen::class)
+    ->name('admin.product.list')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.index')
+            ->push('Danh Sách Sản Phẩm');
+    });
 
 // Main
 Route::screen('/main', PlatformScreen::class)
@@ -89,24 +124,6 @@ Route::screen('roles', RoleListScreen::class)
         return $trail
             ->parent('platform.index')
             ->push(__('Roles'), route('platform.systems.roles'));
-    });
-
-
-// Produc...
-Route::screen('product/{product?}', ProductEditScreen::class)
-    ->name('admin.product.edit')
-    ->breadcrumbs(function (Trail $trail) {
-        return $trail
-            ->parent('platform.index')
-            ->push('Sản Phẩm');
-    });
-
-Route::screen('products', ProductListScreen::class)
-    ->name('admin.product.list')
-    ->breadcrumbs(function (Trail $trail) {
-        return $trail
-            ->parent('platform.index')
-            ->push('Danh Sách Sản Phẩm');
     });
 
 
