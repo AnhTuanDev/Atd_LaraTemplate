@@ -44,17 +44,20 @@ class PlatformProvider extends OrchidServiceProvider
                     //Product
                     Menu::make('Danh Sách Sản Phẩm')
                         ->icon('module')
-                        ->route('admin.product.list'),
+                        ->route('admin.product.list')
+                        ->permission('admin.writer'),
 
                     //Category
                     Menu::make('Danh Sách Danh Mục')
                         ->icon('menu')
-                        ->route('admin.category.list'),
+                        ->route('admin.category.list')
+                        ->permission('admin.writer'),
 
                     //Tag
                     Menu::make('Danh Sách Thẻ Tag')
                         ->icon('tag')
-                        ->route('admin.tag.list'),
+                        ->route('admin.tag.list')
+                        ->permission('admin.writer'),
 
                 ]),
 
@@ -134,6 +137,13 @@ class PlatformProvider extends OrchidServiceProvider
             ItemPermission::group(__('System'))
                 ->addPermission('platform.systems.roles', __('Roles'))
                 ->addPermission('platform.systems.users', __('Users')),
+
+            ItemPermission::group(__('Writer'))
+                ->addPermission('admin.writer', 'Writer')
         ];
     }
 }
+
+
+
+

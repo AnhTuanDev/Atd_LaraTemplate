@@ -31,8 +31,8 @@ class CreateProductsTable extends Migration
             $table->text('meta_description')->nullable();
             $table->text('meta_keywords')->nullable();
             $table->string('sku')->default('tf_ds_01');
-            $table->float('price');
-            $table->float('quantity')->default(10);
+            $table->decimal('price')->nullable();
+            $table->decimal('quantity')->default(10);
             $table->float('discount')->nullable();
             $table->boolean('stock')->default(1);
             $table->boolean('status')->default(1);

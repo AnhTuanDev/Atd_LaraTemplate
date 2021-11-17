@@ -25,7 +25,11 @@
             
             <!-- Navbar menu -->
 
-            <x-shop.partials.navigation-menu />
+            <livewire:partials.navbar />
+
+            @if (isset($slideMenu))
+                {{ $slideMenu }}
+            @endif
 
             <!-- Page Heading -->
             @if (isset($header))

@@ -50,9 +50,9 @@ class StoreProductRequest extends FormRequest
             'product.quantity'           => ['required'],
             'product.stock'              => ['required'], 
             'product.status'             => ['required'], 
-            'product.discount'           => ['required'], 
             'product.cover_image'        => ['required'], 
 
+            'product.discount'           => ['nullable'], 
             'product.photos'             => ['nullable'], 
             'product.featured'           => ['nullable'],
 
@@ -74,7 +74,7 @@ class StoreProductRequest extends FormRequest
             'product.quantity.required' => 'Trường số lượng: đang trống', 
             'product.stock.required' => 'Trường số lượng trong kho: đang trống', 
             'product.status.required' => 'Trường trạng thái: đang trống', 
-            'product.discount.required' => 'Trường giá giảm: đang trống', 
+            //'product.discount.required' => 'Trường giá giảm: đang trống', 
             'product.cover_image.required' => 'Trường hình cover: đang trống', 
             //'product.photos             .required' => 'Trường hình ảnh sản phẩm: đang trống', 
         ];

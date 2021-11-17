@@ -8,12 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 use Orchid\Attachment\Attachable;
 use Orchid\Filters\Filterable;
 use Orchid\Screen\AsSource;
+
+use App\Traits\ProductTrait;
 use Carbon\Carbon;
 
 class Product extends Model
 {
 
-    use AsSource, HasFactory, Filterable, Attachable;
+    use AsSource, HasFactory, Filterable, Attachable, ProductTrait;
 
     protected $fillable = [
         'id', 'name', 'slug', 'category_id', 'tag_id', 'description', 
@@ -42,9 +44,9 @@ class Product extends Model
     }
     
     //Relationship
-    public function categories()
+    public function category()
     {
-        return $this->belongsTo(Category::class, 'category_id');
+        return $this->belongsTo(Category::class, 'category_id')->withDefault();
     }
 
     public function tags()

@@ -56,7 +56,7 @@ class ProductListLayout extends Table
             TD::make('Danh Mục')
                 ->width('200px')
                 ->render(function(Product $product) {
-                    $category = $product->categories;
+                    $category = $product->category;
                     return $category ? 
                         Link::make(Str::title($category->name))
                             ->route('admin.product.list')

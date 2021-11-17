@@ -135,6 +135,9 @@ class ProductEditScreen extends Screen
 
         $productData['discount'] = Str::slug($productData['discount'], '');
 
+        if($productData['discount'] == null) {
+            $productData['discount'] = 0;
+        }
 
         $productData = array_merge($productData, [
                 'name' => $data['name'],

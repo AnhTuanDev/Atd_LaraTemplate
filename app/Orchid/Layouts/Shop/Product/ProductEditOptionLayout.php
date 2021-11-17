@@ -35,8 +35,7 @@ class ProductEditOptionLayout extends Rows
                 ->title('Sản phẩm nổi bật'),
 
             Select::make('product.category_id')
-                ->fromModel(Category::class, 'name')
-                ->empty('Chọn danh mục')
+                ->fromQuery(Category::where('parent_id', '!=', null)->orderBy('name', 'desc'), 'name')
                 ->title('Danh Mục'),
 
             Select::make('tags.')
@@ -44,7 +43,6 @@ class ProductEditOptionLayout extends Rows
                 ->maximumSelectionLength(5)
                 ->multiple()
                 ->fromModel(Tag::class, 'name')
-                ->empty('Chọn tag')
                 ->title('Tags'),
 
         ];
