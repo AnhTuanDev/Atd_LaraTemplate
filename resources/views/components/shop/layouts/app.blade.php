@@ -19,9 +19,12 @@
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
 
-    <body class="font-sans antialiased text-base">
+    <body
+        :class="{ $store.shop.slideMenu && 'overflow-hidden' }"
+        class="font-sans antialiased text-base">
 
-        <div class="relative min-h-screen bg-primary-light">
+        <div
+            class="relative min-h-screen bg-primary-light">
             
             <!-- Navbar menu -->
 

@@ -29,7 +29,7 @@ class CategoryEditLayout extends Rows
             Input::make('category.order')
                 ->title('Thứ Tự')
                 ->placeholder('Nhập thứ tự')
-                ->help('1.1 - 1.2 - 2 - 2.1 v.v...'),
+                ->help('1 - 1.1 - 1.2 - 2 - 2.1 v.v...'),
 
             RadioButtons::make('category.location')
                 ->options([

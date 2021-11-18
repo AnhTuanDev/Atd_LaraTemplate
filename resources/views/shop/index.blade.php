@@ -1,7 +1,7 @@
 <x-shop.layouts.app>
 
     <x-slot name="header">
-        <x-shop.partials.header />
+        <x-shop.partials.header :postHeader="$latest->first()" />
     </x-slot>
 
     <!-- Home Top panner -->
@@ -10,14 +10,14 @@
     <div class="content">
         <div class="max-w-7xl mx-auto">
 
-            <x-shop.partials.latest-product :products="$products" title="Sản phẩm mới" />
+            <x-shop.partials.latest-product :products="$latest" title="Sản phẩm mới" />
 
-            <x-shop.partials.latest-product :products="$products" title="Sản phẩm nổi bật" />
+            <x-shop.partials.latest-product :products="$latest" title="Sản phẩm nổi bật" />
 
             <!-- Home middle panner -->
             <x-shop.partials.home-banner-middle />
 
-            <x-shop.partials.latest-product :products="$products" title="Đang giảm giá" />
+            <x-shop.partials.latest-product :products="$latest" title="Đang giảm giá" />
 
             <x-shop.partials.latest-post class="bt-0 md:bt-0"/>
         

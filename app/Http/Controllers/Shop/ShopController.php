@@ -14,7 +14,7 @@ class ShopController extends Controller
         return view('shop.index', [
             //$product->featured(),
             //'products' => Product::with('category')->where('status', 1)->get()->take(4),
-            'products' => $product->getProduct()->take(4),
+            'latest' => $product->getProduct()->take(4),
         ]);
     }
 

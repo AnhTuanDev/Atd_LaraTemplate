@@ -8,6 +8,7 @@ use App\Models\Shop\Category;
 
 class Navbar extends Component
 {
+
     public function render()
     {
 

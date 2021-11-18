@@ -32,7 +32,7 @@ class CategoryListLayout extends Table
                 ->filter(TD::FILTER_TEXT)
                 ->render(function(Category $category) {
                     if($category->parent !== null) {
-                        return Link::make('--- ' . Str::title($category->name))
+                        return Link::make($category->parent->name .' --> ' . Str::title($category->name))
                                 ->route('admin.category.edit', $category->id);
                     }
                     else {

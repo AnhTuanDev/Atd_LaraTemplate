@@ -12,4 +12,5 @@
     .main-menu-hover {
         @apply cursor-default leading-none border-b-4 border-transparent hover:border-secondary-main active:text-indigo-500 duration-200 ease-in-out;
     }
+
 }
