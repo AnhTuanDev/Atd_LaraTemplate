@@ -20,7 +20,7 @@ class Product extends Model
     protected $fillable = [
         'id', 'name', 'slug', 'category_id', 'tag_id', 'description', 
         'meta_description', 'meta_keywords', 'sku', 'price', 'quantity',
-        'stock', 'status', 'discount', 'cover_image', 'photos', 'featured'
+        'stock', 'status', 'discount', 'cover_image', 'photos', 'featured', 'home_banner',
     ];
 
     protected $allowedSorts = [
@@ -28,7 +28,7 @@ class Product extends Model
     ];
 
     protected $allowedFilters = [
-        'name', 'slug', 'description', 'status', 'price',
+        'category_id', 'name', 'slug', 'description', 'status', 'price', 'home_banner',
     ];
 
     protected $casts = [

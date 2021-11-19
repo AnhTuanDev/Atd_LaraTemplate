@@ -1,4 +1,4 @@
-@props([ 'postHeader' ])
+@if(!empty($postHeader))
 <section class="relative bg-primary-main">
     <div class="px-4 py-12 mx-auto max-w-7xl sm:px-6 md:px-6 xl-px-none lg:py-24">
 
@@ -14,9 +14,11 @@
                         Đang Giảm Giá
                     </span>
                 @endif
-                <h1 class="mb-8 text-xl md:text-3xl lg:text-4xl font-bold leading-none tracking-tighter text-neutral-600 md:text-7xl lg:text-5xl"> 
-                    {{ $postHeader->name }}
-                </h1>
+                <a href="{{ route('shop.home') }}">
+                    <h1 class="mb-8 text-xl md:text-3xl lg:text-4xl font-bold leading-none tracking-tighter text-primary-tex hover:text-secondary-dark duration-150 ease-out md:text-7xl lg:text-5xl"> 
+                        {{ $postHeader->name }}
+                    </h1>
+                </a>
 
                 <div class="w-full flex items-center justify-between bg-secondary-light p-1 rounded-lg shadow-lg">
                     <div class="inline-flex-items-center p-3">
@@ -35,49 +37,10 @@
 
                 <div class="mt-4 lg:mt-6 flex items-center space-x-6">
                     <div class="rounded-lg">
-                        <button class="items-center 
-                            block
-                            px-4 md:px-10 
-                            py-2 md:py-4
-                            text-base 
-                            font-medium 
-                            text-center 
-                            text-secondary-text
-                            transition 
-                            duration-500 
-                            ease-in-out 
-                            transform 
-                            bg-secondary-dark
-                            rounded-xl 
-                            hover:bg-secondary-dark
-                            focus:outline-none 
-                            focus:ring-2 
-                            focus:ring-offset-2 
-                            focus:ring-secondary-dark"> 
-                            Mua Ngay</button>
+                        <x-shop.partials.button-link-secondary label=" Mua ngay " link="{{ route('shop.home') }}" />
                     </div>
                     <div class="rounded-lg">
-                        <button class="
-                            items-center
-                            block
-                            px-4 md:px-10 
-                            py-2 md:py-4
-                            text-base
-                            font-medium
-                            text-center
-                            text-primary-text
-                            bg-primary-dark
-                            transition
-                            duration-500
-                            ease-in-out
-                            transform
-                            shadow-md
-                            rounded-xl
-                            focus:outline-none
-                            focus:ring-2
-                            focus:ring-offset-2
-                            focus:ring-primary-dark
-                            "> Shopping</button>
+                        <x-shop.partials.button-link-primary label=" Shopping " link="{{ route('shop.home') }}" />
                     </div>
                 </div>
             </div>
@@ -89,11 +52,12 @@
                         <div class="absolute rounded-full bg-fuchsia-300 -bottom-24 right-20 w-72 h-72 mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000">
                         </div>
                         <div class="relative w-full">
-                            <div class="w-full flex flex-col md:flex-row md:justify-end object-center group bg-primary-main">
-                                <img class="h-128 object-cover object-center rounded-lg shadow-md p-1 group-hover:bg-opacity-50"
+                            <a href="{{ route('shop.home') }}" 
+                                class="w-full flex flex-col md:flex-row md:justify-end group bg-primary-main">
+                                <img class="h-128 object-cover object-center rounded-lg shadow-md p-1 duration-200 group-hover:transform group-hover:scale-105 origin-bottom-right"
                                  alt="{{$postHeader->slug}}"
                                  src="{{ $postHeader->cover->url() }}">
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -102,4 +66,4 @@
         </div>
     </div>
 </section>
-
+@endif

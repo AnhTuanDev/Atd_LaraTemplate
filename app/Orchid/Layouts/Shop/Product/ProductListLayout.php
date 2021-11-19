@@ -53,7 +53,7 @@ class ProductListLayout extends Table
                 }),
             */
 
-            TD::make('Danh Mục')
+            TD::make('category_id', 'Danh Mục')
                 ->width('200px')
                 ->render(function(Product $product) {
                     $category = $product->category;

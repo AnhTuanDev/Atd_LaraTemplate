@@ -55,6 +55,7 @@ class StoreProductRequest extends FormRequest
             'product.discount'           => ['nullable'], 
             'product.photos'             => ['nullable'], 
             'product.featured'           => ['nullable'],
+            'product.home_banner'        => ['nullable'],
 
         ];
     }

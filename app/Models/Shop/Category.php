@@ -42,4 +42,18 @@ class Category extends Model
         return $this->hasMany(Category::class, 'parent_id');
     }
 
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    public function hasProduct()
+    {
+        return $this->products()->where('status', 1)
+            ->orderBy('id', 'desc')
+            ->cursorPaginate(10);
+
+    }
+
+
 }

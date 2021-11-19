@@ -9,9 +9,7 @@
     <div class="grid grid-cols-12 gap-6 md:gap-8 p-6 md:p-8">
         @foreach($banners as $banner)
         <div class="
-                    shadow-lg relative w-full h-96 md:h-72 p-2 overflow-hidden
-                    sm:aspect-w-2 sm:aspect-h-1 sm:h-64 
-                    lg:aspect-w-1 lg:aspect-h-1 group col-span-12 md:col-span-6
+            shadow-lg relative w-full h-96 md:h-72 p-2 overflow-hidden group col-span-12 md:col-span-6
             ">
              <img class="w-full h-full object-cover object-center group-hover:opacity-[65%] duration-200 ease-out"
                   src="{{ $banner['image']}}" alt="">

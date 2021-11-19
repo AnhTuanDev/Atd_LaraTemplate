@@ -23,7 +23,7 @@
                         <div class="flex flex-col justify-between flex-1">
                             <a href="/blog-post"> </a>
                             <div class="flex-1">
-                                <a href="/blog-post">
+                                <a href="{{ route( 'shop.category', $product->category ) }}">
                                     <div class="flex pt-6 text-sm font-medium text-secondary-main">
                                         <span>{{ $product->category->name ?? '' }} </span>
                                     </div>

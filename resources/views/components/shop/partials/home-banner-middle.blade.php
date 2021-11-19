@@ -4,10 +4,7 @@
 <section id="home-banner-middle" class="relative max-w-7xl mx-auto mt-0 md:mt-10 lg:mt-10">
     <div class="grid grid-cols-12 gap-6 md:gap-8 p-6 md:p-8">
         <div class="
-                    shadow-lg relative w-full h-96 md:h-72 p-2 overflow-hidden
-                    sm:aspect-w-2 sm:aspect-h-1 sm:h-64 
-                    lg:aspect-w-1 lg:aspect-h-1 group col-span-12
-            ">
+            shadow-lg relative w-full h-96 md:h-72 p-2 overflow-hidden group col-span-12 ">
              <img class="w-full h-full object-cover object-center group-hover:opacity-[65%] duration-200 ease-out"
                   src="{{ $banner['image']}}" alt="">
 

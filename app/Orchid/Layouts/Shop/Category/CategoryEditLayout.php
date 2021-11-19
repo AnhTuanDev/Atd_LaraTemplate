@@ -23,7 +23,7 @@ class CategoryEditLayout extends Rows
                 ->title('Danh Mục Cha'),
 
             Input::make('name')
-                ->title('Tên Sản Phẩm')
+                ->title('Tên Danh Mục')
                 ->placeholder('Nhập tên danh mục'),
 
             Input::make('category.order')

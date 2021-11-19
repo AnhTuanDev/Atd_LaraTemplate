@@ -4,6 +4,7 @@ namespace App\Orchid\Screens\Shop\Product;
 
 use App\Orchid\Layouts\Shop\Product\ProducEditContentLayout;
 use App\Orchid\Layouts\Shop\Product\ProductEditOptionLayout;
+use App\Orchid\Layouts\Shop\Product\ProductEditRelationLayout;
 use App\Orchid\Layouts\Shop\Product\ProductEditMetaLayout;
 use App\Orchid\Layouts\Shop\Product\ProductEditCoverLayout;
 use App\Orchid\Layouts\Shop\Product\ProductEditPhotosLayout;
@@ -105,6 +106,7 @@ class ProductEditScreen extends Screen
                 ],
                 'col-md-4 right-content' => [
                     ProductEditOptionLayout::class,
+                    ProductEditRelationLayout::class,
                     ProductEditCoverLayout::class,
                     ProductEditPhotosLayout::class,
                     ProductEditDataLayout::class,
@@ -137,6 +139,14 @@ class ProductEditScreen extends Screen
 
         if($productData['discount'] == null) {
             $productData['discount'] = 0;
+        }
+
+        //Reset toan bo column home_banner.
+        if($productData['home_banner']) {
+
+            $banner = Product::whereNotNull('home_banner')
+                ->update([ 'home_banner' => null ]);
+
         }
 
         $productData = array_merge($productData, [

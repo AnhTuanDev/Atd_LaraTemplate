@@ -38,7 +38,8 @@ class CreateProductsTable extends Migration
             $table->boolean('status')->default(1);
             $table->string('cover_image')->default('/git_storage/product/cover/cover_default');
             $table->string('photos')->default('/git_storage/product/photos/photo_default');
-            $table->boolean('featured')->default(0);
+            $table->boolean('featured')->nullable();
+            $table->boolean('home_banner')->nullable();
 
             $table->timestamps();
         });

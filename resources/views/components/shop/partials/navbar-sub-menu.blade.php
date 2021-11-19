@@ -7,20 +7,20 @@
             class="flex flex items-center">
 
             <div class="relative -ml-8">
-                <x-shop.partials.navbar-link label="Home" link="{{ route('home') }}" />
+                <x-shop.partials.navbar-link label="Home" link="{{ route('shop.home') }}" />
             </div>
             <div @mouseover.enter="open = 'Shop'"
                 class="relative -ml-8">
                 <x-shop.partials.navbar-button label="Shop" />
             </div>
             <div class="relative -ml-8">
-                <x-shop.partials.navbar-link label="Blog" link="blog" />
+                <x-shop.partials.navbar-link label="Blog" link="/blog" />
             </div>
             <div class="relative -ml-8">
-                <x-shop.partials.navbar-link label="Giới thiệu" link="about" />
+                <x-shop.partials.navbar-link label="Giới thiệu" link="/about" />
             </div>
             <div class="relative -ml-8">
-                <x-shop.partials.navbar-link label="Liên hệ" link="contact" />
+                <x-shop.partials.navbar-link label="Liên hệ" link="/contact" />
             </div>
 
             <div x-show="open === 'Shop'" 
@@ -48,7 +48,7 @@
                                             <ul role="list" aria-labelledby="Brands-heading" class="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
                                                 @foreach( $menu->child as $subMenu ) 
                                                 <li class="flex items-center">
-                                                    <a href="{{ route( 'category.index', $subMenu ) }}" 
+                                                    <a href="{{ route( 'shop.category', $subMenu ) }}" 
                                                         class="capitalize leading-none tracking-wider text-lg font-medium duration-150 hover:font-bold hover:text-secondary-main">
                                                         {{ $subMenu->name }}
                                                     </a>
