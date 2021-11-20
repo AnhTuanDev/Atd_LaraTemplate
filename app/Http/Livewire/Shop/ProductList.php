@@ -24,6 +24,8 @@ class ProductList extends Component
             //'products' => $products,
             'products' => Product::all(),
 
+            'parentCate' => Category::whereNull('parent_id')->with('child')->get(),
+
             'title' => $category->name,
 
         ]);

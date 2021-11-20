@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Shop\ShopController;
+
 use App\Http\Controllers\Shop\ViewController;
 
 
@@ -16,9 +17,10 @@ Route::get('/contact', [ViewController::class, 'contact'])->name('contact');
 
 Route::name('shop.')->group( function() {
 
-    Route::get('/{category:slug}', [ShopController::class, 'shopCategory'])->name('category');
+    Route::get('/danh-muc/{category:slug?}', [ShopController::class, 'shopCategory'])->name('category');
 
-    Route::get('/{tag:slug}', [ShopController::class, 'shopTag'])->name('tag');
+    Route::get('/the-tag/{tag:slug}', [ShopController::class, 'shopTag'])->name('tag');
 
     Route::get('/{product:slug}', [ShopController::class, 'productShow'])->name('product.show');
+
 });

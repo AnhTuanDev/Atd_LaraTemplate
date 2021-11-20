@@ -37,8 +37,8 @@ class ShopController extends Controller
         return "Tag List Product";
     }
 
-    public function productShow() {
-        return "Product show";
+    public function productShow(Product $product) {
+        dd($product);
     }
 
 }

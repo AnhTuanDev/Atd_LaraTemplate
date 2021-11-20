@@ -11,7 +11,7 @@
             </div>
             <div @mouseover.enter="open = 'Shop'"
                 class="relative -ml-8">
-                <x-shop.partials.navbar-button label="Shop" />
+                <x-shop.partials.navbar-link label="Shop" link="{{ route('shop.category') }}" />
             </div>
             <div class="relative -ml-8">
                 <x-shop.partials.navbar-link label="Blog" link="/blog" />
@@ -32,7 +32,7 @@
 
                 <div class="absolute inset-0 top-1/2" aria-hidden="true"></div>
 
-                <div class="relative bg-primary-dark shadow-lg bg-opacity-[95%] backdrop-filter backdrop-blur-lg">
+                <div class="relative bg-primary-dark shadow-lg backdrop-filter backdrop-blur-lg">
                     <div class="max-w-7xl mx-auto px-6">
                         <div class="grid grid-cols-3 gap-y-10 gap-x-8 py-16">
 
@@ -42,7 +42,9 @@
                                     @if($menu->child->count())
                                         <div>
                                             <div class="text-lg uppercase font-semibold text-primary-text">
-                                                {{ $menu->name }}
+                                                <a href="{{ route( 'shop.category', $menu ) }}">
+                                                    {{ $menu->name }}
+                                                </a>
                                             </div>
 
                                             <ul role="list" aria-labelledby="Brands-heading" class="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
