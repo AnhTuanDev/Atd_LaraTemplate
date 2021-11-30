@@ -16,6 +16,16 @@ trait ProductTrait
             ->get();
     } 
 
+    public function scopeSearch($query, $term) {
+
+        $term = '%'.$term.'%';
+
+        $query->where(function ($query) use ($term) {
+            $query->where('status', 1)
+                  ->orWhere('name', 'like', $term);
+        });
+    }
+
     /*
     function currency_format($number, $suffix = 'đ') {
 

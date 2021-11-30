@@ -10,10 +10,10 @@ class HomeHeader extends Component
 {
     public function render()
     {
-        $postHeader = Product::whereNotNull('home_banner')->first();
+        $productHeader = Product::whereNotNull('home_banner')->first();
 
         return view('livewire.shop.partials.home-header', [
-            'postHeader' => $postHeader,
+            'productHeader' => $productHeader,
         ]);
     }
 }

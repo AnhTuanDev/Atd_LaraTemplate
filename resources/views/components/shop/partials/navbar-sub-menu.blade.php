@@ -1,5 +1,5 @@
 @props([ 'mainMenu' ])
-<div class="hidden lg:ml-8 lg:block lg:self-stretch">
+<div class="hidden lg:ml-8 lg:block lg:self-stretch z-40">
     <div 
         class="h-full flex space-x-8">
 

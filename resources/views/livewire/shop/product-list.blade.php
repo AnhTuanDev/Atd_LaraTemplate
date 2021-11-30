@@ -2,7 +2,7 @@
     <div class="items-center w-full px-5 py-6 md:py-10 mx-auto md:px-6 xl:px-none max-w-7xl">
 
         <!-- Command Bar -->
-        <x-shop.partials.command-bar :title="$title" />
+        <x-shop.partials.command-bar :title="$title" :sortLabel="$sortLabel" :sortByData="$sortByData" :perPage="$perPage" :perPageData="$perPageData" />
 
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-x-6 gap-y-8">
 
@@ -26,4 +26,6 @@
         </div>
 
     </div>
+{{ $products->links() }}
 </section>
+
