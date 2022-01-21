@@ -698,6 +698,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   grid-template-columns: repeat(6, minmax(0, 1fr));
 }.grid-cols-1{
   grid-template-columns: repeat(1, minmax(0, 1fr));
+}.flex-row{
+  flex-direction: row;
 }.flex-col{
   flex-direction: column;
 }.flex-wrap{
@@ -974,6 +976,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-left: 1rem;
 }.pt-px{
   padding-top: 1px;
+}.pt-3{
+  padding-top: 0.75rem;
 }.pt-8{
   padding-top: 2rem;
 }.pt-6{
