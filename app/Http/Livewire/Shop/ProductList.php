@@ -60,8 +60,6 @@ class ProductList extends Component
 
     ];
 
-
-
     public function mount() {
 
 

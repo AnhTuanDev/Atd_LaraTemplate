@@ -26,7 +26,6 @@ class ShopController extends Controller
 
     public function shopCategory(Category $category, Product $product) {
 
-
         return view('shop.category', [
             'category' => $category,
         ]);
@@ -38,7 +37,12 @@ class ShopController extends Controller
     }
 
     public function productShow(Product $product) {
-        dd($product);
+
+        return view('shop.show', [
+
+            'product' => $product,
+
+        ]);
     }
 
 }
