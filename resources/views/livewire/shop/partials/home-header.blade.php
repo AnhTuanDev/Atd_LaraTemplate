@@ -21,16 +21,16 @@
                 </a>
 
                 <div class="w-full flex items-center justify-between bg-secondary-light p-1 rounded-lg shadow-lg">
-                    <div class="inline-flex-items-center p-3">
-                        @if($productHeader->discount < 0)
-                        <label for="discount" class="font-semibold text-lg mr-4 text-secondary-text">{{ $productHeader->price}} đ</label>
+                    <div class="inline-flex-items-center px-3 py-2">
+                        @if($productHeader->discount < 1)
+                        <label for="discount" class="font-semibold text-lg mr-4 text-secondary-text">{{ $productHeader->price}} </label>
                         @else
-                            <label for="discount" class="font-semibold text-lg mr-4 text-secondary-text">{{ $productHeader->discount}} đ</label>
-                            <label for="price" class="line-through text-secondary-dark text-base">{{ $productHeader->price}} đ</label>
+                            <label for="discount" class="font-semibold text-lg mr-4 text-secondary-text">{{ $productHeader->discount}} </label>
+                            <label for="price" class="line-through text-secondary-dark text-base">{{ $productHeader->price}} </label>
                         @endif
                     </div>
                     <label for="discount time"
-                        class="py-3 px-6 font-medium text-lg bg-secondary-main text-secondary-text rounded-md">
+                        class="py-2 px-6 font-medium text-lg bg-secondary-main text-secondary-text rounded-md">
                             Còn 5 Ngày
                     </label>
                 </div>

@@ -18,7 +18,7 @@ class Product extends Model
     use AsSource, HasFactory, Filterable, Attachable, ProductTrait;
 
     protected $fillable = [
-        'id', 'name', 'slug', 'category_id', 'tag_id', 'description', 
+        'id', 'name', 'slug', 'category_id', 'description', 
         'meta_description', 'meta_keywords', 'sku', 'price', 'quantity',
         'stock', 'status', 'discount', 'cover_image', 'photos', 'featured', 'home_banner',
     ];
