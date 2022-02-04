@@ -39,9 +39,9 @@
 
                 <div class="flex items-center space-x-4 mt-6">
                     @if($product->discount < 1)
-                    <label for="discount" class="font-semibold text-lg mr-4 text-secondary-dark">{{ $product->price}} đ</label>
+                    <label for="discount" class="font-semibold text-xl mr-4 text-secondary-dark">{{ $product->price}} đ</label>
                     @else
-                        <label for="discount" class="font-semibold text-lg mr-4 text-secondary-dark">{{ $product->discount}}</label>
+                        <label for="discount" class="font-semibold text-xl mr-4 text-secondary-dark">{{ $product->discount}}</label>
                         <label for="price" class="line-through text-secondary-main text-base">{{ $product->price}}</label>
                     @endif
                 </div>
@@ -56,16 +56,16 @@
 
                 <div class="w-full flex mt-6">
                     <div class="w-full flex items-center space-x-2">
-                        <button class="px-4 py-2 border border-primary-main rounded-md duration-150 hover:bg-primary-main hover:drop-shadow-lg">
-                            S
+                        <button class="uppercase px-4 py-2 border border-primary-main rounded-md duration-150 hover:bg-primary-main hover:drop-shadow-lg">
+                            S         
+                        </button>    
+                        <button class="uppercase px-4 py-2 border border-primary-main rounded-md duration-150 hover:bg-primary-main hover:drop-shadow-lg">
+                            M       
+                        </button>  
+                        <button class="uppercase px-4 py-2 border border-primary-main rounded-md duration-150 hover:bg-primary-main hover:drop-shadow-lg">
+                            L     
                         </button>
-                        <button class="px-4 py-2 border border-primary-main rounded-md duration-150 hover:bg-primary-main hover:drop-shadow-lg">
-                            M
-                        </button>
-                        <button class="px-4 py-2 border border-primary-main rounded-md duration-150 hover:bg-primary-main hover:drop-shadow-lg">
-                            L
-                        </button>
-                        <button class="px-4 py-2 border border-primary-main rounded-md duration-150 hover:bg-primary-main hover:drop-shadow-lg">
+                        <button class="uppercase px-4 py-2 border border-primary-main rounded-md duration-150 hover:bg-primary-main hover:drop-shadow-lg">
                             XL
                         </button>
                     </div>
@@ -78,19 +78,29 @@
                             <button class="px-4 py-2 border border-primary-main rounded-md duration-150 hover:bg-primary-main hover:drop-shadow-lg">
                                 <x-orchid-icon path="arrow-down" />
                             </button>
-                            <div class="text-base leading-none px-4 py-2 inline-flex p-1 border border-primary-main rounded-md">1</div>
+
+                            <input wire:model="quantity"
+                                    type="text" 
+                                    class="border-primary-main rounded-md focus:outline-none focus:border-none focus:ring-2
+                                            w-10 text-sm leading-none inline-flex focus:ring-secondary-dark
+                                            items-center text-center font-semibold"
+                                            >
+
                             <button class="px-4 py-2 border border-primary-main rounded-md duration-150 hover:bg-primary-main hover:drop-shadow-lg">
                                 <x-orchid-icon path="arrow-up" />
                             </button>
+
+                            <h2>{{ \Cart::count() }}</h2>
                         </div>
                     </div>
                 </div>
 
                 <div class="w-full flex mt-6 border-b border-primary-main pb-6">
 
-                    <button class="px-4 py-2 rounded-md drop-shadow-md hover:drop-shadow-xl
+                    <button wire:click="addCart({{ $product }})" 
+                            class="px-6 py-3 rounded-md drop-shadow-md hover:drop-shadow-xl
                                 bg-secondary-main hover:bg-secondary-dark duration-150 text-secondary-text 
-                                text-base leading-none font-semibold"
+                                text-base leading-none font-semibold uppercase"
                                 >Mua Ngay
                     </button>
 
