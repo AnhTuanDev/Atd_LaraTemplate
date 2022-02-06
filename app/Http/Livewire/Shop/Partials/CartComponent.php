@@ -6,20 +6,31 @@ use Livewire\Component;
 
 class CartComponent extends Component
 {
-    public $cartCount;
+
+    public $cartCount, $cartContent;
 
     protected $listeners = ['cartAdded'];
 
-    public function cartAdded($cart)
+    public function cartAdded()
     {
-        $this->reset('cartCount');
+        $this->reset(['cartCount']);
 
-        $this->cartCount = $cart;
+        $this->cartCount = \Cart::count();
+
+        $this->cartContent = \Cart::content();
+
     }
+
 
     public function mount()
     {
+
+        $this->reset(['cartCount', 'cartContent']);
+
         $this->cartCount = \Cart::count();
+
+        $this->cartContent = \Cart::content();
+
     }
 
     public function render()

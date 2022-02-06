@@ -14,7 +14,7 @@ class Show extends Component
 
     public $sizes = [ 'S', 'M', 'L', 'XL' ];
 
-    public $size = 's';
+    public $size = 'S';
 
     public function addCart($prdId) 
     {
@@ -34,7 +34,7 @@ class Show extends Component
 
         $this->reset('quantity');
 
-        $this->emit('cartAdded', \Cart::count());
+        $this->emit('cartAdded');
     }
 
     // Set size.
