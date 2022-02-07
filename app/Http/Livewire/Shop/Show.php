@@ -28,7 +28,8 @@ class Show extends Component
             'price' => (int)$cartProduct['price'], 
             'weight' => 1, 
             'options' => [
-                'size' => $this->size,
+                'size' => 'Size: ' . $this->size,
+                'img' => $cartProduct->cover ? $cartProduct->cover->url() : '/',
             ]
         ]);
 

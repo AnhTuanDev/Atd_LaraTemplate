@@ -3,28 +3,9 @@
      class="fixed inset-0 flex z-40 lg:hidden"
      role="dialog"
      aria-modal="true">
-    <!--
-        Off-canvas menu overlay, show/hide based on off-canvas menu state.
 
-        Entering: "transition-opacity ease-linear duration-300"
-        From: "opacity-0"
-        To: "opacity-100"
-        Leaving: "transition-opacity ease-linear duration-300"
-        From: "opacity-100"
-        To: "opacity-0"
-    -->
     <div class="fixed inset-0 bg-black bg-opacity-25" aria-hidden="true"></div>
 
-    <!--
-        Off-canvas menu, show/hide based on off-canvas menu state.
-
-        Entering: "transition ease-in-out duration-300 transform"
-        From: "-translate-x-full"
-        To: "translate-x-0"
-        Leaving: "transition ease-in-out duration-300 transform"
-        From: "translate-x-0"
-        To: "-translate-x-full"
-    -->
     <div class="relative max-w-xs w-full bg-primary-main shadow-xl pb-12 flex flex-col overflow-y-auto">
         <div class="px-4 pt-5 pb-2 flex">
 

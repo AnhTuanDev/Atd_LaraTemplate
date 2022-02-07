@@ -1,7 +1,8 @@
 <div x-data="{ open: false }"
     class="flex items-center justify-center">
-    <button @click="open = !open" @mouseover.enter="open = 'Shop'"
-        class="relative flex items-center text-md leading-none font-semibold z-[9998]">
+    <button @click="open = true, $store.shop.overflow = true"
+            {{-- @mouseover.enter="open = 'Shop'" --}}
+            class="relative flex items-center text-md leading-none font-semibold z-[9998]">
 
         <x-orchid-icon path="bag" class="text-lg font-bold text-secondary-main"/>
 
@@ -15,27 +16,52 @@
     </button>
 
     <div x-show="open"
+        x-transition:enter.origin.right.top.duration.200ms
+        x-transition:leave.origin.right.top.duration.150ms
         style="display: none"
-        class="fixed right-0 top-0 w-screen md:w-96 min-h-screen z-[9999] bg-primary-dark">
+        class="fixed right-0 top-0 w-screen md:w-96 h-screen z-[9999] bg-primary-dark drop-shadow-lg overflow-y-auto">
 
-            <div class="w-full flex items-center justify-between p-6 border-b border-gray-300">
-                <h3 class="text-xl font-semibold text-primary-text leading-none">Giỏ Hàng</h3>
-                <x-orchid-icon path="close" class="text-2xl font-bold text-primary-text"/>
-            </div>
+        <div class="w-full flex items-center justify-between p-6 border-b border-gray-300">
+            <h3 class="text-xl font-semibold text-primary-text leading-none">Giỏ Hàng</h3>
+            <x-orchid-icon path="close" class="text-2xl font-bold text-primary-text"/>
+        </div>
 
-            <div @click.outside="open = false"
-                class="text-primary-text p-4 drop-shadow-lg border-b">
-                @foreach($cartContent as $item) 
-                   <div class="px-2 py-4 border-b border-dashed border-gray-300">
-                       <h3> {{ $item->name }} </h3>
-                        <label for="price" class="p-2 rounded-md bg-secondary-main"> {{ $item->price }}</label>
-                        <label for="qty" class="p-2 rounded-md bg-secondary-main"> {{ $item->qty }}</label>
-                        @foreach($item->options as $opti)
-                            <label for=""> {{ $opti }} </label>
-                        @endforeach
-                   </div>
+        <div x-data="{show: false}"
+            @click.outside="open = false, $store.shop.toggleOverflow()"
+            class="text-primary-text p-4 drop-shadow-lg border-b">
+            @if($cartContent->count())
+                @foreach($cartContent as $key => $item) 
+                    <div class="relative px-2 py-4 border-b border-dashed border-gray-300 text-primary-text flex flex-col">
+
+                       <button wire:click.prevent="cartRemove( '{{$item->rowId }}' )" 
+                            class="p-1 rounded-lg absolute top-0 right-0 z-[9999] bg-secondary-dark hover:drop-shadow-md hover:p-2 duration-50 mt-2">
+                           <x-orchid-icon path="trash" class="text-sm font-bold text-secondary-text"/>
+                       </button>
+
+                        <div class="flex items-center">
+                            <img src="{{ $item->options->has('img') ? $item->options->img : '' }}" alt=""
+                                class="w-16 rounded-md drop-shadow-md object-container object-center mr-2">
+                            <div>
+                                <h3 class="text-lg font-medium leading-none"> {{ $item->name }} </h3>
+                                
+                                <div class="flex items-center mt-4 -ml-2">
+                                
+                                    <label for="price" class="p-2 text-md leading-none border-r"> Giá: {{ $item->price }} K</label>
+                                    <label for="qty" class="p-2 text-md leading-none border-r"> Số lượng: {{ $item->qty }}</label>
+                                
+                                    <label for="opti" class="flex items-center p-2 text-md leading-none border-r">{{ $item->options->has('size') ? $item->options->size : '' }}</label>
+                                
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 @endforeach
+            @endif
+            <div class="w-full flex items-center space-x-4 justify-between mt-4">
+                <button class="bg-secondary-main px-4 py-2 rounded-md text-sm md:text-md md:font-semibold">Xem Giỏ Hàng</button>
+                <button class="bg-secondary-main px-4 py-2 rounded-md text-sm md:text-md font-semibold">Thanh Toán</button>
             </div>
+        </div>
     </div>
-
 </div>

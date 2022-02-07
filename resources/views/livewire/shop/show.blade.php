@@ -110,7 +110,7 @@
                             class="px-6 py-3 rounded-md drop-shadow-md hover:drop-shadow-xl
                                 bg-secondary-main hover:bg-secondary-dark duration-150 text-secondary-text 
                                 text-base leading-none font-semibold uppercase"
-                                >Mua Ngay
+                                >Thêm Vào Giỏ
                     </button>
 
                 </div>

@@ -5346,8 +5346,12 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].store('shop', {
   slideMenu: false,
+  overflow: false,
   toggleSlideMenu: function toggleSlideMenu() {
     this.slideMenu = !this.slideMenu;
+  },
+  toggleOverflow: function toggleOverflow() {
+    this.overflow = !this.overflow;
   }
 });
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();

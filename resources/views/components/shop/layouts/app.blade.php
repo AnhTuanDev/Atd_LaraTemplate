@@ -19,8 +19,8 @@
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
 
-    <body
-        :class="{ $store.shop.slideMenu && 'overflow-hidden' }"
+    <body x-data
+        :class="$store.shop.overflow && 'overflow-hidden'"
         class="font-sans antialiased text-base">
 
         <div

@@ -21,10 +21,21 @@ class CartComponent extends Component
 
     }
 
+    public function cartRemove($row)
+    {
+        \Cart::remove($row);
+
+        $this->cartContent = \Cart::content();
+
+        $this->reset('cartCount');
+
+        $this->cartCount = \Cart::count();
+
+    }
+
 
     public function mount()
     {
-
         $this->reset(['cartCount', 'cartContent']);
 
         $this->cartCount = \Cart::count();

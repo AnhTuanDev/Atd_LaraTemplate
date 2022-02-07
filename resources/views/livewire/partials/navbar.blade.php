@@ -10,7 +10,7 @@
         <nav aria-label="Top" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="h-16 flex items-center">
                 <!-- Mobile menu toggle, controls the 'mobileMenuOpen' state. -->
-                <button @click.prevent="$store.shop.toggleSlideMenu()"
+                <button @click="$store.shop.toggleSlideMenu(), $store.shop.toggleOverflow()"
                     type="button"
                     class="bg-primary-main p-2 rounded-md text-secondary-dark lg:hidden">
                     <span class="sr-only">Open menu</span>
