@@ -597,6 +597,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: 3rem;
 }.-mt-px{
   margin-top: -1px;
+}.mb-7{
+  margin-bottom: 1.75rem;
 }.block{
   display: block;
 }.inline{
@@ -866,6 +868,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }.border-gray-400{
   --tw-border-opacity: 1;
   border-color: rgb(85 87 112 / var(--tw-border-opacity));
+}.border-gray-500{
+  --tw-border-opacity: 1;
+  border-color: rgb(40 41 62 / var(--tw-border-opacity));
 }.border-opacity-\[35\%\]{
   --tw-border-opacity: 35%;
 }.border-opacity-25{

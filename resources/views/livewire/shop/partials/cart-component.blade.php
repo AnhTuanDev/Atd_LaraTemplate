@@ -42,14 +42,17 @@
                             <img src="{{ $item->options->has('img') ? $item->options->img : '' }}" alt=""
                                 class="w-16 rounded-md drop-shadow-md object-container object-center mr-2">
                             <div>
-                                <h3 class="text-lg font-medium leading-none"> {{ $item->name }} </h3>
+                                <h3 class="text-md font-medium leading-none uppercase"> {{ $item->name }} </h3>
+
+                                <div class="flex items-center mt-4 -ml-2 text-sm">
                                 
-                                <div class="flex items-center mt-4 -ml-2">
+                                    <div for="color" class="w-5 h-5 bg-{{$item->options->color}} rounded-full ml-2"></div>
+
+                                    <label for="price" class="p-2 leading-none border-r border-gray-400"> Giá: {{ $item->price }} K</label>
+
+                                    <label for="qty" class="p-2 leading-none border-r border-gray-400"> Số lượng: {{ $item->qty }}</label>
                                 
-                                    <label for="price" class="p-2 text-md leading-none border-r"> Giá: {{ $item->price }} K</label>
-                                    <label for="qty" class="p-2 text-md leading-none border-r"> Số lượng: {{ $item->qty }}</label>
-                                
-                                    <label for="opti" class="flex items-center p-2 text-md leading-none border-r">{{ $item->options->has('size') ? $item->options->size : '' }}</label>
+                                    <label for="opti" class="flex items-center p-2 leading-none">{{ $item->options->has('size') ? $item->options->size : '' }}</label>
                                 
                                 </div>
                             </div>
@@ -62,6 +65,7 @@
                 <button class="bg-secondary-main px-4 py-2 rounded-md text-sm md:text-md md:font-semibold">Xem Giỏ Hàng</button>
                 <button class="bg-secondary-main px-4 py-2 rounded-md text-sm md:text-md font-semibold">Thanh Toán</button>
             </div>
+
         </div>
     </div>
 </div>

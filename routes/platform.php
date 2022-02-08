@@ -28,6 +28,46 @@ use App\Orchid\Screens\Shop\Category\CategoryListScreen;
 use App\Orchid\Screens\Shop\Tag\TagEditScreen;
 use App\Orchid\Screens\Shop\Tag\TagListScreen;
 
+use App\Orchid\Screens\Shop\Attribute\AttributeEditScreen;
+use App\Orchid\Screens\Shop\Attribute\AttributeListScreen;
+
+use App\Orchid\Screens\Shop\AttributeValue\AttributeValueEditScreen;
+use App\Orchid\Screens\Shop\AttributeValue\AttributeValueListScreen;
+
+
+//Attribute Vale...
+Route::screen('attribute-value/{attribute?}', AttributeValueEditScreen::class)
+    ->name('admin.attribute-value.edit')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('admin.attribute-value.list')
+            ->push('Attribute Value');
+    });
+
+Route::screen('attribute-value-list', AttributeValueListScreen::class)
+    ->name('admin.attribute-value.list')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.index')
+            ->push('Danh Sách Attribute Value');
+    });
+
+//Attribute...
+Route::screen('attribute/{attribute?}', AttributeEditScreen::class)
+    ->name('admin.attribute.edit')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('admin.attribute.list')
+            ->push('Thuộc Tính Sản Phẩm');
+    });
+
+Route::screen('attribute-list', AttributeListScreen::class)
+    ->name('admin.attribute.list')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.index')
+            ->push('Danh Sách Thuộc Tính');
+    });
 
 //Tag...
 Route::screen('tag/{tag?}', TagEditScreen::class)

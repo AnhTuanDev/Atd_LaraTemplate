@@ -59,6 +59,18 @@ class PlatformProvider extends OrchidServiceProvider
                         ->route('admin.tag.list')
                         ->permission('admin.writer'),
 
+                    //Attribute
+                    Menu::make('Danh Sách Attribute')
+                        ->icon('organization')
+                        ->route('admin.attribute.list')
+                        ->permission('admin.writer'),
+
+                    //Attribute Vale
+                    Menu::make('Danh Sách Attribute Value')
+                        ->icon('organization')
+                        ->route('admin.attribute-value.list')
+                        ->permission('admin.writer'),
+
                 ]),
 
             /*

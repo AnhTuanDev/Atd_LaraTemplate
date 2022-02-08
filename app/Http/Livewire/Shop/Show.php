@@ -12,24 +12,26 @@ class Show extends Component
 
     public $quantity = 1;
 
-    public $sizes = [ 'S', 'M', 'L', 'XL' ];
+    public $sizes    = [ 'S', 'M', 'L', 'XL' ];
 
-    public $size = 'S';
+    public $size     = 'S';
+
+    public $color    = 'indigo-500';
 
     public function addCart($prdId) 
     {
-        //ddd($cartProduct);
         $cartProduct = Product::whereId($prdId)->first();
 
         \Cart::add([
-            'id' => $cartProduct['id'], 
-            'name' => $cartProduct['name'], 
-            'qty' => $this->quantity,
-            'price' => (int)$cartProduct['price'], 
-            'weight' => 1, 
-            'options' => [
-                'size' => 'Size: ' . $this->size,
-                'img' => $cartProduct->cover ? $cartProduct->cover->url() : '/',
+            'id'        => $cartProduct['id'], 
+            'name'      => $cartProduct['name'], 
+            'qty'       => $this->quantity,
+            'price'     => (int)$cartProduct['price'], 
+            'weight'    => 1, 
+            'options'   => [
+                    'size'  => 'Size: ' . $this->size,
+                    'img'   => $cartProduct->cover ? $cartProduct->cover->url() : '/',
+                    'color' => $this->color,
             ]
         ]);
 

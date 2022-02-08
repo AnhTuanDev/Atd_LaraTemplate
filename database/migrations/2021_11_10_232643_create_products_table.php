@@ -22,11 +22,6 @@ class CreateProductsTable extends Migration
                   ->constrained('categories')
                   ->onDelete('SET NULL')
                   ->onUpdate('cascade');
-            $table->foreignId('tag_id')
-                  ->nullable()
-                  ->constrained('tags')
-                  ->onDelete('SET NULL')
-                  ->onUpdate('cascade');
             $table->text('description');
             $table->text('meta_description')->nullable();
             $table->text('meta_keywords')->nullable();

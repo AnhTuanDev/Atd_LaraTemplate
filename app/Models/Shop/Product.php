@@ -54,6 +54,11 @@ class Product extends Model
         return $this->belongsToMany(Tag::class, 'products_tags');
     }
 
+    public function attributeValues()
+    {
+        return $this->hasMany(AttributeValue::class, 'product_id');
+    }
+
     public function cover()
     {
         return $this->hasOne(Attachment::class, 'id', 'cover_image')->withDefault();
