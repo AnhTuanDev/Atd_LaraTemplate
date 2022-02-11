@@ -18,49 +18,28 @@ class StoreAttributeValueRequest extends FormRequest
         return Auth::user()->id == 1;
     }
 
-    protected function prepareForValidation()
-    {
-        $this->merge([
-            'slug' => Str::slug($this->name),
-        ]);
-    }
-
     //ngừng xác thực tất cả các thuộc tính sau khi một lỗi xác thực xảy ra.
     protected $stopOnFirstFailure = true;
 
     public function rules()
     {
 
-        $name = $this->get('name');
-        
-        $id = AttributeValue::where('name', $name)->first()->id ?? null;
-
         return [
 
-            'name'                        => ['required', Rule::unique('categories', 'name')->ignore($id)], 
+            'attributeValue.product_id'          => ['nullable'], 
 
-            'slug'                        => [Rule::unique('categories', 'name')->ignore($id)], 
+            'attributeValue.attribute_id'          => ['nullable'], 
 
-            'category.parent_id'          => ['nullable'], 
+            'attributeValue.value'          => ['nullable'], 
 
-            'category.order'              => ['required'], 
-
-            'category.location'              => ['nullable'], 
 
         ];
     }
 
-    public function messages()
-    {
-        return [
-
-            'name.required' => 'Trường Tên sản phẩm: Đang trống.', 
-
-            'name.unique'   => 'Tên sản phẩm: Đã tồn tại', 
-
-            'slug.unique'   => 'Tên sản phẩm: Đã tồn tại', 
-
-            //'category.parent_id.required' => 'Chửa chọn danh mục', 
-        ];
-    }
+   // public function messages()
+   // {
+   //     return [
+   //         //
+   //     ];
+   // }
 }

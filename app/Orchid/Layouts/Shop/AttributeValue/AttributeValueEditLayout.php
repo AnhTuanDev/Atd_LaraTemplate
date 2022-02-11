@@ -10,6 +10,8 @@ use Orchid\Screen\Field;
 
 use App\Models\Shop\Attribute;
 
+use App\Models\Shop\Product;
+
 class AttributeValueEditLayout extends Rows
 {
 
@@ -22,7 +24,12 @@ class AttributeValueEditLayout extends Rows
                 ->empty('Chọn Value')
                 ->title('Attribute Value'),
 
-            Input::make('value')
+            Select::make('attributeValue.product_id')
+                ->fromModel(Product::class, 'name')
+                ->empty('Chọn Sản phẩm')
+                ->title('Danh sách sản phẩm'),
+
+            Input::make('attributeValue.value')
                 ->title('Tên')
                 ->placeholder('Nhập tên'),
 

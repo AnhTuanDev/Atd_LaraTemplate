@@ -5,6 +5,7 @@ namespace App\Orchid\Screens\Shop\Product;
 use App\Orchid\Layouts\Shop\Product\ProducEditContentLayout;
 use App\Orchid\Layouts\Shop\Product\ProductEditOptionLayout;
 use App\Orchid\Layouts\Shop\Product\ProductEditRelationLayout;
+use App\Orchid\Layouts\Shop\Product\ProductEditAttributeLayout;
 use App\Orchid\Layouts\Shop\Product\ProductEditMetaLayout;
 use App\Orchid\Layouts\Shop\Product\ProductEditCoverLayout;
 use App\Orchid\Layouts\Shop\Product\ProductEditPhotosLayout;
@@ -46,6 +47,10 @@ class ProductEditScreen extends Screen
 
     public $productName = '';
 
+    public $attribute;
+
+    public $attributeValue;
+
     public $exists = false;
 
     public function query(Product $product): array
@@ -68,6 +73,8 @@ class ProductEditScreen extends Screen
             //Gán gía trị cho $productTitle.
             $this->productName = $product->name;
 
+            $this->attributeValue = $product->attributeValue;
+
         }
 
         return [
@@ -77,6 +84,10 @@ class ProductEditScreen extends Screen
             'name' => $this->productName,
 
             'tags' => $this->tags,
+
+            'attribute' => $this->attribute,
+
+            'attributeValue' => $this->attributeValue,
 
         ];
     }
@@ -107,6 +118,7 @@ class ProductEditScreen extends Screen
                 'col-md-4 right-content' => [
                     ProductEditOptionLayout::class,
                     ProductEditRelationLayout::class,
+                    ProductEditAttributeLayout::class,
                     ProductEditCoverLayout::class,
                     ProductEditPhotosLayout::class,
                     ProductEditDataLayout::class,

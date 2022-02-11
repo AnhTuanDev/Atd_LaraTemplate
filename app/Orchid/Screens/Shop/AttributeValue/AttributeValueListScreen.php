@@ -29,7 +29,7 @@ class AttributeValueListScreen extends Screen
     {
 
         return [
-            'attribute_values' => AttributeValue::filters()->defaultSort('order', 'asc')->paginate(10),
+            'attribute_values' => AttributeValue::filters()->defaultSort('id', 'asc')->paginate(10),
         ];
 
     }

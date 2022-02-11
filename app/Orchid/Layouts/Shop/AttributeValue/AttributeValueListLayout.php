@@ -14,6 +14,10 @@ use Orchid\Screen\TD;
 
 use App\Models\Shop\AttributeValue;
 
+use App\Models\Shop\Product;
+
+use App\Models\Shop\Attribute;
+
 class AttributeValueListLayout extends Table
 {
 
@@ -23,28 +27,33 @@ class AttributeValueListLayout extends Table
     {
         return [
 
-            TD::make('name', 'Tên')
+            TD::make('attribute_id', 'Thuộc tính')
+                ->sort()
+                ->width('200px')
+                ->render(function(AttributeValue $atv) {
+                    $at = Attribute::findOrFail($atv->product_id)->first();
+                    return $at ? 
+                        Link::make(Str::title($at->name))
+                            ->route('admin.attribute.edit', $at->id)
+                            ->class('btn') : '';
+                }),
+
+            TD::make('Giá trị thuộc tính')
                 ->sort()
                 ->width('280')
                 ->filter(TD::FILTER_TEXT)
                 ->render(function(AttributeValue $attributeValue) {
-                    if($attributeValue->parent !== null) {
-                        return Link::make($attributeValue->parent->name .' --> ' . Str::title($attributeValue->name))
-                                ->route('admin.attribute.edit', $attributeValue->id);
-                    }
-                    else {
-                        return Link::make(Str::title($attributeValue->name))
-                                ->route('admin.attribute.edit', $attributeValue->id);
-                    }
+                        return Link::make($attributeValue->value)
+                                ->route('admin.attribute-value.edit', $attributeValue->id);
                 }),
 
-            TD::make('Danh Mục Cha')
+            TD::make('product_id', 'Sản Phẩm')
                 ->width('200px')
-                ->render(function(AttributeValue $attributeValue) {
-                    $attributeValue = $attributeValue->parent ?? null;
-                    return $attributeValue ? 
-                        Link::make(Str::title($attributeValue->name))
-                            ->route('admin.attribute-value.list')
+                ->render(function(AttributeValue $atv) {
+                    $pr = Product::findOrFail($atv->product_id)->first();
+                    return $pr ? 
+                        Link::make(Str::title($pr->name))
+                            ->route('admin.product.edit', $pr->id)
                             ->class('btn') : '';
                 }),
 
@@ -59,7 +68,7 @@ class AttributeValueListLayout extends Table
 
                                 Link::make('Chỉnh Sửa')
                                     ->icon('plus')
-                                    ->route('admin.attributeValue.edit', $attributeValue->id),
+                                    ->route('admin.attribute-value.edit', $attributeValue->id),
 
                                 ModalToggle::make('Xóa')
                                     ->modal('deleteModal')

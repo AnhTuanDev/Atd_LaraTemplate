@@ -32,8 +32,6 @@ class AttributeValueEditScreen extends Screen
 
     public $attributeValue = [];
 
-    public $attributeValueName = '';
-
     public function query(AttributeValue $attributeValue): array
     {
 
@@ -48,15 +46,11 @@ class AttributeValueEditScreen extends Screen
             //Gán giá trị cho $attributeValue
             $this->attributeValue = $attributeValue;
 
-            //Gán gía trị cho $attributeValueName.
-            $this->attributeValueName = $attributeValue->name;
-
         }
 
         return [
 
             'attributeValue' => $this->attributeValue,
-            'name' => $this->attributeValueName,
 
         ];
     }
@@ -105,20 +99,12 @@ class AttributeValueEditScreen extends Screen
         //ddd($data);
 
         $attributeValueData = $data['attributeValue'];
-
-        $attributeValueData = array_merge($attributeValueData, [
-
-                'name' => $data['name'],
-                'slug' => $data['slug'],
-        ]);
-
-        //ddd($attributeValueData);
         
         $attributeValue->fill($attributeValueData)->save();
 
-        Toast::info('Lưu thành công: ' . $attributeValueData['name']);
+        Toast::info('Lưu thành công: ' . $attributeValueData['value']);
 
-        return redirect()->route('admin.attributeValue.list');
+        return redirect()->route('admin.attribute-value.list');
 
     }//End createOrUpdate.
 
@@ -126,9 +112,9 @@ class AttributeValueEditScreen extends Screen
     {
         $attributeValue->delete();
 
-        Toast::info('Xóa thành công: ' . $attributeValue['name']);
+        Toast::info('Xóa thành công: ' . $attributeValue['value']);
 
-        return redirect()->route('admin.attributeValue.list');
+        return redirect()->route('admin.attribute-value.list');
     }
 
 }
