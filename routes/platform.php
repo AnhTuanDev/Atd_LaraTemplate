@@ -31,17 +31,28 @@ use App\Orchid\Screens\Shop\Tag\TagListScreen;
 use App\Orchid\Screens\Shop\Attribute\AttributeEditScreen;
 use App\Orchid\Screens\Shop\Attribute\AttributeListScreen;
 
+use App\Orchid\Screens\Shop\Color\ColorEditScreen;
+use App\Orchid\Screens\Shop\Color\ColorListScreen;
+
 use App\Orchid\Screens\Shop\AttributeValue\AttributeValueEditScreen;
 use App\Orchid\Screens\Shop\AttributeValue\AttributeValueListScreen;
 
 
 //Attribute Vale...
-Route::screen('attribute-value/{attribute?}', AttributeValueEditScreen::class)
-    ->name('admin.attribute-value.edit')
+Route::screen('color/{color?}', ColorEditScreen::class)
+    ->name('admin.color.edit')
     ->breadcrumbs(function (Trail $trail) {
         return $trail
-            ->parent('admin.attribute-value.list')
-            ->push('Attribute Value');
+            ->parent('admin.color.list')
+            ->push('Color List');
+    });
+
+Route::screen('color-list', COlorListScreen::class)
+    ->name('admin.color.list')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.index')
+            ->push('Danh Sách Color');
     });
 
 Route::screen('attribute-value-list', AttributeValueListScreen::class)

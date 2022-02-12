@@ -31,11 +31,14 @@ class AttributeValueListLayout extends Table
                 ->sort()
                 ->width('200px')
                 ->render(function(AttributeValue $atv) {
-                    $at = Attribute::findOrFail($atv->product_id)->first();
-                    return $at ? 
-                        Link::make(Str::title($at->name))
-                            ->route('admin.attribute.edit', $at->id)
-                            ->class('btn') : '';
+                    $id = $atv->attribute_id ?: null;
+                    if($id) {
+                        $at = Attribute::findOrFail($id);
+                        return $at ? 
+                            Link::make(Str::title($at->name))
+                                ->route('admin.attribute.edit', $at->id)
+                                ->class('btn') : '';
+                    }
                 }),
 
             TD::make('Giá trị thuộc tính')

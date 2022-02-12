@@ -13,6 +13,7 @@ use Illuminate\Support\Str;
 use Orchid\Screen\TD;
 
 use App\Orchid\Atd\Screen\Fields\AtdTag;//Atd custom tag
+use App\Orchid\Atd\Screen\Fields\AtdColor;//Atd custom tag
 
 use App\Models\Shop\Product;
 
@@ -37,7 +38,7 @@ class ProductListLayout extends Table
                 }),
             TD::make('name', 'Tên Sản Phẩm')
                 ->sort()
-                ->width('280')
+                ->width('200')
                 ->filter(TD::FILTER_TEXT)
                 ->render(function(Product $product) {
                     return
@@ -61,6 +62,15 @@ class ProductListLayout extends Table
                         Link::make(Str::title($category->name))
                             ->route('admin.product.list')
                             ->class('btn') : '';
+                }),
+
+            TD::make('Color')
+                ->width('80px')
+                ->render(function(Product $product) {
+                    return AtdColor::make('Colors')
+                        ->route('admin.color.list')
+                        ->class('btn')
+                        ->data($product);
                 }),
 
             TD::make('Tag')

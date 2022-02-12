@@ -5,7 +5,8 @@ namespace App\Orchid\Screens\Shop\Product;
 use App\Orchid\Layouts\Shop\Product\ProducEditContentLayout;
 use App\Orchid\Layouts\Shop\Product\ProductEditOptionLayout;
 use App\Orchid\Layouts\Shop\Product\ProductEditRelationLayout;
-use App\Orchid\Layouts\Shop\Product\ProductEditAttributeLayout;
+use App\Orchid\Layouts\Shop\Product\ProductEditColorLayout;
+use App\Orchid\Layouts\Shop\Product\ProductEditSizeLayout;
 use App\Orchid\Layouts\Shop\Product\ProductEditMetaLayout;
 use App\Orchid\Layouts\Shop\Product\ProductEditCoverLayout;
 use App\Orchid\Layouts\Shop\Product\ProductEditPhotosLayout;
@@ -47,9 +48,14 @@ class ProductEditScreen extends Screen
 
     public $productName = '';
 
-    public $attribute;
+    public $color;
 
-    public $attributeValue;
+    public $colors;
+
+    public $size;
+
+    public $sizes;
+
 
     public $exists = false;
 
@@ -73,7 +79,7 @@ class ProductEditScreen extends Screen
             //Gán gía trị cho $productTitle.
             $this->productName = $product->name;
 
-            $this->attributeValue = $product->attributeValue;
+            $this->colors = $product->colors;
 
         }
 
@@ -85,9 +91,14 @@ class ProductEditScreen extends Screen
 
             'tags' => $this->tags,
 
-            'attribute' => $this->attribute,
+            'color' => $this->color,
 
-            'attributeValue' => $this->attributeValue,
+            'colors' => $this->colors,
+
+            'size' => $this->size,
+
+            'sizes' => $this->sizes,
+
 
         ];
     }
@@ -118,7 +129,8 @@ class ProductEditScreen extends Screen
                 'col-md-4 right-content' => [
                     ProductEditOptionLayout::class,
                     ProductEditRelationLayout::class,
-                    ProductEditAttributeLayout::class,
+                    ProductEditColorLayout::class,
+                    //ProductEditSizeLayout::class,
                     ProductEditCoverLayout::class,
                     ProductEditPhotosLayout::class,
                     ProductEditDataLayout::class,
@@ -137,6 +149,7 @@ class ProductEditScreen extends Screen
 
     //Function Create Or Update.
     public function createOrUpdate(Product $product, StoreProductRequest $request) {
+
         //ddd($request->all());
         $data = $request->validated();
         //ddd($data['cover_image']);
@@ -184,6 +197,12 @@ class ProductEditScreen extends Screen
         if($request->get('tags'))
         {
             $product->tags()->sync($request->get('tags'));
+        }
+
+        //Dong bo post va color
+        if($request->get('colors'))
+        {
+            $product->colors()->sync($request->get('colors'));
         }
 
         Toast::info('Lưu thành công: ' . $productData['name']);
