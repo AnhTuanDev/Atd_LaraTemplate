@@ -28,8 +28,8 @@ use App\Orchid\Screens\Shop\Category\CategoryListScreen;
 use App\Orchid\Screens\Shop\Tag\TagEditScreen;
 use App\Orchid\Screens\Shop\Tag\TagListScreen;
 
-use App\Orchid\Screens\Shop\Attribute\AttributeEditScreen;
-use App\Orchid\Screens\Shop\Attribute\AttributeListScreen;
+use App\Orchid\Screens\Shop\Size\SizeEditScreen;
+use App\Orchid\Screens\Shop\Size\SizeListScreen;
 
 use App\Orchid\Screens\Shop\Color\ColorEditScreen;
 use App\Orchid\Screens\Shop\Color\ColorListScreen;
@@ -38,46 +38,38 @@ use App\Orchid\Screens\Shop\AttributeValue\AttributeValueEditScreen;
 use App\Orchid\Screens\Shop\AttributeValue\AttributeValueListScreen;
 
 
-//Attribute Vale...
+//Color...
 Route::screen('color/{color?}', ColorEditScreen::class)
     ->name('admin.color.edit')
     ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('admin.color.list')
-            ->push('Color List');
+            ->push('Color');
     });
 
-Route::screen('color-list', COlorListScreen::class)
+Route::screen('color-list', ColorListScreen::class)
     ->name('admin.color.list')
     ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.index')
-            ->push('Danh Sách Color');
+            ->push('Colors');
     });
 
-Route::screen('attribute-value-list', AttributeValueListScreen::class)
-    ->name('admin.attribute-value.list')
+//Size...
+Route::screen('size/{size?}', SizeEditScreen::class)
+    ->name('admin.size.edit')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('admin.size.list')
+            ->push('Size');
+    });
+
+Route::screen('size-list', SizeListScreen::class)
+    ->name('admin.size.list')
     ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.index')
-            ->push('Danh Sách Attribute Value');
-    });
-
-//Attribute...
-Route::screen('attribute/{attribute?}', AttributeEditScreen::class)
-    ->name('admin.attribute.edit')
-    ->breadcrumbs(function (Trail $trail) {
-        return $trail
-            ->parent('admin.attribute.list')
-            ->push('Thuộc Tính Sản Phẩm');
-    });
-
-Route::screen('attribute-list', AttributeListScreen::class)
-    ->name('admin.attribute.list')
-    ->breadcrumbs(function (Trail $trail) {
-        return $trail
-            ->parent('platform.index')
-            ->push('Danh Sách Thuộc Tính');
+            ->push('Sizes');
     });
 
 //Tag...
@@ -86,50 +78,50 @@ Route::screen('tag/{tag?}', TagEditScreen::class)
     ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('admin.tag.list')
-            ->push('Thẻ Tag');
+            ->push('Tag');
     });
 
-Route::screen('danh-sach-tag', TagListScreen::class)
+Route::screen('tag-list', TagListScreen::class)
     ->name('admin.tag.list')
     ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.index')
-            ->push('Danh Sách Thẻ Tag');
+            ->push('Tags');
     });
 
 //Category...
-Route::screen('danh-muc/{category?}', CategoryEditScreen::class)
+Route::screen('category/{category?}', CategoryEditScreen::class)
     ->name('admin.category.edit')
     ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('admin.category.list')
-            ->push('Danh Mục');
+            ->push('Category');
     });
 
-Route::screen('danh-sach-danh-muc', CategoryListScreen::class)
+Route::screen('category-list', CategoryListScreen::class)
     ->name('admin.category.list')
     ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.index')
-            ->push('Danh Sách Danh Mục');
+            ->push('Categories');
     });
 
 
 // Produc...
-Route::screen('san-pham/{product?}', ProductEditScreen::class)
+Route::screen('product/{product?}', ProductEditScreen::class)
     ->name('admin.product.edit')
     ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('admin.product.list')
-            ->push('Sản Phẩm');
+            ->push('Product');
     });
 
-Route::screen('danh-sach-san-pham', ProductListScreen::class)
+Route::screen('product-list', ProductListScreen::class)
     ->name('admin.product.list')
     ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.index')
-            ->push('Danh Sách Sản Phẩm');
+            ->push('Products');
     });
 
 // Main

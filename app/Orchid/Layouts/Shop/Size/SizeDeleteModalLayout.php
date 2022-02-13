@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Orchid\Layouts\Shop\AttributeValue;
+namespace App\Orchid\Layouts\Shop\Size;
 
 use Orchid\Screen\Field;
 use Orchid\Screen\Layouts\Rows;
 use Orchid\Screen\Fields\Input;
 
-class AttributeValueDeleteModalLayout extends Rows
+class SizeDeleteModalLayout extends Rows
 {
     protected function fields(): array
     {
@@ -14,7 +14,7 @@ class AttributeValueDeleteModalLayout extends Rows
             Input::make('Note')
                 //->class('bg-transparent border-0 fs-4 text-center')
                 ->readonly()
-                ->placeholder('Bạn vẫn muốn xóa danh mục này ?')
+                ->placeholder('Bạn vẫn muốn xóa mục này ?')
                 ->disabled(),
         ];
     }

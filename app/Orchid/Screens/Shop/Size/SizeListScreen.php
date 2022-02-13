@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Orchid\Screens\Shop\Attribute;
+namespace App\Orchid\Screens\Shop\Size;
 
 use Orchid\Screen\Screen;
 use Illuminate\Support\Str;
@@ -14,20 +14,20 @@ use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Support\Facades\Layout;
 
-use App\Models\Shop\Attribute;
-use App\Orchid\Layouts\Shop\Attribute\AttributeListLayout;
-use App\Orchid\Layouts\Shop\Attribute\AttributeDeleteModalLayout;
+use App\Models\Shop\Size;
+use App\Orchid\Layouts\Shop\Size\SizeListLayout;
+use App\Orchid\Layouts\Shop\Size\SizeDeleteModalLayout;
 
-class AttributeListScreen extends Screen
+class SizeListScreen extends Screen
 {
 
-    public $name = 'Danh Sách Thuộc Tính';
+    public $name = 'Danh Sách Size';
 
     public function query(): array
     {
 
         return [
-            'attributes' => Attribute::filters()->defaultSort('id', 'asc')->paginate(10),
+            'sizes' => Size::filters()->defaultSort('id', 'asc')->paginate(10),
         ];
 
     }
@@ -38,7 +38,7 @@ class AttributeListScreen extends Screen
         return [
             Link::make('Thêm')
                 ->icon('plus')
-                ->route('admin.attribute.edit')
+                ->route('admin.size.edit')
         ];
 
     }
@@ -48,10 +48,10 @@ class AttributeListScreen extends Screen
 
         return [
 
-            AttributeListLayout::class,
+            SizeListLayout::class,
 
             Layout::modal('deleteModal', [
-                AttributeDeleteModalLayout::class,
+                SizeDeleteModalLayout::class,
             ])->async('asyncGetDeletePost') 
               ->applyButton('Xóa') 
               ->title('Xác nhận xóa'),
@@ -60,13 +60,13 @@ class AttributeListScreen extends Screen
 
     }
 
-    public function delete(Attribute $attribute)
+    public function delete(Size $size)
     {
-        $attribute->delete();
+        $size->delete();
 
-        Toast::info('Xóa thành công: ' . $attribute['name']);
+        Toast::info('Xóa thành công: ' . $size['name']);
 
-        return redirect()->route('admin.attribute.list');
+        return redirect()->route('admin.size.list');
     }
 
 }

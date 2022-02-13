@@ -81,6 +81,8 @@ class ProductEditScreen extends Screen
 
             $this->colors = $product->colors;
 
+            $this->sizes = $product->sizes;
+
         }
 
         return [
@@ -130,7 +132,7 @@ class ProductEditScreen extends Screen
                     ProductEditOptionLayout::class,
                     ProductEditRelationLayout::class,
                     ProductEditColorLayout::class,
-                    //ProductEditSizeLayout::class,
+                    ProductEditSizeLayout::class,
                     ProductEditCoverLayout::class,
                     ProductEditPhotosLayout::class,
                     ProductEditDataLayout::class,
@@ -203,6 +205,12 @@ class ProductEditScreen extends Screen
         if($request->get('colors'))
         {
             $product->colors()->sync($request->get('colors'));
+        }
+
+        //Dong bo post vasize 
+        if($request->get('sizes'))
+        {
+            $product->sizes()->sync($request->get('sizes'));
         }
 
         Toast::info('Lưu thành công: ' . $productData['name']);

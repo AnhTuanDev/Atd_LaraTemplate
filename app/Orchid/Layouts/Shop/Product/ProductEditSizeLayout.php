@@ -7,9 +7,9 @@ use Orchid\Screen\Layouts\Rows;
 use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Fields\Group;
 
-use App\Models\Shop\Attribute;
+use App\Models\Shop\Size;
 
-use App\Models\Shop\AttributeValue;
+use App\Models\Shop\SizeValue;
 
 class ProductEditSizeLayout extends Rows
 {
@@ -17,17 +17,11 @@ class ProductEditSizeLayout extends Rows
     {
         return [
 
-            Select::make('size')
-                //->tags()
-                ->disabled()
-                ->fromQuery(Attribute::whereSlug('size')->take(1), 'name')
-                ->title('Thuộc Tính'),
-
             Select::make('sizes.')
                 ->tags()
                 ->maximumSelectionLength(5)
                 ->multiple()
-                ->fromModel(AttributeValue::class, 'name')
+                ->fromModel(Size::class, 'name')
                 ->title('Sizes'),
 
         ];

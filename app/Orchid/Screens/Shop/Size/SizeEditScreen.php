@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Orchid\Screens\Shop\Attribute;
+namespace App\Orchid\Screens\Shop\Size;
 
 
-use App\Orchid\Layouts\Shop\Attribute\AttributeDeleteModalLayout;
-use App\Orchid\Layouts\Shop\Attribute\AttributeEditLayout;
+use App\Orchid\Layouts\Shop\Size\SizeDeleteModalLayout;
+use App\Orchid\Layouts\Shop\Size\SizeEditLayout;
 
-use App\Http\Requests\Shop\StoreAttributeRequest;
+use App\Http\Requests\Shop\StoreSizeRequest;
 
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Support\Facades\Layout;
@@ -19,46 +19,46 @@ use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-use App\Models\Shop\Attribute;
+use App\Models\Shop\Size;
 
 use Orchid\Screen\Action;
 use Orchid\Support\Color;
 
-class AttributeEditScreen extends Screen
+class SizeEditScreen extends Screen
 {
 
-    public $name = 'Thêm Thuộc Tính';
+    public $name = 'Thêm Size';
 
-    public $attribute;
+    public $size;
 
     public $exists;
 
-    public $attributeName;
+    public $sizeName;
 
 
-    public function query(Attribute $attribute): array
+    public function query(Size $size): array
     {
 
-        $this->exists = $attribute->exists;
+        $this->exists = $size->exists;
 
         if($this->exists)
         {
 
             //Thay đổi trường name của trang.
-            $this->name = 'Chỉnh Sửa Thuộc Tính';
+            $this->name = 'Chỉnh Sửa Size';
 
-            //Gán giá trị cho $attribute
-            $this->attribute = $attribute;
+            //Gán giá trị cho $size
+            $this->size = $size;
 
-            //Gán gía trị cho $attributeName.
-            $this->attributeName = $attribute->name;
+            //Gán gía trị cho $sizeName.
+            $this->sizeName = $size->name;
 
         }
 
         return [
 
-            'attribute' => $this->attribute,
-            'name' => $this->attributeName,
+            'size' => $this->size,
+            'name' => $this->sizeName,
 
         ];
     }
@@ -83,14 +83,14 @@ class AttributeEditScreen extends Screen
         return [
             Layout::columns([
 
-                AttributeEditLayout::class,
+                SizeEditLayout::class,
 
             ]),
 
             //Modal delete
             Layout::modal('deleteModal', [
 
-                AttributeDeleteModalLayout::class,
+                SizeDeleteModalLayout::class,
 
             ])->async('asyncGetDeletePost') 
               ->applyButton('Xóa') 
@@ -100,27 +100,27 @@ class AttributeEditScreen extends Screen
     }
 
     //Function Create Or Update.
-    public function createOrUpdate(Attribute $attribute, StoreAttributeRequest $request) {
+    public function createOrUpdate(Size $size, StoreSizeRequest $request) {
 
         $data = $request->validated();
         
         //ddd($data);
 
-        $attribute->fill($data)->save();
+        $size->fill($data)->save();
 
         Toast::info('Lưu thành công: ' . $data['name']);
 
-        return redirect()->route('admin.attribute.list');
+        return redirect()->route('admin.size.list');
 
     }//End createOrUpdate.
 
-    public function delete(Attribute $attribute)
+    public function delete(Size $size)
     {
-        $attribute->delete();
+        $size->delete();
 
-        Toast::info('Xóa thành công: ' . $attribute['name']);
+        Toast::info('Xóa thành công: ' . $size['name']);
 
-        return redirect()->route('admin.attribute.list');
+        return redirect()->route('admin.size.list');
     }
 
 }

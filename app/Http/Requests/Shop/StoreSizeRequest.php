@@ -8,9 +8,9 @@ use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-use App\Models\Shop\Attribute;
+use App\Models\Shop\Size;
 
-class StoreAttributeRequest extends FormRequest
+class StoreSizeRequest extends FormRequest
 {
 
     public function authorize()
@@ -33,12 +33,12 @@ class StoreAttributeRequest extends FormRequest
 
         $name = $this->get('name');
         
-        $id = Attribute::where('name', $name)->first()->id ?? null;
+        $id = Size::where('name', $name)->first()->id ?? null;
 
         return [
 
-            'name' => ['required', Rule::unique('attributes', 'name')->ignore($id)], 
-            'slug' => [Rule::unique('attributes', 'name')->ignore($id)], 
+            'name' => ['required', Rule::unique('sizes', 'name')->ignore($id)], 
+            'slug' => [Rule::unique('sizes', 'name')->ignore($id)], 
 
         ];
     }

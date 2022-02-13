@@ -42,38 +42,39 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('modules')
                 ->list([
                     //Product
-                    Menu::make('Danh Sách Sản Phẩm')
+                    Menu::make('Sản Phẩm')
                         ->icon('module')
                         ->route('admin.product.list')
                         ->permission('admin.writer'),
 
                     //Category
-                    Menu::make('Danh Sách Danh Mục')
+                    Menu::make('Danh Mục')
                         ->icon('menu')
                         ->route('admin.category.list')
                         ->permission('admin.writer'),
 
                     //Tag
-                    Menu::make('Danh Sách Thẻ Tag')
+                    Menu::make('Thẻ Tag')
                         ->icon('tag')
                         ->route('admin.tag.list')
                         ->permission('admin.writer'),
 
-                    //Attribute
-                    Menu::make('Danh Sách Attribute')
-                        ->icon('organization')
-                        ->route('admin.attribute.list')
-                        ->permission('admin.writer'),
-
-                    //Attribute Vale
-                    Menu::make('Danh Sách Color')
+                    //Color
+                    Menu::make('Color')
                         ->icon('organization')
                         ->route('admin.color.list')
                         ->permission('admin.writer'),
 
+                    //Size
+                    Menu::make('Size')
+                        ->icon('organization')
+                        //->icon('brush')
+                        ->route('admin.size.list')
+                        ->permission('admin.writer'),
+
                 ]),
 
-            /*
+            /**
             //Examples
             Menu::make('Example screen')
                 ->icon('monitor')
@@ -116,20 +117,7 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('grid')
                 ->route('platform.example.cards')
                 ->divider(),
-
-            Menu::make('Documentation')
-                ->title('Docs')
-                ->icon('docs')
-                ->url('https://orchid.software/en/docs'),
-
-            Menu::make('Changelog')
-                ->icon('shuffle')
-                ->url('https://github.com/orchidsoftware/platform/blob/master/CHANGELOG.md')
-                ->target('_blank')
-                ->badge(function () {
-                    return Dashboard::version();
-                }, Color::DARK()),
-            */
+            **/
 
         ];
     }

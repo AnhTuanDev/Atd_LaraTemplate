@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Orchid\Layouts\Shop\Attribute;
+namespace App\Orchid\Layouts\Shop\Size;
 
 use Orchid\Screen\Layouts\Table;
 use Orchid\Platform\Http\Filters\SearchFilter;
@@ -12,12 +12,12 @@ use Orchid\Screen\Actions\Link;
 use Illuminate\Support\Str;
 use Orchid\Screen\TD;
 
-use App\Models\Shop\Attribute;
+use App\Models\Shop\Size;
 
-class AttributeListLayout extends Table
+class SizeListLayout extends Table
 {
 
-    protected $target = 'attributes';
+    protected $target = 'sizes';
 
     protected function columns(): array
     {
@@ -26,20 +26,20 @@ class AttributeListLayout extends Table
                 ->sort()
                 ->width('50'),
 
-            TD::make('name', 'Tên Danh Mục')
+            TD::make('name', 'Tên')
                 ->sort()
                 ->width('280')
                 ->filter(TD::FILTER_TEXT)
-                ->render(function(Attribute $attribute) {
-                    return Link::make(Str::title($attribute->name))
-                            ->route('admin.attribute.edit', $attribute->id);
+                ->render(function(Size $size) {
+                    return Link::make(Str::title($size->name))
+                            ->route('admin.size.edit', $size->id);
                
                 }),
 
             TD::make('Hành Động')
                 ->align(TD::ALIGN_CENTER)
                 ->width('100px')
-                ->render(function(Attribute $attribute) {
+                ->render(function(Size $size) {
                     return DropDown::make()
                             ->class('btn btn-light btn-large fs-4')
                             ->icon('settings')
@@ -47,11 +47,11 @@ class AttributeListLayout extends Table
 
                                 Link::make('Chỉnh Sửa')
                                     ->icon('plus')
-                                    ->route('admin.attribute.edit', $attribute->id),
+                                    ->route('admin.size.edit', $size->id),
 
                                 ModalToggle::make('Xóa')
                                     ->modal('deleteModal')
-                                    ->method('delete', ['id' => $attribute->id])
+                                    ->method('delete', ['id' => $size->id])
                                     ->icon('trash')
                             ]);
                 }),
