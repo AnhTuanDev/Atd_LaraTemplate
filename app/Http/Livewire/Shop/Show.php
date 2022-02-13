@@ -12,11 +12,24 @@ class Show extends Component
 
     public $quantity = 1;
 
-    public $sizes    = [ 'S', 'M', 'L', 'XL' ];
+    public $sizes    = [];
 
     public $size     = 'S';
 
-    public $color    = 'indigo-500';
+    public $color;
+
+    public $colorName;
+
+    public $colors   = [];
+
+    public function mount()
+    {
+        $this->colors = $this->product->colors;
+
+        $this->color = $this->product->colors[0]['value'];
+
+        $this->sizes = $this->product->sizes;
+    }
 
     public function addCart($prdId) 
     {
@@ -29,15 +42,23 @@ class Show extends Component
             'price'     => (int)$cartProduct['price'], 
             'weight'    => 1, 
             'options'   => [
-                    'size'  => 'Size: ' . $this->size,
-                    'img'   => $cartProduct->cover ? $cartProduct->cover->url() : '/',
-                    'color' => $this->color,
+                    'size'      => 'Size: ' . $this->size,
+                    'img'       => $cartProduct->cover ? $cartProduct->cover->url() : '/',
+                    'color'     => $this->color,
+                    'colorName' => $this->colorName,
             ]
         ]);
 
         $this->reset('quantity');
 
         $this->emit('cartAdded');
+    }
+
+    public function setColor($value)
+    {
+        $this->reset(['color', 'colorName']);
+
+        $this->color = $value;
     }
 
     // Set size.

@@ -24,6 +24,7 @@
         class="font-sans antialiased text-base">
 
         <div
+            :class="$store.shop.overflow && 'mr-3'"
             class="relative min-h-screen bg-primary-light">
             
             <!-- Navbar menu -->

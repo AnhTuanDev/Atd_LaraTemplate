@@ -53,9 +53,27 @@
 
                 <div class="w-full flex mt-6">
                     <div class="w-full flex items-center space-x-2">
-                        <button class="w-5 h-5 bg-green-500 rounded-full"></button>
-                        <button class="w-5 h-5 bg-purple-500 rounded-full"></button>
-                        <button class="w-5 h-5 bg-indigo-500 rounded-full"></button>
+                        @foreach($colors as $cl)
+                        <button wire:click="setColor('{{ $cl->value }}')" 
+                            class="w-5 h-5 
+                                @if($color === $cl->value)
+                                    shadow shadow-secondary-main
+                                @endif
+                                bg-{{ $cl->value }} rounded-full"></button>
+                        @endforeach
+                    </div>
+                    <div style="display:none" 
+                        class="bg-orange-500 
+                                bg-white
+                                bg-black 
+                                bg-pink-500
+                                bg-gray-500
+                                bg-blue-500
+                                bg-blue-800
+                                bg-green-500
+                                bg-orange-200
+                                bg-purble-500
+                                bg-yellow-500">
                     </div>
                 </div>
 
@@ -63,15 +81,15 @@
                     <div
                         class="w-full flex items-center space-x-2">
                         @foreach($sizes as $sz)
-                            <button wire:click="setSize('{{ $sz }}')"
+                            <button wire:click="setSize('{{ $sz->name }}')"
                                     class="uppercase px-4 py-2 border 
-                                            @if($size === $sz) 
+                                            @if($size === $sz->name) 
                                                 bg-primary-dark
                                             @else 
                                                 bg-secondary-line
                                             @endif
                                             border-primary-main rounded-md duration-150 hover:bg-primary-main hover:drop-shadow-lg">
-                                {{ $sz }}
+                                {{ $sz->name }}
                             </button>    
                         @endforeach
                     </div>

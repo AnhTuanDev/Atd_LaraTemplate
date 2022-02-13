@@ -33,6 +33,14 @@ class CartComponent extends Component
 
     }
 
+    public function destroyCart()
+    {
+        \Cart::destroy();
+
+        $this->reset(['cartCount', 'cartContent']);
+    }
+
+
 
     public function mount()
     {

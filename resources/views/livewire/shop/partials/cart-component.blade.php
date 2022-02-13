@@ -29,7 +29,7 @@
         <div x-data="{show: false}"
             @click.outside="open = false, $store.shop.toggleOverflow()"
             class="text-primary-text p-4 drop-shadow-lg border-b">
-            @if($cartContent->count())
+            @if($cartContent)
                 @foreach($cartContent as $key => $item) 
                     <div class="relative px-2 py-4 border-b border-dashed border-gray-300 text-primary-text flex flex-col">
 
@@ -63,7 +63,7 @@
             @endif
             <div class="w-full flex items-center space-x-4 justify-between mt-4">
                 <button class="bg-secondary-main px-4 py-2 rounded-md text-sm md:text-md md:font-semibold">Xem Giỏ Hàng</button>
-                <button class="bg-secondary-main px-4 py-2 rounded-md text-sm md:text-md font-semibold">Thanh Toán</button>
+                <button wire:click="destroyCart" class="bg-secondary-main px-4 py-2 rounded-md text-sm md:text-md font-semibold">Xóa Giỏ</button>
             </div>
 
         </div>
