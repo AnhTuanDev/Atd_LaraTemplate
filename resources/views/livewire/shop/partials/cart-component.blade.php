@@ -1,6 +1,6 @@
-<div x-data="{ open: false }"
+<div x-data
     class="flex items-center justify-center">
-    <button @click="open = true, $store.shop.overflow = true"
+    <button @click="$store.shop.overflow = true, $store.shop.toggleSlideCart()"
             {{-- @mouseover.enter="open = 'Shop'" --}}
             class="relative flex items-center text-md leading-none font-semibold z-[9998]">
 
@@ -15,7 +15,7 @@
         @endif
     </button>
 
-    <div x-show="open"
+    <div x-show="$store.shop.slideCart"
         x-transition:enter.origin.right.top.duration.200ms
         x-transition:leave.origin.right.top.duration.150ms
         style="display: none"
@@ -26,8 +26,8 @@
             <x-orchid-icon path="close" class="text-2xl font-bold text-primary-text"/>
         </div>
 
-        <div x-data="{show: false}"
-            @click.outside="open = false, $store.shop.toggleOverflow()"
+        <div x-data
+            @click.outside="$store.shop.overflow = false, $store.shop.toggleSlideCart()"
             class="text-primary-text p-4 drop-shadow-lg border-b">
             @if($cartContent)
                 @foreach($cartContent as $key => $item) 
@@ -61,10 +61,31 @@
                     </div>
                 @endforeach
             @endif
+            @if($cartContent)
             <div class="w-full flex items-center space-x-4 justify-between mt-4">
-                <button class="bg-secondary-main px-4 py-2 rounded-md text-sm md:text-md md:font-semibold">Xem Giỏ Hàng</button>
-                <button wire:click="destroyCart" class="bg-secondary-main px-4 py-2 rounded-md text-sm md:text-md font-semibold">Xóa Giỏ</button>
+                <button 
+                    class="bg-secondary-main 
+                    border border-secondary-main
+                    hover:bg-primary-main
+                    px-4 py-2 rounded-md 
+                    text-sm md:text-md 
+                    md:font-semibold
+                    duration-150"
+                    >Xem Giỏ Hàng
+                </button>
+                <button 
+                    wire:click="destroyCart" 
+                    class="bg-primary-dark
+                    border border-secondary-main
+                    hover:bg-primary-main
+                    px-4 py-2 rounded-md 
+                    text-sm md:text-md 
+                    font-semibold
+                    duration-150"
+                    >Xóa Giỏ
+                </button>
             </div>
+            @endif
 
         </div>
     </div>

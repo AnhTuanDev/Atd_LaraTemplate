@@ -1,41 +1,70 @@
-<div class="content">
+<div class="content px-5">
 
     <div class="max-w-7xl mx-auto">
 
-        <div class="grid grid-cols-12 gap-6 my-8">
+        <div class="w-full md:grid md:grid-cols-12 md:gap-6 my-5 md:my-8">
 
             <div class="w-full md:col-span-7">
 
                 <div x-data="{ show: 0 }"
-                    class="flex w-full">
+                    class="flex flex-col md:flex-row w-full">
                     <!-- Danh sach image --> 
-                    <div class="flex flex-col space-y-2">
+                    <div class="flex order-last 
+                        overflow-auto
+                        md:order-first 
+                        mt-2 md:mt-0
+                        md:space-y-2
+                        md:space-x-0
+                        md:flex-col 
+                        tems-center
+                        rounded-md
+                        md:h-screen
+                        space-x-2
+                        md:mr-2
+                        "
+                        >
                         @foreach($photos as $index => $img)
-                        
                         <img @click="show = {{ $index }}"
-                                class="w-14 object-cover object-center rounded" src="{{ $img->url() }}" alt="">
-                        
+                            src="{{ $img->url() }}" alt=""
+                            class="w-10 md:w-14 object-container object-center rounded" 
+                            >
                         @endforeach
                     </div>
 
                     <!-- Acive image --> 
-                    <div class="flex-1 md:ml-2">
-                        @foreach($photos as $index => $img)
-                        
-                            <img x-show=" show  === {{ $index }} "
-                                class="w-full object-container object-center rounded" src="{{ $img->url() }}" alt="">
-                        
-                        @endforeach
+                    <div x-data="{ imgs: {{$photos}}, zoom: false }" class="w-full md:flex-1">
+                        <template x-for="(img, key) in imgs" :key="img.id">
+                            <div class="w-full overflow-auto">
+                                <div @click="zoom = !zoom"
+                                    x-show=" show  == key "
+                                    :class="show === key ? 'translate-open' : 'translate-leave'"
+                                    class="w-full">
+                                    <img :src="img.url" alt=""
+                                        @click.outside="zoom = false"
+                                        :class="zoom ? 'scale-150' : ''" 
+                                        class="w-full object-container object-center rounded" >
+                                </div>
+                            </div>
+                        </template>
                     </div>
-
                 </div>
 
             </div>
 
             <!-- Product Detail -->
-            <div class="col-span-5">
+            <div class="w-full md:col-span-5">
 
-                <h2 class="text-2xl font-semibold text-secondary-main pb-2 border-b border-primary-main"> {{$product->name}} </h2>
+                <h2 
+                    class="text-2xl 
+                    text-secondary-main 
+                    border-primary-main
+                    font-semibold 
+                    pb-2 border-b
+                    cursor-pointer
+                    mt-6 md:mt-0
+                    "
+                    > {{$product->name}} 
+                </h2>
 
                 <div class="flex items-center space-x-2 mt-6">
                     <label for="sku" class="text-sm text-gray-400 uppercase">Sku: </label>
@@ -63,17 +92,20 @@
                         @endforeach
                     </div>
                     <div style="display:none" 
-                        class="bg-orange-500 
-                                bg-white
-                                bg-black 
-                                bg-pink-500
-                                bg-gray-500
-                                bg-blue-500
-                                bg-blue-800
-                                bg-green-500
-                                bg-orange-200
-                                bg-purble-500
-                                bg-yellow-500">
+                        class="bg-white
+                            bg-orange-500 
+                            bg-gray-500
+                            bg-gray-900
+                            bg-black 
+                            bg-pink-500
+                            bg-gray-500
+                            bg-blue-500
+                            bg-blue-800
+                            bg-green-500
+                            bg-orange-200
+                            bg-purble-500
+                            bg-yellow-500"
+                            >
                     </div>
                 </div>
 
@@ -122,15 +154,26 @@
                     </div>
                 </div>
 
-                <div class="w-full flex mt-6 border-b border-primary-main pb-6">
-
-                    <button wire:click="addCart({{ $product->id }})" 
-                            class="px-6 py-3 rounded-md drop-shadow-md hover:drop-shadow-xl
-                                bg-secondary-main hover:bg-secondary-dark duration-150 text-secondary-text 
-                                text-base leading-none font-semibold uppercase"
-                                >Thêm Vào Giỏ
+                <div
+                    class="w-full 
+                    md:flex mt-6 border-b 
+                    md:space-x-4
+                    border-primary-main pb-6"
+                    >
+                    <button 
+                        wire:click="addCart({{ $product->id }})" 
+                        @click.prevent="$store.shop.toggleSlideCart()"
+                        class="px-6 py-3 rounded-md
+                        drop-shadow-md 
+                        hover:drop-shadow-xl
+                        bg-secondary-main 
+                        hover:bg-secondary-dark 
+                        duration-150 
+                        text-secondary-text 
+                        text-base leading-none 
+                        font-semibold uppercase"
+                        >Thêm Vào Giỏ
                     </button>
-
                 </div>
 
                 <div class="w-full mt-6">

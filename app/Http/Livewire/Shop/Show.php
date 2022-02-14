@@ -22,13 +22,25 @@ class Show extends Component
 
     public $colors   = [];
 
+    public $cartMessage = false;
+
     public function mount()
     {
-        $this->colors = $this->product->colors;
 
-        $this->color = $this->product->colors[0]['value'];
+        if($this->product->colors->count()) {
 
-        $this->sizes = $this->product->sizes;
+            $this->colors = $this->product->colors;
+
+            $this->color = $this->product->colors[0]['value'];
+
+        }
+
+        if($this->product->sizes->count()) {
+
+            $this->sizes = $this->product->sizes;
+
+            $this->size = $this->product->sizes[0]['name'];
+        }
     }
 
     public function addCart($prdId) 
@@ -49,7 +61,7 @@ class Show extends Component
             ]
         ]);
 
-        $this->reset('quantity');
+        $this->reset(['quantity', 'cartMessage']);
 
         $this->emit('cartAdded');
     }
@@ -83,6 +95,12 @@ class Show extends Component
         elseif($q === '+') {
             $this->quantity += 1;
         }
+    }
+
+    public function toggleMessage()
+    {
+        $this->reset('cartMessage');
+        $this->cartMessage = false;
     }
 
     public function render()

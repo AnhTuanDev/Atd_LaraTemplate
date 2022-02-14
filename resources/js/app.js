@@ -9,6 +9,8 @@ Alpine.store('shop', {
     slideMenu: false,
 
     overflow: false,
+
+    slideCart: false,
  
     toggleSlideMenu() {
         this.slideMenu = ! this.slideMenu
@@ -16,7 +18,12 @@ Alpine.store('shop', {
 
     toggleOverflow() {
         this.overflow = ! this.overflow
+    },
+
+    toggleSlideCart() {
+        this.slideCart = ! this.slideCart
     }
+
 })
 
 Alpine.start();
