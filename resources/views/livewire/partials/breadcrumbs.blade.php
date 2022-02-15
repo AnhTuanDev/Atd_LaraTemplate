@@ -27,17 +27,38 @@
             </a>
         @endif
 
-        @if(isset($category))
-            <a href="{{ route('shop.category', $category->slug) }}"  class="inline-flex items-center">
-                <x-orchid-icon path="arrow-right" class="mx-2" />
-                {{ $category->name }}
-            </a>
+        @if(isset($category) && !empty($category->name))
+            @if(isset($currentItemName))
+                <a href="{{ route('shop.category', $category->slug) }}"  class="inline-flex items-center">
+                    <x-orchid-icon path="arrow-right" class="mx-2" />
+                    {{ $category->name }}
+                </a>
+            @else
+                <div class="text-gray-400 inline-flex items-center">
+                    <x-orchid-icon path="arrow-right" class="mx-2" />
+                    {{ $category->name }}
+                </div>
+            @endif
         @endif
 
-        @if(isset($productName))
+        @if(isset($tag) && !empty($tag->name))
+            @if(isset($currentItemName))
+                <a href="{{ route('shop.category', $category->slug) }}"  class="inline-flex items-center">
+                    <x-orchid-icon path="arrow-right" class="mx-2" />
+                    {{ $tag->name }}
+                </a>
+            @else
+                <div class="text-gray-400 inline-flex items-center">
+                    <x-orchid-icon path="arrow-right" class="mx-2" />
+                    {{ $tag->name }}
+                </div>
+            @endif
+        @endif
+
+        @if(isset($currentItemName))
             <div class="text-gray-400 inline-flex items-center">
                 <x-orchid-icon path="arrow-right" class="mx-2 text-gray-500" />
-                {{ $productName }}
+                {{ $currentItemName }}
             </div>
         @endif
 

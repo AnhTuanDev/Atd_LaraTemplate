@@ -2,17 +2,21 @@
 
     <div class="max-w-7xl mx-auto">
 
-        <div class="w-full md:grid md:grid-cols-12 md:gap-6 my-5 md:my-8">
+        <div class="w-full md:grid md:grid-cols-12 md:gap-6 my-5">
 
-            <div class="w-full md:col-span-7">
+            <div x-data="{ imgList: {{$photos}}, select: 0 }"
+                class="w-full md:col-span-6">
 
-                <div x-data="{ show: 0 }"
+                <div x-data="{ show: 0, imgkey: 0 }"
                     class="flex flex-col md:flex-row w-full">
                     <!-- Danh sach image --> 
-                    <div class="flex order-last 
+                    <div
+                        class="flex order-last 
+                        justify-center
+                        md:justify-start
                         overflow-auto
                         md:order-first 
-                        mt-2 md:mt-0
+                        mt-2 md:-mt-3
                         md:space-y-2
                         md:space-x-0
                         md:flex-col 
@@ -20,39 +24,88 @@
                         rounded-md
                         md:h-screen
                         space-x-2
+                        p-1
                         md:mr-2
-                        "
-                        >
-                        @foreach($photos as $index => $img)
-                        <img @click="show = {{ $index }}"
-                            src="{{ $img->url() }}" alt=""
-                            class="w-10 md:w-14 object-container object-center rounded" 
-                            >
-                        @endforeach
+                        ">
+                        <template
+                            x-for="(img, key) in imgList" :key="img.id" >
+                            <img 
+                                @click="show = key"
+                                @click.prevent="select = key"
+                                :alt="img.original_name"
+                                :src="img.url" 
+                                :class="show == key ? 'border border-2 border-secondary-main' : ''"
+                                class="w-10 md:w-14 object-container object-center rounded shadow duration-100 ease-in-out" 
+                                >
+                        </template>
                     </div>
 
                     <!-- Acive image --> 
-                    <div x-data="{ imgs: {{$photos}}, zoom: false }" class="w-full md:flex-1">
-                        <template x-for="(img, key) in imgs" :key="img.id">
-                            <div class="w-full overflow-auto">
-                                <div @click="zoom = !zoom"
-                                    x-show=" show  == key "
-                                    :class="show === key ? 'translate-open' : 'translate-leave'"
-                                    class="w-full">
-                                    <img :src="img.url" alt=""
-                                        @click.outside="zoom = false"
-                                        :class="zoom ? 'scale-150' : ''" 
-                                        class="w-full object-container object-center rounded" >
+                    <div 
+                         :class="$store.shop.imageZoom ? 
+                         'fixed inset-0 z-[9999] w-full h-screen bg-gray-900 bg-opacity-95' : 
+                         ''"
+                         class="duration-200 ease-in-out">
+                        <div 
+                            :class="$store.shop.imageZoom ? 'h-screen p-5' : ''"
+                            class="flex items-center justify-center">
+                            <div>
+                                <template x-for="(img, key) in imgList" :key="img.id">
+                                    <div 
+                                        @click="imgkey = key"
+                                        x-show=" show  == key "
+                                        class="w-full">
+                                        <div 
+                                            @click="$store.shop.overflow = true "
+                                            :class="show === key ? 'translate-open' : 'translate-leave'">
+                                            <img :src="img.url" alt=""
+                                                @click="$store.shop.imageZoom = true"
+                                                class="w-full max-w-xl object-container object-center rounded duration-100 ease-in-out" >
+                                
+                                        </div>
+                                    </div>
+                                </template>
+                                
+                                <div x-cloak x-show="$store.shop.imageZoom" class="w-full flex items-center justify-center mt-5">
+                                    <div class="flex
+                                        items-center
+                                        justify-center
+                                        tems-center
+                                        rounded-md
+                                        space-x-2
+                                        ">
+                                        <template
+                                            x-for="(img, key) in imgList" :key="img.id" >
+                                            <img 
+                                                @click="show = key"
+                                                @click.prevent="select = key"
+                                                :alt="img.original_name"
+                                                :src="img.url" 
+                                                :class="show == key ? 'border border-2 border-secondary-main' : ''"
+                                                class="w-6 h-6 md:w-10 md:h-10 object-cover object-center rounded-full duration-100 ease-in-out" 
+                                                >
+                                        </template>
+                                    </div>
+                                    <div @click="$store.shop.overflow = false">
+                                        <button 
+                                            @click="$store.shop.imageZoom = false" 
+                                            class="ml-4 p-1 bg-gray-500 rounded-full h-full flex items-center border border-gray-300 leading-none text-gray-100 text-md md:text-xl">
+                                            <x-orchid-icon path="cross" />
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </template>
+
+                        </div>
+
                     </div>
+
                 </div>
 
             </div>
 
             <!-- Product Detail -->
-            <div class="w-full md:col-span-5">
+            <div class="w-full md:col-span-6">
 
                 <h2 
                     class="text-2xl 

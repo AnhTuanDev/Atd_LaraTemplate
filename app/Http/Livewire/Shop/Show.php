@@ -24,6 +24,8 @@ class Show extends Component
 
     public $cartMessage = false;
 
+    public $imageZoom = '175';
+
     public function mount()
     {
 

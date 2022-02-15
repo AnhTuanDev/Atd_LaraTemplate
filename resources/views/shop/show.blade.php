@@ -6,9 +6,8 @@
     </x-slot>
 
     <livewire:partials.breadcrumbs
-        :breadcrumbs="$product" 
-        :productName="$product->name" 
-        shop="shop"
+         shop="shop"
+        :currentItemName="$product->name" 
         :category="$product->category" 
         />
 

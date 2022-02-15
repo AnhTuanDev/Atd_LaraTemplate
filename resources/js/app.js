@@ -6,6 +6,8 @@ window.Alpine = Alpine;
 
 Alpine.store('shop', {
 
+    imageZoom: false,
+
     slideMenu: false,
 
     overflow: false,

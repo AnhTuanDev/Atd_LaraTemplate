@@ -16,12 +16,12 @@
 }
 
 .translate-open {
-    @apply transition ease-in-out duration-200;
+    @apply transition ease-out duration-150;
     animation: fadeTranslateOpen 0.3s;
 }
 
 .translate-leave {
-    @apply transition ease-in-out duration-150;
+    @apply transition ease-in duration-100;
     animation: fadeTranslateLeave 0.2s;
 }
 
@@ -58,3 +58,29 @@
     }
 
 }
+
+.atd-scrollbar::-webkit-scrollbar {
+    width: 7px;
+}
+
+/* Tay cam scrollbar */
+.atd-scrollbar::-webkit-scrollbar-thumb {
+    background: #EC4899;
+    border-radius: 10px;
+}
+
+.atd-scrollbar {
+
+    scrollbar-color: #EC4899 #fff0;
+    scrollbar-width: auto;
+}
+
+/* background scrollbar */
+.atd-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.atd-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: rgb(153, 42, 121);
+  }
+

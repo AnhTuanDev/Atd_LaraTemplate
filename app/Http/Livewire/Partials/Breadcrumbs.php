@@ -13,8 +13,8 @@ class Breadcrumbs extends Component
     public $blog;
     public $shop;
     public $category;
-    public $tagName;
-    public $productName;
+    public $tag;
+    public $currentItemName;
 
     public function mount()
     {
