@@ -46,52 +46,89 @@
                          'fixed inset-0 z-[9999] w-full h-screen bg-gray-900 bg-opacity-95' : 
                          ''"
                          class="duration-200 ease-in-out">
-                        <div 
+                        <div
                             :class="$store.shop.imageZoom ? 'h-screen p-5' : ''"
-                            class="flex items-center justify-center">
-                            <div>
+                            class="relative flex items-center justify-center">
+                            <div x-data="{zoom: false}" 
+                                :class="$store.shop.imageZoom ? 'h-screen overflow-auto p-2' : ''"
+                                >
                                 <template x-for="(img, key) in imgList" :key="img.id">
                                     <div 
-                                        @click="imgkey = key"
+                                        @click.prevent="imgkey = key"
                                         x-show=" show  == key "
                                         class="w-full">
                                         <div 
-                                            @click="$store.shop.overflow = true "
+                                            @click.prevent="$store.shop.overflow = true "
                                             :class="show === key ? 'translate-open' : 'translate-leave'">
                                             <img :src="img.url" alt=""
-                                                @click="$store.shop.imageZoom = true"
+                                                @click.prevent="$store.shop.imageZoom = true"
+                                                :class="zoom ? 'scale-175' : ''"
                                                 class="w-full max-w-xl object-container object-center rounded duration-100 ease-in-out" >
                                 
                                         </div>
                                     </div>
                                 </template>
                                 
-                                <div x-cloak x-show="$store.shop.imageZoom" class="w-full flex items-center justify-center mt-5">
-                                    <div class="flex
+                                <div x-cloak x-show="$store.shop.imageZoom" 
+                                    class="fixed bottom-0 left-0 mb-3 md:mb-5 w-full flex items-center justify-center mt-5">
+                                    <div @click="zoom = !zoom">
+                                        <button a-cloak x-show="!zoom" 
+                                            class="shadow-md mr-3 p-1
+                                            bg-gray-700 rounded-full h-full 
+                                            flex items-center border border-gray-300 
+                                            leading-none text-gray-100 
+                                            text-sm"
+                                            >
+                                            <x-orchid-icon path="size-fullscreen" class="w-4 h-4" />
+                                        </button>
+                                        <button a-cloak x-show="zoom" 
+                                            class="shadow-md mr-3 p-1
+                                            bg-gray-700 rounded-full h-full 
+                                            flex items-center border border-gray-300 
+                                            leading-none text-gray-100 
+                                            text-sm"
+                                            >
+                                            <x-orchid-icon path="size-actual" class="w-4 h-4" />
+                                        </button>
+                                    </div>
+                                    <div 
+                                        class="flex
                                         items-center
                                         justify-center
                                         tems-center
-                                        rounded-md
-                                        space-x-2
+                                        rounded-full
+                                        bg-gray-900 
+                                        bg-opacity-75 
+                                        p-1
                                         ">
-                                        <template
-                                            x-for="(img, key) in imgList" :key="img.id" >
-                                            <img 
-                                                @click="show = key"
-                                                @click.prevent="select = key"
-                                                :alt="img.original_name"
-                                                :src="img.url" 
-                                                :class="show == key ? 'border border-2 border-secondary-main' : ''"
-                                                class="w-6 h-6 md:w-10 md:h-10 object-cover object-center rounded-full duration-100 ease-in-out" 
-                                                >
+                                        <template x-for="(img, key) in imgList" :key="img.id" >
+                                            <div class="p-[4px]">
+                                                <img 
+                                                    @click="show = key"
+                                                    @click.prevent="zoom = false"
+                                                    :alt="img.original_name"
+                                                    :src="img.url" 
+                                                    :class="show == key ? 'border border-2 border-secondary-main' : ''"
+                                                    class="shadow-sm shadow-secondary-main 
+                                                    w-6 h-6 md:w-10 md:h-10 object-cover 
+                                                    object-center rounded-full 
+                                                    duration-100 ease-in-out" 
+                                                    >
+                                            </div>
                                         </template>
                                     </div>
                                     <div @click="$store.shop.overflow = false">
-                                        <button 
-                                            @click="$store.shop.imageZoom = false" 
-                                            class="ml-4 p-1 bg-gray-500 rounded-full h-full flex items-center border border-gray-300 leading-none text-gray-100 text-md md:text-xl">
-                                            <x-orchid-icon path="cross" />
-                                        </button>
+                                        <div @click="zoom = false">
+                                            <button 
+                                                @click="$store.shop.imageZoom = false" 
+                                                class="shadow-md ml-3 p-1 
+                                                bg-gray-700 rounded-full h-full 
+                                                flex items-center border 
+                                                border-gray-300 leading-none 
+                                                text-gray-100 text-md md:text-xl">
+                                                <x-orchid-icon path="cross" />
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
