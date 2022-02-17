@@ -1,7 +1,12 @@
 <div class="content px-5">
 
-    <div class="max-w-7xl mx-auto">
+    <livewire:partials.breadcrumbs
+         shop="shop"
+        :currentItemName="$product->name" 
+        :category="$product->category" 
+        />
 
+    <div class="max-w-7xl mx-auto">
         <div class="w-full md:grid md:grid-cols-12 md:gap-6 my-5">
 
             <div x-data="{ imgList: {{$photos}}, select: 0 }"
@@ -31,7 +36,6 @@
                             x-for="(img, key) in imgList" :key="img.id" >
                             <img 
                                 @click="show = key"
-                                @click.prevent="select = key"
                                 :alt="img.original_name"
                                 :src="img.url" 
                                 :class="show == key ? 'border border-2 border-secondary-main' : ''"
@@ -50,7 +54,11 @@
                             :class="$store.shop.imageZoom ? 'h-screen p-5' : ''"
                             class="relative flex items-center justify-center">
                             <div x-data="{zoom: false}" 
-                                :class="$store.shop.imageZoom ? 'h-screen overflow-auto p-2' : ''"
+                                @click.outside="$store.shop.overflow = false; 
+                                $store.shop.imageZoom = false;
+                                zoom = false"
+                                :class="$store.shop.imageZoom ? 'h-screen overflow-auto p-2 atd-scrollbar' : ''"
+                                class="touck-auto"
                                 >
                                 <template x-for="(img, key) in imgList" :key="img.id">
                                     <div 
@@ -58,12 +66,13 @@
                                         x-show=" show  == key "
                                         class="w-full">
                                         <div 
-                                            @click.prevent="$store.shop.overflow = true "
-                                            :class="show === key ? 'translate-open' : 'translate-leave'">
-                                            <img :src="img.url" alt=""
-                                                @click.prevent="$store.shop.imageZoom = true"
-                                                :class="zoom ? 'scale-175' : ''"
-                                                class="w-full max-w-xl object-container object-center rounded duration-100 ease-in-out" >
+                                            @click.prevent="$store.shop.overflow = true; $store.shop.imageZoom = true"
+                                            :class="show === key ? 'translate-open' : 'translate-leave'"
+                                            class="w-full">
+                                            <img 
+                                                :src="img.url" alt=""
+                                                :class="zoom ? 'scale-150 origin-top-left' : 'w-full max-w-xl rounded'"
+                                                class="mx-auto object-container object-center duration-100 ease-in-out" >
                                 
                                         </div>
                                     </div>
@@ -276,6 +285,8 @@
             </div>
 
         </div>
-    
     </div>
+
+    <livewire:shop.product-list :category="$product->category" />
+
 </div>

@@ -12,9 +12,12 @@ use App\Models\Shop\Product;
 
 class ProductList extends Component
 {
+
     use WithPagination;
 
     //public $term;
+
+    public $commandBar = false;
 
     public $category, $pageTitle, $priceBetween = [], $perPage = 10, $orderColumnLabel =  'Ngày Tháng', $orderColumnValue =  'created_at';
 

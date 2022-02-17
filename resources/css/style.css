@@ -1,0 +1,33 @@
+
+.on-top {
+    z-index: 999999;
+}
+@layer components {
+    .main-menu-hover {
+        @apply cursor-default leading-none border-b-4 border-transparent hover:border-secondary-main active:text-indigo-500 duration-200 ease-in-out;
+    }
+}
+.atd-scrollbar::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+/* Tay cam scrollbar */
+.atd-scrollbar::-webkit-scrollbar-thumb {
+    background: #7b1fa2;
+    height: 7px;
+    width: 7px;
+    border-radius: 5px;
+}
+/* background: rgb(153, 42, 121); */
+.atd-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #4a0072;
+}
+.atd-scrollbar {
+    /* scrollbar-gutter: stable; */
+    scrollbar-color: #7b1fa2 #fff1;
+    scrollbar-width: auto;
+}
+/* background scrollbar */
+.atd-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}

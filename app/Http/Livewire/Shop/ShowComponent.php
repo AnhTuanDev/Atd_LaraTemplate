@@ -6,9 +6,9 @@ use Livewire\Component;
 
 use App\Models\Shop\Product;
 
-class Show extends Component
+class ShowComponent extends Component
 {
-    public $product;
+    public Product $product;
 
     public $quantity = 1;
 
@@ -107,11 +107,9 @@ class Show extends Component
 
     public function render()
     {
-        return view('livewire.shop.show', [
+        return view('livewire.shop.show-component', [
             'photos' => $this->product->attachment()->get(),
-
             'cartCount' => \Cart::count(),
-
-        ]);
+        ])->layout('components.shop.layouts.app');
     }
 }

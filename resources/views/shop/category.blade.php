@@ -9,7 +9,7 @@
                 :category="$category" 
                 />
 
-            <livewire:shop.product-list :category="$category" />
+            <livewire:shop.product-list :category="$category" commandBar="true"/>
         
         </div>
     </div>

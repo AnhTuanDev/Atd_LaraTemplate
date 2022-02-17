@@ -38,7 +38,7 @@ class ShopController extends Controller
 
     public function productShow(Product $product) {
 
-        return view('shop.show', [
+        return view('shop.show-component', [
 
             'product' => $product,
 
