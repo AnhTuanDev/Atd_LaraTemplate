@@ -1,3 +1,4 @@
+@isset($product)
 <div class="flex flex-col mb-5 md:mb-8 overflow-hidden cursor-pointer p-2">
 
     <a href="{{ route('shop.product.show', $product) }}">
@@ -20,13 +21,13 @@
         <a href="/blog-post"> </a>
         <div class="flex-1">
             <a href="{{ route( 'shop.category', $product->category ) }}">
-                <div class="flex pt-6 text-sm font-medium text-secondary-main hover:font-bold duration-100">
+                <div class="flex pt-6 text-sm font-medium text-secondary-main hover:text-secondary-dark duration-100">
                     <span>{{ $product->category->name ?? '' }} </span>
                 </div>
             </a>
             <a href="{{ route('shop.product.show', $product) }}" class="block mt-2 space-y-6">
-                <h3 class="capitalize
-                   text-xl font-semibold leading-none
+                <h3 class="uppercase
+                   text-md font-semibold leading-none
                    tracking-tighter text-primary-text
                    hover:text-secondary-main
                    duration-150">{{ $product->name }}
@@ -46,3 +47,4 @@
 
     </div>
 </div>
+@endif

@@ -4,12 +4,14 @@
 
         <div class="max-w-7xl mx-auto">
 
-            <livewire:partials.breadcrumbs
-                 shop="shop"
-                :category="$category" 
-                />
+            <div class="px-5">
+                <livewire:partials.breadcrumbs
+                     shop="shop"
+                    :category="$category" 
+                    />
+            </div>
 
-            <livewire:shop.product-list :category="$category" commandBar="true"/>
+            <livewire:shop.product-list :category="$category" commandBar="true" isSlideBar="true"/>
         
         </div>
     </div>

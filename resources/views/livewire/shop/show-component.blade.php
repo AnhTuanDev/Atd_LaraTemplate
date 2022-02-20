@@ -1,36 +1,29 @@
-<div class="content px-5">
+<div class="content">
 
-    <livewire:partials.breadcrumbs
-         shop="shop"
-        :currentItemName="$product->name" 
-        :category="$product->category" 
-        />
+    <section class="max-w-7xl mx-auto px-5 md:px-7">
+        <livewire:partials.breadcrumbs
+             shop="shop"
+            :currentItemName="$product->name" 
+            :category="$product->category" 
+            />
+    </section>
 
-    <div class="max-w-7xl mx-auto">
-        <div class="w-full md:grid md:grid-cols-12 md:gap-6 my-5">
+    <section>
+        <div class="w-full max-w-7xl px-5 mx-auto md:px-6 xl:px-none md:grid md:grid-cols-12 md:gap-6 border-b pb-10">
 
-            <div x-data="{ imgList: {{$photos}}, select: 0 }"
+            <div x-data="{ imgList: {{$photos}} }"
                 class="w-full md:col-span-6">
-
                 <div x-data="{ show: 0, imgkey: 0 }"
                     class="flex flex-col md:flex-row w-full">
                     <!-- Danh sach image --> 
                     <div
-                        class="flex order-last 
-                        justify-center
-                        md:justify-start
-                        overflow-auto
-                        md:order-first 
-                        mt-2 md:-mt-3
-                        md:space-y-2
-                        md:space-x-0
-                        md:flex-col 
-                        tems-center
-                        rounded-md
-                        md:h-screen
-                        space-x-2
-                        p-1
-                        md:mr-2
+                        class="flex order-last justify-center
+                        md:justify-start overflow-auto
+                        md:order-first mt-2 md:-mt-3
+                        md:space-y-2 md:space-x-0
+                        md:flex-col tems-center
+                        rounded-md md:h-screen
+                        space-x-2 p-1 md:mr-2
                         ">
                         <template
                             x-for="(img, key) in imgList" :key="img.id" >
@@ -38,8 +31,13 @@
                                 @click="show = key"
                                 :alt="img.original_name"
                                 :src="img.url" 
-                                :class="show == key ? 'border border-2 border-secondary-main' : ''"
-                                class="w-10 md:w-14 object-container object-center rounded shadow duration-100 ease-in-out" 
+                                :class="show == key ? 
+                                'border-2 border-secondary-main' : 'border-primary-dark'"
+                                class="w-10 md:w-14 object-container 
+                                object-center rounded 
+                                shadow duration-100
+                                ease-in-out
+                                border"
                                 >
                         </template>
                     </div>
@@ -51,13 +49,13 @@
                          ''"
                          class="duration-200 ease-in-out">
                         <div
-                            :class="$store.shop.imageZoom ? 'h-screen p-5' : ''"
+                            :class="$store.shop.imageZoom ? 'h-screen' : ''"
                             class="relative flex items-center justify-center">
                             <div x-data="{zoom: false}" 
                                 @click.outside="$store.shop.overflow = false; 
                                 $store.shop.imageZoom = false;
                                 zoom = false"
-                                :class="$store.shop.imageZoom ? 'h-screen overflow-auto p-2 atd-scrollbar' : ''"
+                                :class="$store.shop.imageZoom ? 'h-screen overflow-auto atd-scrollbar' : ''"
                                 class="touck-auto"
                                 >
                                 <template x-for="(img, key) in imgList" :key="img.id">
@@ -71,37 +69,40 @@
                                             class="w-full">
                                             <img 
                                                 :src="img.url" alt=""
-                                                :class="zoom ? 'scale-150 origin-top-left' : 'w-full max-w-xl rounded'"
+                                                :class="[ 
+                                                    zoom ? 'scale-150 origin-top-left' : 'w-198 max-screen', 
+                                                    $store.shop.imageZoom ? 'w-198 max-w-screen rounded-0' : 'rounded' 
+                                                ]"
                                                 class="mx-auto object-container object-center duration-100 ease-in-out" >
                                 
                                         </div>
                                     </div>
                                 </template>
                                 
-                                <div x-cloak x-show="$store.shop.imageZoom" 
+                                <div style="display: none" x-show="$store.shop.imageZoom" 
                                     class="fixed bottom-0 left-0 mb-3 md:mb-5 w-full flex items-center justify-center mt-5">
                                     <div @click="zoom = !zoom">
-                                        <button a-cloak x-show="!zoom" 
+                                        <button x-cloak x-show="!zoom" 
                                             class="shadow-md mr-3 p-1
                                             bg-gray-700 rounded-full h-full 
                                             flex items-center border border-gray-300 
                                             leading-none text-gray-100 
                                             text-sm"
                                             >
-                                            <x-orchid-icon path="size-fullscreen" class="w-4 h-4" />
+                                            <x-orchid-icon path="size-fullscreen" class="w-[2.5] h-[2.5] md:w-4 md:h-4" />
                                         </button>
-                                        <button a-cloak x-show="zoom" 
+                                        <button x-cloak x-show="zoom" 
                                             class="shadow-md mr-3 p-1
                                             bg-gray-700 rounded-full h-full 
                                             flex items-center border border-gray-300 
                                             leading-none text-gray-100 
                                             text-sm"
                                             >
-                                            <x-orchid-icon path="size-actual" class="w-4 h-4" />
+                                            <x-orchid-icon path="size-actual" class="w-[2.5] h-[2.5] md:w-4 md:h-4" />
                                         </button>
                                     </div>
                                     <div 
-                                        class="flex
+                                        class="flex flex-wrap
                                         items-center
                                         justify-center
                                         tems-center
@@ -111,7 +112,7 @@
                                         p-1
                                         ">
                                         <template x-for="(img, key) in imgList" :key="img.id" >
-                                            <div class="p-[4px]">
+                                            <div class="p-[3px]">
                                                 <img 
                                                     @click="show = key"
                                                     @click.prevent="zoom = false"
@@ -119,14 +120,14 @@
                                                     :src="img.url" 
                                                     :class="show == key ? 'border border-2 border-secondary-main' : ''"
                                                     class="shadow-sm shadow-secondary-main 
-                                                    w-6 h-6 md:w-10 md:h-10 object-cover 
+                                                    w-5 h-5 md:w-10 md:h-10 object-cover 
                                                     object-center rounded-full 
                                                     duration-100 ease-in-out" 
                                                     >
                                             </div>
                                         </template>
                                     </div>
-                                    <div @click="$store.shop.overflow = false">
+                                    <div x-cloak @click="$store.shop.overflow = false">
                                         <div @click="zoom = false">
                                             <button 
                                                 @click="$store.shop.imageZoom = false" 
@@ -135,7 +136,7 @@
                                                 flex items-center border 
                                                 border-gray-300 leading-none 
                                                 text-gray-100 text-md md:text-xl">
-                                                <x-orchid-icon path="cross" />
+                                                <x-orchid-icon path="cross" class="w-3 h-3 md:w-4 md:h-4" />
                                             </button>
                                         </div>
                                     </div>
@@ -151,7 +152,7 @@
             </div>
 
             <!-- Product Detail -->
-            <div class="w-full md:col-span-6">
+            <div class="w-full md:col-span-6 mx-w-7xl">
 
                 <h2 
                     class="text-2xl 
@@ -165,12 +166,12 @@
                     > {{$product->name}} 
                 </h2>
 
-                <div class="flex items-center space-x-2 mt-6">
+                <div class="flex items-center space-x-2 mt-4">
                     <label for="sku" class="text-sm text-gray-400 uppercase">Sku: </label>
                     <label for="sku" class="text-sm text-gray-400">{{ $product->sku}}</label>
                 </div>
 
-                <div class="flex items-center space-x-4 mt-6">
+                <div class="flex items-center space-x-4 mt-4">
                     @if($product->discount < 1)
                     <label for="discount" class="font-semibold text-xl mr-4 text-secondary-dark">{{ $product->price}}</label>
                     @else
@@ -179,7 +180,7 @@
                     @endif
                 </div>
 
-                <div class="w-full flex mt-6">
+                <div class="w-full flex mt-4">
                     <div class="w-full flex items-center space-x-2">
                         @foreach($colors as $cl)
                         <button wire:click="setColor('{{ $cl->value }}')" 
@@ -208,7 +209,7 @@
                     </div>
                 </div>
 
-                <div class="w-full flex mt-6">
+                <div class="w-full flex mt-4">
                     <div
                         class="w-full flex items-center space-x-2">
                         @foreach($sizes as $sz)
@@ -227,7 +228,7 @@
                 </div>
 
                 <!-- Set Quantity -->
-                <div class="w-full flex mt-6">
+                <div class="w-full flex mt-4">
                     <div class="w-full flex items-center justify-between">
 
                         <div class="flex items-center space-x-4">
@@ -255,7 +256,7 @@
 
                 <div
                     class="w-full 
-                    md:flex mt-6 border-b 
+                    md:flex mt-4 border-b 
                     md:space-x-4
                     border-primary-main pb-6"
                     >
@@ -285,8 +286,40 @@
             </div>
 
         </div>
-    </div>
+    </section>
 
-    <livewire:shop.product-list :category="$product->category" />
+    <section class="px-5 w-full mx-auto xl:px-none max-w-7xl">
+        <!-- product list -->
+        <div class="relative w-full">
+            <!-- Header title Bar -->
+            <h3 class="pb-3 mt-6 flex 
+                items-center justify-center 
+                text-secondary-main 
+                text-lg md:text-2xl 
+                font-semibold
+                cursor-pointer
+                uppercase
+                "
+                > Sản Phẩm Cùng Loại
+            </h3>
+
+            <div class="mt-5 gap-x-6 gap-y-8 grid grid md:grid-cols-4"
+                >
+                @isset($products)
+                    @foreach($products as $item)
+                        @if($item->id != $product->id)
+                            <x-shop.partials.product-list-item :product="$item" />
+                        @endif
+                    @endforeach
+                @endif
+            </div>
+
+            <div class="px-5 py-4">
+                {{-- {{ $products->links() }} --}}
+            </div>
+
+        </div>
+        <!-- product list -->
+    </section>
 
 </div>

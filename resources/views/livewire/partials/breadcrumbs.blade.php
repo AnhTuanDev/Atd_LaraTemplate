@@ -1,4 +1,4 @@
-<div class="content mt-5 px-5">
+<section>
 
     <div class="flex
         cursor-pointer
@@ -8,8 +8,8 @@
         uppercase 
         max-w-7xl
         mx-auto 
-        text-sm
-        py-2
+        text-xs
+        py-4
         ">
 
         @if(isset($home))
@@ -21,7 +21,7 @@
 
         @if(isset($shop))
             <a href="{{ route('shop.index') }}"  class="inline-flex items-center">
-                <x-orchid-icon path="arrow-right" class="mx-2" />
+                <x-orchid-icon path="arrow-right" class="mx-1" />
                 <x-orchid-icon path="bag" class="mr-1" />
                 {{ $shop }}
             </a>
@@ -30,12 +30,13 @@
         @if(isset($category) && !empty($category->name))
             @if(isset($currentItemName))
                 <a href="{{ route('shop.category', $category->slug) }}"  class="inline-flex items-center">
-                    <x-orchid-icon path="arrow-right" class="mx-2" />
+                    <x-orchid-icon path="arrow-right" class="mx-1" />
+                    <x-orchid-icon path="menu" class="mr-1" />
                     {{ $category->name }}
                 </a>
             @else
                 <div class="text-gray-400 inline-flex items-center">
-                    <x-orchid-icon path="arrow-right" class="mx-2" />
+                    <x-orchid-icon path="arrow-right" class="mx-1" />
                     {{ $category->name }}
                 </div>
             @endif
@@ -44,12 +45,12 @@
         @if(isset($tag) && !empty($tag->name))
             @if(isset($currentItemName))
                 <a href="{{ route('shop.category', $category->slug) }}"  class="inline-flex items-center">
-                    <x-orchid-icon path="arrow-right" class="mx-2" />
+                    <x-orchid-icon path="arrow-right" class="mx-1" />
                     {{ $tag->name }}
                 </a>
             @else
                 <div class="text-gray-400 inline-flex items-center">
-                    <x-orchid-icon path="arrow-right" class="mx-2" />
+                    <x-orchid-icon path="arrow-right" class="mx-1" />
                     {{ $tag->name }}
                 </div>
             @endif
@@ -64,4 +65,4 @@
 
     </div>
 
-</div>
+</section>

@@ -17,7 +17,7 @@ class ProductList extends Component
 
     //public $term;
 
-    public $commandBar = false;
+    public $commandBar = false, $headerTile, $isSlideBar = false, $classes;
 
     public $category, $pageTitle, $priceBetween = [], $perPage = 10, $orderColumnLabel =  'Ngày Tháng', $orderColumnValue =  'created_at';
 

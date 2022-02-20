@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire\Shop;
 
+use Illuminate\Database\Eloquent\Collection;
+
 use Livewire\Component;
 
 use App\Models\Shop\Product;
@@ -107,9 +109,13 @@ class ShowComponent extends Component
 
     public function render()
     {
+
+        $products = $this->product->category->products->take(6);
+
         return view('livewire.shop.show-component', [
             'photos' => $this->product->attachment()->get(),
             'cartCount' => \Cart::count(),
+            'products' => $products,
         ])->layout('components.shop.layouts.app');
     }
 }
