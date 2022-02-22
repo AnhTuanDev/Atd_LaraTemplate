@@ -1,20 +1,18 @@
 <?php
 
-namespace App\Http\Livewire\Shop\Partials;
+namespace App\Http\Livewire\Shop;
 
 use Livewire\Component;
 
-class CartComponent extends Component
+class CheckoutComponent extends Component
 {
 
-    public $cartCount, $cartContent;
+    public $cartCount, $cartContent, $quantity;
 
-    protected $listeners = ['cartAdded'];
-
-    public function cartAdded()
+    public function mount()
     {
 
-        $this->reset(['cartCount']);
+        //$this->reset(['cartCount']);
 
         $this->cartCount = \Cart::count();
 
@@ -41,20 +39,10 @@ class CartComponent extends Component
         $this->reset(['cartCount', 'cartContent']);
     }
 
-
-
-    public function mount()
-    {
-        $this->reset(['cartCount', 'cartContent']);
-
-        $this->cartCount = \Cart::count();
-
-        $this->cartContent = \Cart::content();
-
-    }
-
     public function render()
     {
-        return view('livewire.shop.partials.cart-component');
+        return view('livewire.shop.checkout-component', [
+            //
+        ])->layout('components.shop.layouts.app');
     }
 }

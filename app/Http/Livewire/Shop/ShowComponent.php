@@ -49,13 +49,19 @@ class ShowComponent extends Component
 
     public function addCart($prdId) 
     {
-        $cartProduct = Product::whereId($prdId)->first();
+        $cartProduct = Product::findOrFail($prdId);
+
+        //ddd($cartProduct);
+
+        $discount = $cartProduct['discount'] < 1;
+
+        $price = $discount ? $cartProduct['price'] : $cartProduct['discount'];
 
         \Cart::add([
             'id'        => $cartProduct['id'], 
             'name'      => $cartProduct['name'], 
             'qty'       => $this->quantity,
-            'price'     => (int)$cartProduct['price'], 
+            'price'     => (int) $price, 
             'weight'    => 1, 
             'options'   => [
                     'size'      => 'Size: ' . $this->size,

@@ -1,19 +1,26 @@
 <div x-data
     class="flex items-center justify-center">
+    @if($cartCount > 0)
     <button @click="$store.shop.overflow = true, $store.shop.toggleSlideCart()"
-            {{-- @mouseover.enter="open = 'Shop'" --}}
-            class="relative flex items-center text-md leading-none font-semibold z-[9998]">
-
-        <x-orchid-icon path="bag" class="text-lg font-bold text-secondary-main"/>
-
-        @if($cartCount > 0)
+            class="relative 
+            flex items-center 
+            text-md leading-none 
+            font-semibold z-[9998]
+            ">
+            <x-orchid-icon path="bag" class="text-lg font-bold text-secondary-main"/>
             <div for="cart" 
-                class="bg-secondary-light ml-1 rounded-full font-bold hover:bg-secondary-dark hover:text-secondary-text
-                leading-none text-sm p-2 flex flex-col items-center text-center duration-150">
+                class="bg-secondary-light 
+                ml-1 rounded-full font-bold 
+                hover:bg-secondary-dark 
+                hover:text-secondary-text
+                leading-none text-sm p-2 
+                flex flex-col items-center 
+                text-center duration-150
+                ">
                 {{ $cartCount }}
             </div>
-        @endif
     </button>
+    @endif
 
     <div x-show="$store.shop.slideCart"
         x-transition:enter.origin.right.top.duration.200ms
@@ -28,13 +35,16 @@
 
         <div x-data
             @click.outside="$store.shop.overflow = false, $store.shop.toggleSlideCart()"
-            class="text-primary-text p-4 drop-shadow-lg border-b">
+            class="text-primary-text 
+            p-4 drop-shadow-lg 
+            border-b
+            ">
             @if($cartContent)
                 @foreach($cartContent as $key => $item) 
                     <div class="relative px-2 py-4 border-b border-dashed border-gray-300 text-primary-text flex flex-col">
 
                        <button wire:click.prevent="cartRemove( '{{$item->rowId }}' )" 
-                            class="p-1 rounded-lg absolute top-0 right-0 z-[9999] bg-secondary-dark hover:drop-shadow-md hover:p-2 duration-50 mt-2">
+                            class="p-1 rounded-lg absolute top-0 right-0 z-[9999] bg-secondary-dark hover:drop-shadow-md hover:bg-secondary-main duration-50 mt-2">
                            <x-orchid-icon path="trash" class="text-sm font-bold text-secondary-text"/>
                        </button>
 
@@ -61,30 +71,40 @@
                     </div>
                 @endforeach
             @endif
-            @if($cartContent)
-            <div class="w-full flex items-center space-x-4 justify-between mt-4">
-                <button 
-                    class="bg-secondary-main 
-                    border border-secondary-main
-                    hover:bg-primary-main
-                    px-4 py-2 rounded-md 
-                    text-sm md:text-md 
-                    md:font-semibold
-                    duration-150"
-                    >Xem Giỏ Hàng
-                </button>
-                <button 
-                    wire:click="destroyCart" 
-                    class="bg-primary-dark
-                    border border-secondary-main
-                    hover:bg-primary-main
-                    px-4 py-2 rounded-md 
-                    text-sm md:text-md 
-                    font-semibold
-                    duration-150"
-                    >Xóa Giỏ
-                </button>
-            </div>
+
+            @if(!$cartCount)
+                <div class="flex items-center text gray-500">
+                    <x-orchid-icon path="bell" />
+                    <h3 class="w-full text-sm ml-2"> Chưa có sản phẩm trong giỏ  </h3>
+                </div>
+            @endif
+
+            @if($cartCount)
+                <div class="w-full flex items-center space-x-4 justify-between mt-4">
+                    <a href="{{ route('shop.cart.checkout') }}">
+                        <button 
+                            class="bg-secondary-main 
+                            border border-secondary-main
+                            hover:bg-primary-main
+                            px-4 py-2 rounded-md 
+                            text-sm md:text-md 
+                            md:font-semibold
+                            duration-150"
+                            >Xem Giỏ Hàng
+                        </button>
+                    </a>
+                    <button 
+                        wire:click="destroyCart" 
+                        class="bg-primary-dark
+                        border border-secondary-main
+                        hover:bg-primary-main
+                        px-4 py-2 rounded-md 
+                        text-sm md:text-md 
+                        font-semibold
+                        duration-150"
+                        >Xóa Giỏ
+                    </button>
+                </div>
             @endif
 
         </div>

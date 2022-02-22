@@ -237,13 +237,14 @@
                                 <x-orchid-icon path="arrow-down" />
                             </button>
 
-                            <input wire:model="quantity"
-                                    type="text" 
-                                    class="border border-primary-main rounded-md focus:outline-none 
-                                            focus:border-transparent focus:ring-2
-                                            w-10 text-md leading-none inline-flex focus:ring-secondary-dark
-                                            items-center text-center font-semibold"
-                                            >
+                            <input 
+                                wire:model="quantity"
+                                type="text" 
+                                class="border border-primary-main rounded-md focus:outline-none 
+                                focus:border-transparent focus:ring-2
+                                w-10 text-md leading-none inline-flex focus:ring-secondary-dark
+                                items-center text-center font-semibold
+                                ">
 
                             <button wire:click="setQuantity('+')"
                                 class="px-4 py-3 leading-none text-sm border border-primary-main rounded-md duration-150 hover:bg-primary-main hover:drop-shadow-lg">
@@ -260,6 +261,7 @@
                     md:space-x-4
                     border-primary-main pb-6"
                     >
+                    {{-- Add to cart --}}
                     <button 
                         wire:click="addCart({{ $product->id }})" 
                         @click.prevent="$store.shop.toggleSlideCart()"
@@ -274,6 +276,20 @@
                         font-semibold uppercase"
                         >Thêm Vào Giỏ
                     </button>
+                </div>
+                {{-- Loading --}}
+                <div wire:loading>
+                    <div 
+                        class="w-full flex 
+                        items-center text 
+                        gray-500 bg-blue-500 
+                        text-secondary-text 
+                        px-4 py-2 rounded
+                        shadow-md
+                        ">
+                        <x-orchid-icon path="loading" />
+                        <h3 class="w-full text-sm ml-2"> Đang thêm vào giỏ...  </h3>
+                    </div>
                 </div>
 
                 <div class="w-full mt-6">
