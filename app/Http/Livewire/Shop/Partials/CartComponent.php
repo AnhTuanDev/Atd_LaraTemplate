@@ -13,13 +13,11 @@ class CartComponent extends Component
 
     public function cartAdded()
     {
-
-        $this->reset(['cartCount']);
+        $this->reset(['cartCount', 'cartContent']);
 
         $this->cartCount = \Cart::count();
 
         $this->cartContent = \Cart::content();
-
     }
 
     public function cartRemove($row)
@@ -41,8 +39,6 @@ class CartComponent extends Component
         $this->reset(['cartCount', 'cartContent']);
     }
 
-
-
     public function mount()
     {
         $this->reset(['cartCount', 'cartContent']);
@@ -50,7 +46,6 @@ class CartComponent extends Component
         $this->cartCount = \Cart::count();
 
         $this->cartContent = \Cart::content();
-
     }
 
     public function render()

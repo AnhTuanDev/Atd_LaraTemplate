@@ -1,7 +1,7 @@
 <div x-data
     class="flex items-center justify-center">
-    @if($cartCount > 0)
-    <button @click="$store.shop.overflow = true, $store.shop.toggleSlideCart()"
+    @if($cartCount)
+    <button @click="$store.shop.toggleOverflow(); $store.shop.toggleSlideCart()"
             class="relative 
             flex items-center 
             text-md leading-none 
@@ -26,7 +26,16 @@
         x-transition:enter.origin.right.top.duration.200ms
         x-transition:leave.origin.right.top.duration.150ms
         style="display: none"
-        class="fixed right-0 top-0 w-screen md:w-96 h-screen z-[9999] bg-primary-dark drop-shadow-lg overflow-y-auto">
+        class="fixed 
+        w-screen md:w-96 
+        h-screen z-[9999] 
+        bg-primary-dark 
+        overflow-y-auto
+        drop-shadow-lg 
+        right-0 top-0 
+        bg-opacity-95
+        bg-blur-lg
+        ">
 
         <div class="w-full flex items-center justify-between p-6 border-b border-gray-300">
             <h3 class="text-xl font-semibold text-primary-text leading-none">Giỏ Hàng</h3>
@@ -34,18 +43,37 @@
         </div>
 
         <div x-data
-            @click.outside="$store.shop.overflow = false, $store.shop.toggleSlideCart()"
+            @click.outside="$store.shop.overflow = false; $store.shop.toggleSlideCart()"
             class="text-primary-text 
             p-4 drop-shadow-lg 
             border-b
             ">
             @if($cartContent)
                 @foreach($cartContent as $key => $item) 
-                    <div class="relative px-2 py-4 border-b border-dashed border-gray-300 text-primary-text flex flex-col">
+                    <div 
+                        class="relative 
+                        border-dashed 
+                        px-2 py-4 border-b
+                        border-gray-300 
+                        text-primary-text 
+                        flex flex-col
+                        @if($cartContent) 
+                            translate-open 
+                        @else
+                            translate-leave 
+                        @endif
+                        ">
 
                        <button wire:click.prevent="cartRemove( '{{$item->rowId }}' )" 
-                            class="p-1 rounded-lg absolute top-0 right-0 z-[9999] bg-secondary-dark hover:drop-shadow-md hover:bg-secondary-main duration-50 mt-2">
-                           <x-orchid-icon path="trash" class="text-sm font-bold text-secondary-text"/>
+                            class="p-1 rounded-lg 
+                            absolute top-0 right-0 z-[9999] 
+                            hover:bg-secondary-main 
+                            hover:drop-shadow-md 
+                            bg-secondary-dark 
+                            duration-50 mt-2
+                            ">
+                           <x-orchid-icon path="trash" 
+                               class="text-sm font-bold text-secondary-text"/>
                        </button>
 
                         <div class="flex items-center">
@@ -95,6 +123,7 @@
                     </a>
                     <button 
                         wire:click="destroyCart" 
+                        @click.prevent="$store.shop.toggleSlideCart()"
                         class="bg-primary-dark
                         border border-secondary-main
                         hover:bg-primary-main

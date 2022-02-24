@@ -22,14 +22,14 @@ Route::get('/xem-don-hang', CheckoutComponent::class )->name('shop.cart.checkout
 
 Route::name('shop.')->group( function() {
 
-    Route::get('/danh-muc', [ShopController::class, 'shopCategory'])->name('index');
+    Route::get('/shop', [ShopController::class, 'shopCategory'])->name('index');
 
-    Route::get('/danh-muc/{category:slug?}', [ShopController::class, 'shopCategory'])->name('category');
+    Route::get('/shop/danh-muc/{category:slug?}', [ShopController::class, 'shopCategory'])->name('category');
 
-    Route::get('/the-tag/{tag:slug}', [ShopController::class, 'shopTag'])->name('tag');
+    Route::get('/shop/tag/{tag:slug}', [ShopController::class, 'shopTag'])->name('tag');
 
     //Route::get('/{product:slug}', [ShopController::class, 'productShow'])->name('product.show');
-    Route::get('/{product:slug}', ShowComponent::class )->name('product.show');
+    Route::get('/shop/san-pham/{product:slug}', ShowComponent::class )->name('product.show');
 
 });
 

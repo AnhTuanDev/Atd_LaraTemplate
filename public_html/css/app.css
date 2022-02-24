@@ -595,9 +595,6 @@ select{
 .top-0{
   top: 0px;
 }
-.right-0{
-  right: 0px;
-}
 .-left-4{
   left: -1rem;
 }
@@ -606,6 +603,9 @@ select{
 }
 .right-20{
   right: 5rem;
+}
+.right-0{
+  right: 0px;
 }
 .z-0{
   z-index: 0;
@@ -723,9 +723,6 @@ select{
 .mr-4{
   margin-right: 1rem;
 }
-.ml-2{
-  margin-left: 0.5rem;
-}
 .mb-1{
   margin-bottom: 0.25rem;
 }
@@ -737,6 +734,9 @@ select{
 }
 .mt-8{
   margin-top: 2rem;
+}
+.ml-2{
+  margin-left: 0.5rem;
 }
 .mr-2{
   margin-right: 0.5rem;
@@ -1919,9 +1919,6 @@ select{
   --tw-bg-opacity: 1;
   background-color: rgb(59 130 246 / var(--tw-bg-opacity));
 }
-.hover\:p-2:hover{
-  padding: 0.5rem;
-}
 .hover\:pl-4:hover{
   padding-left: 1rem;
 }
@@ -2340,6 +2337,16 @@ select{
     --tw-space-x-reverse: 0;
     margin-right: calc(1rem * var(--tw-space-x-reverse));
     margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+  .md\:space-x-6 > :not([hidden]) ~ :not([hidden]){
+    --tw-space-x-reverse: 0;
+    margin-right: calc(1.5rem * var(--tw-space-x-reverse));
+    margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+  .md\:space-x-5 > :not([hidden]) ~ :not([hidden]){
+    --tw-space-x-reverse: 0;
+    margin-right: calc(1.25rem * var(--tw-space-x-reverse));
+    margin-left: calc(1.25rem * calc(1 - var(--tw-space-x-reverse)));
   }
   .md\:border-t-0{
     border-top-width: 0px;

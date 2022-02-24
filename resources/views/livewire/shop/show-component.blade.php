@@ -2,7 +2,7 @@
 
     <section class="max-w-7xl mx-auto px-5 md:px-7">
         <livewire:partials.breadcrumbs
-             shop="shop"
+            shop="shop"
             :currentItemName="$product->name" 
             :category="$product->category" 
             />
@@ -44,10 +44,9 @@
 
                     <!-- Acive image --> 
                     <div 
-                         :class="$store.shop.imageZoom ? 
-                         'fixed inset-0 z-[9999] w-full h-screen bg-gray-900 bg-opacity-95' : 
-                         ''"
-                         class="duration-200 ease-in-out">
+                        :class="$store.shop.imageZoom ? 
+                        'fixed inset-0 z-[9999] w-full h-screen bg-gray-900 bg-opacity-95' : ''"
+                        class="duration-200 ease-in-out">
                         <div
                             :class="$store.shop.imageZoom ? 'h-screen' : ''"
                             class="relative flex items-center justify-center">
@@ -193,19 +192,13 @@
                     </div>
                     <div style="display:none" 
                         class="bg-white
-                            bg-orange-500 
-                            bg-gray-500
-                            bg-gray-900
-                            bg-black 
-                            bg-pink-500
-                            bg-gray-500
-                            bg-blue-500
-                            bg-blue-800
-                            bg-green-500
-                            bg-orange-200
-                            bg-purble-500
-                            bg-yellow-500"
-                            >
+                            bg-orange-500 bg-gray-500
+                            bg-gray-900 bg-black 
+                            bg-pink-500 bg-gray-500
+                            bg-blue-500 bg-blue-800
+                            bg-green-500 bg-orange-200
+                            bg-purble-500 bg-yellow-500
+                            ">
                     </div>
                 </div>
 
@@ -214,13 +207,17 @@
                         class="w-full flex items-center space-x-2">
                         @foreach($sizes as $sz)
                             <button wire:click="setSize('{{ $sz->name }}')"
-                                    class="uppercase px-4 py-2 border 
-                                            @if($size === $sz->name) 
-                                                bg-primary-dark
-                                            @else 
-                                                bg-secondary-line
-                                            @endif
-                                            border-primary-main rounded-md duration-150 hover:bg-primary-main hover:drop-shadow-lg">
+                                class="uppercase 
+                                px-4 py-2 border 
+                                border-primary-main 
+                                rounded-md duration-100
+                                hover:drop-shadow-lg
+                                @if($size === $sz->name) 
+                                    bg-primary-dark
+                                @else 
+                                    bg-secondary-line
+                                @endif
+                                ">
                                 {{ $sz->name }}
                             </button>    
                         @endforeach
@@ -277,21 +274,6 @@
                         >Thêm Vào Giỏ
                     </button>
                 </div>
-                {{-- Loading --}}
-                <div wire:loading>
-                    <div 
-                        class="w-full flex 
-                        items-center text 
-                        gray-500 bg-blue-500 
-                        text-secondary-text 
-                        px-4 py-2 rounded
-                        shadow-md
-                        ">
-                        <x-orchid-icon path="loading" />
-                        <h3 class="w-full text-sm ml-2"> Đang thêm vào giỏ...  </h3>
-                    </div>
-                </div>
-
                 <div class="w-full mt-6">
                     <h2 class="text-xl font-semibold mt-4">Mô Tả</h2>
                     <div class="text-main-text font-sm mt-4">
