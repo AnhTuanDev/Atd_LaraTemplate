@@ -1002,9 +1002,6 @@ select{
 .items-baseline{
   align-items: baseline;
 }
-.justify-end{
-  justify-content: flex-end;
-}
 .justify-center{
   justify-content: center;
 }
@@ -1191,11 +1188,21 @@ select{
   --tw-border-opacity: 1;
   border-color: rgb(79 70 229 / var(--tw-border-opacity));
 }
+.border-gray-700{
+  --tw-border-opacity: 1;
+  border-color: rgb(55 65 81 / var(--tw-border-opacity));
+}
 .border-opacity-\[35\%\]{
   --tw-border-opacity: 35%;
 }
 .border-opacity-25{
   --tw-border-opacity: 0.25;
+}
+.border-opacity-30{
+  --tw-border-opacity: 0.3;
+}
+.border-opacity-20{
+  --tw-border-opacity: 0.2;
 }
 .bg-white{
   --tw-bg-opacity: 1;
@@ -1300,6 +1307,9 @@ select{
 }
 .bg-opacity-25{
   --tw-bg-opacity: 0.25;
+}
+.bg-opacity-\[95\%\]{
+  --tw-bg-opacity: 95%;
 }
 .bg-cover{
   background-size: cover;
@@ -1459,6 +1469,9 @@ select{
 }
 .pb-8{
   padding-bottom: 2rem;
+}
+.pt-4{
+  padding-top: 1rem;
 }
 .pb-5{
   padding-bottom: 1.25rem;
@@ -1873,6 +1886,48 @@ select{
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
     -webkit-animation: fadeTranslateLeave 0.2s;
             animation: fadeTranslateLeave 0.2s;
+}
+.placeholder\:text-lg::-moz-placeholder{
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+.placeholder\:text-lg:-ms-input-placeholder{
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+.placeholder\:text-lg::placeholder{
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+.placeholder\:font-semibold::-moz-placeholder{
+  font-weight: 600;
+}
+.placeholder\:font-semibold:-ms-input-placeholder{
+  font-weight: 600;
+}
+.placeholder\:font-semibold::placeholder{
+  font-weight: 600;
+}
+.placeholder\:capitalize::-moz-placeholder{
+  text-transform: capitalize;
+}
+.placeholder\:capitalize:-ms-input-placeholder{
+  text-transform: capitalize;
+}
+.placeholder\:capitalize::placeholder{
+  text-transform: capitalize;
+}
+.placeholder\:text-gray-700::-moz-placeholder{
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
+}
+.placeholder\:text-gray-700:-ms-input-placeholder{
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
+}
+.placeholder\:text-gray-700::placeholder{
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
 }
 .first\:rounded-t:first-child{
   border-top-left-radius: 0.25rem;
@@ -2337,11 +2392,6 @@ select{
     --tw-space-x-reverse: 0;
     margin-right: calc(1rem * var(--tw-space-x-reverse));
     margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
-  }
-  .md\:space-x-6 > :not([hidden]) ~ :not([hidden]){
-    --tw-space-x-reverse: 0;
-    margin-right: calc(1.5rem * var(--tw-space-x-reverse));
-    margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
   }
   .md\:space-x-5 > :not([hidden]) ~ :not([hidden]){
     --tw-space-x-reverse: 0;
