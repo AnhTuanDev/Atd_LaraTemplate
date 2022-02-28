@@ -11,38 +11,23 @@ use App\Models\Shop\Product;
 class ShowComponent extends Component
 {
     public Product $product;
-
     public $quantity = 1;
-
     public $sizes    = [];
-
     public $size     = 'S';
-
     public $color;
-
     public $colorName;
-
     public $colors   = [];
-
     public $cartMessage = false;
-
     public $imageZoom = '175';
 
     public function mount()
     {
-
         if($this->product->colors->count()) {
-
             $this->colors = $this->product->colors;
-
             $this->color = $this->product->colors[0]['value'];
-
         }
-
         if($this->product->sizes->count()) {
-
             $this->sizes = $this->product->sizes;
-
             $this->size = $this->product->sizes[0]['name'];
         }
     }
@@ -50,13 +35,8 @@ class ShowComponent extends Component
     public function addCart($prdId) 
     {
         $cartProduct = Product::findOrFail($prdId);
-
-        //ddd($cartProduct);
-
         $discount = $cartProduct['discount'] < 1;
-
         $price = $discount ? $cartProduct['price'] : $cartProduct['discount'];
-
         \Cart::add([
             'id'        => $cartProduct['id'], 
             'name'      => $cartProduct['name'], 
@@ -70,33 +50,21 @@ class ShowComponent extends Component
                     'colorName' => $this->colorName,
             ]
         ]);
-
         $this->reset(['quantity', 'cartMessage']);
-
         $this->emit('cartAdded');
     }
-
     public function setColor($value)
     {
         $this->reset(['color', 'colorName']);
-
         $this->color = $value;
     }
-
-    // Set size.
     public function setSize($sz)
     {
-
         $this->reset('size');
-
         $this->size = $sz;
-
     }
-
-    // Set quantity.
     public function setQuantity($q)
     {
-
         if($q === '-') {
             if($this->quantity >= 2) {
                 $this->quantity -= 1;
@@ -106,18 +74,14 @@ class ShowComponent extends Component
             $this->quantity += 1;
         }
     }
-
     public function toggleMessage()
     {
         $this->reset('cartMessage');
         $this->cartMessage = false;
     }
-
     public function render()
     {
-
         $products = $this->product->category->products->take(6);
-
         return view('livewire.shop.show-component', [
             'photos' => $this->product->attachment()->get(),
             'cartCount' => \Cart::count(),

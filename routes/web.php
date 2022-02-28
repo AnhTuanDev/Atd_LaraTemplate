@@ -8,6 +8,8 @@ use App\Http\Livewire\Shop\ShowComponent;
 
 use App\Http\Livewire\Shop\CheckoutComponent;
 
+use App\Http\Livewire\Shop\CartOrderComponent;
+
 use App\Http\Controllers\Shop\ViewController;
 
 Route::get('/', [ ShopController::class, 'index' ])->name('shop.home');
@@ -18,7 +20,9 @@ Route::get('/about', [ViewController::class, 'about'])->name('about');
 
 Route::get('/contact', [ViewController::class, 'contact'])->name('contact');
 
-Route::get('/xem-don-hang', CheckoutComponent::class )->name('shop.cart.checkout');
+Route::get('/cart-oder', CartOrderComponent::class )->name('shop.cart.order');
+
+Route::get('/checkout', CheckoutComponent::class )->name('shop.cart.checkout');
 
 Route::name('shop.')->group( function() {
 

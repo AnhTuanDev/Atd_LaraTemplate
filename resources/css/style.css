@@ -31,3 +31,10 @@
 .atd-scrollbar::-webkit-scrollbar-track {
     background: transparent;
 }
+.atd-scrollbar-none {
+    scrollbar-width: none;
+}
+.atd-scrollbar-none::-webkit-scrollbar {
+    width: none;
+    height: none;
+}

@@ -33,8 +33,8 @@ class Product extends Model
 
     protected $casts = [
         'photos' => 'array',
-        'price' => 'string',
-        'discount' => 'string',
+        //'price' => 'string',
+        //'discount' => 'string',
     ];
 
     //Carbon set vn locale.
