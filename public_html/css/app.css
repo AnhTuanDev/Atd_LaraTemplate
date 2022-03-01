@@ -852,9 +852,6 @@ select{
 .h-1{
   height: 0.25rem;
 }
-.max-h-full{
-  max-height: 100%;
-}
 .min-h-screen{
   min-height: 100vh;
 }
@@ -1341,10 +1338,6 @@ select{
 .object-center{
   -o-object-position: center;
      object-position: center;
-}
-.object-top{
-  -o-object-position: top;
-     object-position: top;
 }
 .p-0{
   padding: 0px;
@@ -1915,48 +1908,6 @@ select{
     -webkit-animation: fadeTranslateLeave 0.2s;
             animation: fadeTranslateLeave 0.2s;
 }
-.placeholder\:text-lg::-moz-placeholder{
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-}
-.placeholder\:text-lg:-ms-input-placeholder{
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-}
-.placeholder\:text-lg::placeholder{
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-}
-.placeholder\:font-semibold::-moz-placeholder{
-  font-weight: 600;
-}
-.placeholder\:font-semibold:-ms-input-placeholder{
-  font-weight: 600;
-}
-.placeholder\:font-semibold::placeholder{
-  font-weight: 600;
-}
-.placeholder\:capitalize::-moz-placeholder{
-  text-transform: capitalize;
-}
-.placeholder\:capitalize:-ms-input-placeholder{
-  text-transform: capitalize;
-}
-.placeholder\:capitalize::placeholder{
-  text-transform: capitalize;
-}
-.placeholder\:text-gray-700::-moz-placeholder{
-  --tw-text-opacity: 1;
-  color: rgb(55 65 81 / var(--tw-text-opacity));
-}
-.placeholder\:text-gray-700:-ms-input-placeholder{
-  --tw-text-opacity: 1;
-  color: rgb(55 65 81 / var(--tw-text-opacity));
-}
-.placeholder\:text-gray-700::placeholder{
-  --tw-text-opacity: 1;
-  color: rgb(55 65 81 / var(--tw-text-opacity));
-}
 .first\:rounded-t:first-child{
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
@@ -1994,13 +1945,13 @@ select{
   --tw-bg-opacity: 1;
   background-color: rgb(192 179 194 / var(--tw-bg-opacity));
 }
-.hover\:bg-gray-700:hover{
-  --tw-bg-opacity: 1;
-  background-color: rgb(55 65 81 / var(--tw-bg-opacity));
-}
 .hover\:bg-secondary-main:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(123 31 162 / var(--tw-bg-opacity));
+}
+.hover\:bg-gray-700:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(55 65 81 / var(--tw-bg-opacity));
 }
 .hover\:bg-blue-500:hover{
   --tw-bg-opacity: 1;

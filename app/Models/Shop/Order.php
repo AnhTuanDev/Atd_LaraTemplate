@@ -3,6 +3,7 @@
 namespace App\Models\Shop;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Te7aHoudini\LaravelTrix\Traits\HasTrixRichText;
 use Illuminate\Database\Eloquent\Model;
 
 use Orchid\Filters\Filterable;
@@ -10,7 +11,7 @@ use Orchid\Screen\AsSource;
 
 class Order extends Model
 {
-    use AsSource, HasFactory, Filterable;
+    use AsSource, HasFactory, Filterable, HasTrixRichText;
     //protected $table = 'colors';
     protected $fillable = [ 
         'cart_id', 

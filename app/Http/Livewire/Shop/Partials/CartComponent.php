@@ -30,6 +30,10 @@ class CartComponent extends Component
 
         $this->cartCount = \Cart::count();
 
+        if($this->cartCount < 1) {
+            return redirect()->route('shop.index');
+        }
+
     }
 
     public function destroyCart()
@@ -37,6 +41,8 @@ class CartComponent extends Component
         \Cart::destroy();
 
         $this->reset(['cartCount', 'cartContent']);
+
+        return redirect()->route('shop.index');
     }
 
     public function mount()

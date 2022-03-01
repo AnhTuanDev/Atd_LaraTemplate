@@ -7,13 +7,18 @@ use Livewire\Component;
 
 class CheckoutComponent extends Component
 {
-    public $cartCount, $cartContent, $quantity;
+    public $cartCount, $cartContent, $quantity, $cartNote = 'Không có ghi chú';
 
     public function mount(Request $request)
     {
-        $this->cartNote = $request->get('cartNote');
         $this->cartCount = \Cart::count();
+
         $this->cartContent = \Cart::content();
+
+        if($request->has('oder-trixFields')){
+            $note = $request->all();
+            $this->cartNote = $note['oder-trixFields']['content'];
+        }
     }
     public function render()
     {

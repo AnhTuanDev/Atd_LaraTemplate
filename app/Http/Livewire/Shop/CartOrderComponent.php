@@ -4,23 +4,26 @@ namespace App\Http\Livewire\Shop;
 
 use Illuminate\Http\Request;
 use Livewire\Component;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CartOrderComponent extends Component
 {
     public $isOrder = false;
 
-    public $cartnote;
+    public $cartNote, $orderId;
 
     public $cartCount, $cartContent, $quantity;
 
     public function mount()
     {
-        $this->cartCount = \Cart::count();
-        $this->cartContent = \Cart::content();
+        $this->cartCount = Cart::count();
+        $this->cartContent = Cart::content();
+        $this->orderId = $this->id;
     }
     public function setQuantity($q, $row)
     {
-        $cart = \Cart::get($row);
+        $cart = Cart::get($row);
+
         $qty = $cart->qty;
 
         if($q === '-' && $qty >= 2) {
@@ -29,26 +32,36 @@ class CartOrderComponent extends Component
         elseif($q === '+') {
             $qty += 1;
         }
-        \Cart::update($row, ['qty' => $qty]);
-        $this->cartContent = \Cart::content();
+
+        Cart::update($row, ['qty' => $qty]);
+
+        $this->cartContent = Cart::content();
+
         $this->reset('cartCount');
-        $this->cartCount = \Cart::count();
+
+        $this->cartCount = Cart::count();
     }
     public function cartRemove($row)
     {
-        \Cart::remove($row);
-        $this->cartContent = \Cart::content();
+        Cart::remove($row);
+
+        $this->cartContent = Cart::content();
+
         $this->reset('cartCount');
-        $this->cartCount = \Cart::count();
+
+        $this->cartCount = Cart::count();
     }
+
     public function destroyCart()
     {
-        \Cart::destroy();
+        Cart::destroy();
         $this->reset(['cartCount', 'cartContent']);
     }
+
     public function checkout()
     {
-        return redirect()->route('shop.cart.checkout', [ 'cartNote' => $this->cartnote ]);
+        //return redirect()->route('shop.cart.checkout', [ 'cartNote' => $this->cartnote, 'orderId' => $this->id ]);
+        return redirect()->route('shop.cart.checkout', [ 'orderId' => $this->id, 'cartNote' => $this->cartNote]);
     }
     public function render()
     {

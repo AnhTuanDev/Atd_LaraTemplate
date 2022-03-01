@@ -4,7 +4,8 @@
         <button @click="$store.shop.toggleOverflow(); $store.shop.toggleSlideCart()"
                 class="relative flex items-center 
                 text-md leading-none font-semibold z-[9998]
-                "> <x-orchid-icon path="bag" class="text-lg font-bold text-secondary-main"/>
+                "> 
+                <x-orchid-icon path="bag" class="text-lg font-bold text-secondary-main"/>
                 <div for="cart" 
                     class="bg-secondary-light ml-1 rounded-full font-bold 
                     hover:bg-secondary-dark hover:text-secondary-text
@@ -27,11 +28,12 @@
             p-4 border-b border-gray-700 border-opacity-20
             ">
             <h3 class="text-xl font-semibold text-primary-text leading-none">Giỏ Hàng</h3>
-            <x-orchid-icon path="close" class="text-2xl font-bold text-primary-text"/>
+            <button @click="$store.shop.overflow = false; $store.shop.toggleSlideCart()">
+                <x-orchid-icon path="close" class="text-2xl font-bold text-primary-text"/>
+            </button>
         </div>
 
         <div x-data
-            @click.outside="$store.shop.overflow = false; $store.shop.toggleSlideCart()"
             class="text-primary-text px-4 pt-4 pb-6 drop-shadow-lg 
             border-b border-gray-700 border-opacity-20
             ">
@@ -76,7 +78,8 @@
             @if($cartCount)
                 <div class="w-full flex items-center space-x-4 justify-between mt-6">
                     <a href="{{ route('shop.cart.order') }}">
-                        <button class="bg-secondary-main 
+                        <button @click="$store.shop.overflow = false"
+                            class="bg-secondary-main 
                             border border-secondary-main hover:bg-primary-main
                             px-4 py-2 rounded-md text-sm md:text-md 
                             md:font-semibold duration-150"
@@ -84,8 +87,8 @@
                         </button>
                     </a>
                     <button 
+                        @click="$store.shop.overflow = false"
                         wire:click="destroyCart" 
-                        @click.prevent="$store.shop.toggleSlideCart()"
                         class="bg-primary-dark border 
                         border-secondary-main hover:bg-primary-main
                         px-4 py-2 rounded-md text-sm md:text-md 

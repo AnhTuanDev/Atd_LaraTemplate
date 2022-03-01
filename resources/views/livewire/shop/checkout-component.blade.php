@@ -65,26 +65,16 @@
                     <div class="flex items-center text-lg text-gray-700 font-semibold py-3 border-b border-gray-700 border-opacity-20">Trong giỏ hàng</div>
                     <!-- Tong don -->
                     <div class="flex items-center justify-between mt-4">
-                        <label calss="text-md text-gray-700">
-                            Tổng đơn:
-                        </label>
-                        <label class="text-2xl font-semibold text-primary-text">
-                            {{ \Cart::subtotal() }} đ
-                        </label>
+                        <label calss="text-md text-gray-700"> Tổng đơn: </label>
+                        <label class="text-2xl font-semibold text-primary-text"> {{ \Cart::subtotal() }} đ </label>
                     </div>
                     <!-- Phi van chuyen -->
                     <div class="flex items-center justify-between mt-4">
-                        <label calss="text-md text-gray-700">
-                            Phí vận chuyển:
-                        </label>
+                        <label calss="text-md text-gray-700"> Phí vận chuyển: </label>
                         @if(\Cart::subtotal() >= '350.000')
-                        <label class="text-sm text-primary-text">
-                            Miễn phí
-                        </label>
+                        <label class="text-sm text-primary-text"> Miễn phí </label>
                         @else
-                        <label class="text-sm text-primary-text">
-                            Trillfa hỗ trợ 50% 
-                        </label>
+                        <label class="text-sm text-primary-text"> Trillfa hỗ trợ 50% </label>
                         @endif
                     </div>
                     <div class="w-full mt-6">
@@ -93,7 +83,7 @@
                             <x-orchid-icon path="note" />
                             <label for="note" class="ml-2 capitalize">Ghi chú</label>
                         </div>
-                        {{ $cartNote }}
+                        {!! $cartNote !!}
                     </div>
                 </div>
                 <!-- Thanh toan -->

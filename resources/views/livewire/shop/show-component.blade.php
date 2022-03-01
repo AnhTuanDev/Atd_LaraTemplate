@@ -218,7 +218,6 @@
                     {{-- Add to cart --}}
                     <button 
                         wire:click="addCart({{ $product->id }})" 
-                        @click.prevent="$store.shop.toggleSlideCart()"
                         class="px-6 py-3 rounded-md drop-shadow-md 
                         hover:drop-shadow-xl bg-secondary-main 
                         hover:bg-secondary-dark duration-150 

@@ -22,7 +22,7 @@ Route::get('/contact', [ViewController::class, 'contact'])->name('contact');
 
 Route::get('/cart-oder', CartOrderComponent::class )->name('shop.cart.order');
 
-Route::get('/checkout', CheckoutComponent::class )->name('shop.cart.checkout');
+Route::get('/checkout/{orderId}', CheckoutComponent::class )->name('shop.cart.checkout');
 
 Route::name('shop.')->group( function() {
 

@@ -17,10 +17,18 @@
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
+
+        <!-- Trix richtext -->
+        @if(\Route::currentRouteName() == 'shop.cart.order')
+            @trixassets
+        @elseif(\Route::currentRouteName() == 'shop.cart.checkout')
+            @trixassets
+        @endif
+
     </head>
 
     <body x-data
-        :class="$store.shop.overflow && 'overflow-hidden'"
+        :class="$store.shop.overflow ? 'overflow-hidden' : ''"
         class="font-sans antialiased text-base">
 
         <div
@@ -31,12 +39,12 @@
 
             <livewire:partials.navbar />
 
-            @if (isset($slideMenu))
+            @if(isset($slideMenu))
                 {{ $slideMenu }}
             @endif
 
             <!-- Page Heading -->
-            @if (isset($header))
+            @if(isset($header))
                 {{ $header }}
             @endif
 
