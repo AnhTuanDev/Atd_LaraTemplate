@@ -217,6 +217,7 @@
                     ">
                     {{-- Add to cart --}}
                     <button 
+                        @click="$store.shop.onOverflow()"
                         wire:click="addCart({{ $product->id }})" 
                         class="px-6 py-3 rounded-md drop-shadow-md 
                         hover:drop-shadow-xl bg-secondary-main 
@@ -232,9 +233,7 @@
                         {!! $product->description !!}
                     </div>
                 </div>
-
             </div>
-
         </div>
     </section>
     <section class="px-5 w-full mx-auto xl:px-none max-w-7xl">

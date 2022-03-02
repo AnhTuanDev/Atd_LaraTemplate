@@ -28,7 +28,7 @@
             p-4 border-b border-gray-700 border-opacity-20
             ">
             <h3 class="text-xl font-semibold text-primary-text leading-none">Giỏ Hàng</h3>
-            <button @click="$store.shop.overflow = false; $store.shop.toggleSlideCart()">
+            <button @click="$store.shop.ofOverflow(); $store.shop.toggleSlideCart()">
                 <x-orchid-icon path="close" class="text-2xl font-bold text-primary-text"/>
             </button>
         </div>
